@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+  
+ <hibernate-mapping>
+ <class name="com.swiftcorp.portal.question.dto.QDTO" table="questionquestionnaire" >
+	  <id name="componentId" column="componentId" type="long">
+	    <generator class="increment" /> 
+	  </id>
+	 
+	  <joined-subclass name="com.swiftcorp.portal.question.dto.QuestionDTO" table="question">
+	  <key column="componentId"/>
+	  
+		 <property name="questionName" type="string" column="questionName" /> 
+		 <property name="qqType" type="int" column="qqType"  /> 
+		  <many-to-one name="categoryType" class="com.swiftcorp.portal.question.dto.CategoryTypeDTO"  lazy="false" column="categoryId"/>
+		  <many-to-one name="answerType" class="com.swiftcorp.portal.question.dto.AnswerTypeDTO"  lazy="false" column="answerTypeId"/>
+		  <property name="questionId" type="string" column="questionId"/>
+		
+		   
+		 
+		  <list name="mcqOptionList" cascade="all" lazy="false">
+				<key column="questionId"/>
+				<index column="questionOrder" />
+				<one-to-many class="com.swiftcorp.portal.question.dto.MCQOptionDTO" />
+		  </list>
+		  <list name="validationDTOList" cascade="all" lazy="false">
+				<key column="qId"/>
+				<index column="validationOrder" />
+				<one-to-many class="com.swiftcorp.portal.question.dto.ValidationDTO" />
+		  </list>
+	 
+      </joined-subclass>
+      
+  	<joined-subclass name="com.swiftcorp.portal.question.dto.QuestionnaireDTO" table="questionnaire">
+	  	<key column="componentId"/>
+		 <property name="questionnaireName" type="string" column="questionnaireName" /> 
+		 <property name="qqType" type="int" column="qqType"  />
+		 <property name="questionnaireVersion" type="string" column="questionnaireVersion" />  
+		 <property name="questionnaireId" type="string" column="questionnaireId"  /> 
+		 <property name="questionnaireTimestamp" type="string" column="questionnaireTimestamp" /> 
+		 <property name="questionnaireTypeFlag" type="int" column="questionnaireTypeFlag" /> 
+		 <property name="questionnaireDescription" type="string" column="questionnaireDescription" /> 
+		 <property name="numberOfQuestion" type="int" column="numberOfQuestion"  /> 
+	       <many-to-one name="questionnaireStatus" class="com.swiftcorp.portal.question.dto.QuestionnaireStatusDTO" 
+	 			  lazy="false" column="questionnaireStatus" not-null="true" />
+	      <list name="questionList" cascade="none" table="QuestionMap" inverse="false" lazy="false" >  
+	             <key column="questionnaireId"/>  
+	             <index column="questionOrder"/>  
+	             <many-to-many column="question" class="com.swiftcorp.portal.question.dto.QuestionDTO"/>  
+	       </list>
+     </joined-subclass> 
+     
+   </class>
+   
+ </hibernate-mapping>

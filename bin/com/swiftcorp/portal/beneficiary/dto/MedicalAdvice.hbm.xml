@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+  
+ <hibernate-mapping>
+  <class name="com.swiftcorp.portal.beneficiary.dto.MedicalAdviceDTO" table="medicaladvice">
+	  <id name="componentId" column="componentId" type="long">
+	    <generator class="increment" /> 
+	  </id>
+		<many-to-one name="advisor" class="com.swiftcorp.portal.user.dto.UserDTO"  lazy="false" column="advisorId"/>
+		<property name="advice" type="string" column="advice"  />
+		<property name="medicine" type="string" column="medicine"  />
+		<property name="refer" type="string" column="refer"  />	  	  
+	    <property name="adviceDate" type="calendar" column="adviceDate"  />
+     	<property name="beneficiaryId" type="string" column="beneficiaryId"  />
+     	<property name="householdId" type="string" column="householdId"  />
+     	<property name="skId" type="string" column="skId"  />
+     	
+     	<property name="beneficiaryType" type="int" column="beneficiaryType"  />
+     	<property name="status" type="int" column="status" />     
+  </class>
+  
+ </hibernate-mapping>
+ 
+ 

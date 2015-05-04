@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svnroot/ext-jame/!svn/ver/69/trunk/jame/web-app/js/ext2/build/adapter
+END
+ext-base-min.js
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svnroot/ext-jame/!svn/ver/69/trunk/jame/web-app/js/ext2/build/adapter/ext-base-min.js
+END
+jquery-bridge-min.js
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svnroot/ext-jame/!svn/ver/69/trunk/jame/web-app/js/ext2/build/adapter/jquery-bridge-min.js
+END
+prototype-bridge-min.js
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svnroot/ext-jame/!svn/ver/69/trunk/jame/web-app/js/ext2/build/adapter/prototype-bridge-min.js
+END
+yui-bridge-min.js
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svnroot/ext-jame/!svn/ver/69/trunk/jame/web-app/js/ext2/build/adapter/yui-bridge-min.js
+END

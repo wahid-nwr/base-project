@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ <hibernate-mapping>
+
+ <class name="com.swiftcorp.portal.user.dto.SSDTO" table="shasthoshebica">
+  <id name="componentId" column="componentId" type="long">
+    <generator class="increment" /> 
+  </id>
+  
+  <property name="ssId" type="string" column="ssId" length="50"  /> 
+  <property name="skId" type="string" column="skId" length="50"  /> 
+  <many-to-one name="branch" class="com.swiftcorp.portal.geo.dto.GeoDTO" column="branch" cascade="all" unique="true"/>
+  <list name="householdList" cascade="all" table="ssHousehold" inverse="false" lazy="false" >  
+	             <key column="ssId"/>  
+	             <index column="householdOrder"/>  
+	             <many-to-many column ="household" class="com.swiftcorp.portal.household.dto.HouseholdDTO"/>  
+	</list>
+ </class>
+ </hibernate-mapping>

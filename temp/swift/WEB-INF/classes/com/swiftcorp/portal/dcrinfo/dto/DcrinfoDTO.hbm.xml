@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+  
+ <hibernate-mapping>
+  <class name="com.swiftcorp.portal.dcrinfo.dto.DcrinfoDTO" table="dcrinfo">
+	  <id name="componentId" column="componentId" type="long">
+	    <generator class="increment" /> 
+	  </id>
+	<property name="uniqueCode" type="string" column="uniquecode"/> 
+	<property name="date" type="string" column="date" /> 
+	<property name="session" type="string" column="session" /> 
+	<property name="location" type="string" column="location" /> 
+	<property name="doctorName" type="string" column="doctorname" /> 
+	<property name="description" type="string" column="description"  /> 
+	<property name="status" type="int" column="status"  /> 
+    <property name="updatedDate" type="calendar" column="updateddate"  />	
+	<property name="updatedBy" type="long" column="updatedby"  />
+	 
+	<list name="productInfoList" cascade="all" lazy="false">
+	    <key column="dcrinfoId"/>
+        <index column="orderIndex"/>
+	    <one-to-many class="com.swiftcorp.portal.dcrinfo.dto.DcrProductInfoDTO" />
+    </list>           
+  </class>
+  
+  <class name="com.swiftcorp.portal.dcrinfo.dto.DcrProductInfoDTO" table="dcrproductinfo">
+	<id name="componentId" column="componentId" type="long">
+		<generator class="increment" /> 
+	</id>
+	  
+	<property name="uniqueCode" type="string" column="uniquecode" /> 
+	<property name="productCode" type="string" column="productcode" /> 
+	<property name="productType" type="string" column="producttype" /> 
+	<property name="quantity" type="int" column="quantity" /> 
+	<property name="description" type="string" column="description"  /> 
+	<property name="status" type="int" column="status"  /> 
+    <property name="updatedDate" type="calendar" column="updateddate"  />	
+	<property name="updatedBy" type="long" column="updatedby"  />
+  </class>
+ 
+ </hibernate-mapping>

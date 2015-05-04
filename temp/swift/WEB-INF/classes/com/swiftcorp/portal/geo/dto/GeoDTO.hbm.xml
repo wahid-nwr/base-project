@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+  
+ <hibernate-mapping>
+  <class name="com.swiftcorp.portal.geo.dto.GeoDTO" table="geolocation">
+	  <id name="componentId" column="componentId" type="long">
+	    <generator class="increment" /> 
+	  </id>
+	<property name="code" type="string" column="code" /> 
+	<property name="name" type="string" column="name" /> 
+	<property name="description" type="string" column="description"  /> 
+	<property name="status" type="int" column="status"  />
+	<property name="geoType" type="int" column="geoType"  />  
+    
+    <property name="geoNumber" type="string" column="geoNumber" />
+    <property name="address" type="string" column="address" />
+    <property name="location" type="string" column="location" />
+    <property name="officePhoneNumber" type="string" column="officePhoneNumber" />
+    <property name="contactPerson" type="string" column="contactPerson" />
+    <property name="contactNumber" type="string" column="contactNumber" />
+    
+    <many-to-one name="parentArea" class="com.swiftcorp.portal.geo.dto.GeoDTO" column="parentArea" lazy="false" cascade="all"/>
+            
+  </class>
+   
+ </hibernate-mapping>

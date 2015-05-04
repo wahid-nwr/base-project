@@ -1,0 +1,9 @@
+	 <!--
+	 <property name="description" type="string" column="description"  /> 
+	 <property name="status" type="int" column="status"  /> 
+     <property name="updatedDate" type="calendar" column="updateddate"  />	
+	 <property name="updatedBy" type="long" column="updatedby"  />
+	 -->
+  </class>
+   
+ </hibernate-mapping>

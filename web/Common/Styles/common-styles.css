@@ -1,0 +1,301 @@
+/* COMMON STYLES */
+
+BODY
+ {
+	background-color: #D6EBF2;
+	margin: 0px;
+	white-space: nowrap;
+	font-family: Arial;
+	font-size: 12px;
+}
+
+TABLE 
+{
+	font-family: Arial;
+	font-size: 12px;
+}
+
+FIELDSET 
+{
+	border: solid 1px silver;
+}
+
+.MainBody 
+{
+	background-color: #F2FAFF;
+}
+
+SELECT 
+{
+	border: solid 1px #106382;
+	background-color: #F2FAFF;
+}
+
+
+.screenName
+ {
+	color:   #0062A3;
+	font-size: 16px;
+	font-family:Arial;
+	font-weight:bold;	
+}
+
+.tip 
+{
+	color:#000022;
+	white-space: normal;
+	font-size: 13px;
+	font-family:Arial;
+}
+
+
+table.errormessage {
+	border: 1px solid #FF0000;
+	padding-left: 4px;
+	padding-right: 4px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	background-color:#FFDDDD
+}
+
+table.successmessage {
+	border: 1px solid #009900;
+	padding-left: 4px;
+	padding-right: 4px; 
+    padding-top: 1px;
+    padding-bottom: 1px;
+    background-color:#9BC8A0;
+}
+
+.successmessagetext {
+	font-family: Arial;
+	font-size: 13px;
+	color: #006600;
+	margin-left: 3
+}
+.errormessagetext {
+	font-family: Arial;
+	font-size: 13px;
+	color: #154979;
+	margin-left: 3
+}
+
+/* MESSAGE STYLES -- END*/
+
+.buttonbar 
+{
+	background-color: #8ABDD0;
+}
+
+.searchpanel {
+	//background-image: url('Images/searchpanel.jpg');
+	//background-repeat: repeat;
+	background-color: #B4D3DE;
+	height:45px;
+	font-family: Arial;
+	font-size: 14px;
+	color: #0062A3;
+	font-weight:bold;  
+}
+
+.SearchBody {
+	font-size: 14px;
+	font-family:Arial; 
+	color: #000000;
+}
+
+.listheader {
+	background-color: #B4D3DE; 
+	font-family:Arial;
+	font-size: 13px;
+	font-weight:bold;  
+	color: #224257;
+}
+
+.listheader A{
+	font-size: 13px;
+	font-family:Arial; 
+	font-weight:bold;
+	color: #224257;
+	text-decoration: underline;
+}
+
+.listheader A:hover{
+	background: transparent;
+	text-decoration: underline;
+}
+
+.SearchBody A{
+	color: #0062A3;
+}
+.SearchBody A:hover {
+	background: transparent;
+	text-decoration: underline;
+}
+
+.SearchBody TD{
+	color: #000000;
+}
+
+.SearchResultRow0{
+	background-color: #EEEEEE;
+}
+
+.SearchResultRow1{
+	background-color: #F2FAFF
+}
+
+.pager 
+{
+	background-color: #B4D3DE; 
+	font-family:Arial;
+	font-size: 14px; 
+	color: #0062A3;
+}
+
+.pager A {
+	color:#0062A3;
+}
+
+.pager A:hover {
+	background: transparent;
+	text-decoration: underline;
+}
+
+.pager TD {
+	color:#0062A3;
+}
+
+.AddModifyForm {
+	background-color: #F2FAFF;
+	//background-color: #F2FAFF;B4D3DE
+	color: #000000;
+	font-size: 12px;
+}
+
+.SingleLineTextField {
+	border: solid 1px #106382;
+	background-color: #F2FAFF;
+}
+
+.MultiLineTextField {
+	border: solid 1px #106382;
+	background-color: #F2FAFF;
+}
+
+.CheckBox {
+	border: solid 1px #106382;
+	background-color: #F2FAFF;
+}
+
+.Logout {
+	font-family:Arial;
+	color:#235E75;
+}
+
+.Logout A {
+	font-family:Arial;
+	color:#235E75;
+}
+
+.Logout A:hover {
+	background: transparent;
+	text-decoration: underline;
+}
+
+.Breadcrumb {
+	font-family:Arial;
+	color:#235E75;
+}
+
+.border_box {
+      border-right-width: 1px;
+      border-left-width: 1px;
+      border-bottom-width: 1px;
+      border-top-width: 1px;
+	  border-right-style: solid;
+      border-left-style: solid;
+      border-bottom-style: solid;
+      border-top-style: solid;
+      border-right-color: #a2aab6;
+      border-left-color: #a2aab6;
+      border-bottom-color: #a2aab6;
+      border-top-color: #a2aab6;
+  	  background-color: #E7F8FE;      
+}
+
+.Breadcrumb A {
+	font-family:Arial;
+	color:#235E75;
+	font-weight: bold;
+}
+
+.Breadcrumb A:hover {
+	background: transparent;
+	text-decoration: underline;
+}
+
+TD.tabActive {
+	font-size:11px;color:#FFFFFF;
+	background-color:#396996;
+	font-weight:bold;
+}
+TD.tab {
+	font-size:11px;
+	color:#FFFFFF;
+	background-color:#708CB4;
+	font-weight:bold; 
+}
+A.tab {
+	font-size:11px;
+	color:#FFFFFF;
+	font-family:Arial; 
+	text-decoration: none;
+}
+
+.bold_txt {
+	font-size:12px;
+	color:#224257;
+	font-weight:bold;	
+}
+.bottom_border {
+      border-right-width: 0px;
+      border-left-width: 0px;
+      border-bottom-width: 1px;
+      border-top-width: 0px;
+      border-bottom-style: solid;
+      border-bottom-color: #a2aab6;    
+}
+
+.group_info {
+	background-color: #F2FAFF;
+	color:   #0062A3;
+	font-weight: bold;	
+	font-size: 12px;
+	font-family:Arial;		
+}
+.balance_info {
+	font-size:12px;
+	color:#0062A3;
+	background-color: #EEEEEE;
+}
+.normal_txt {
+	font-size:12px;
+	color:#0062A3;
+}
+.tab_unselect {
+	background-color: #C0C0C0;
+	color:   #000000;
+	font-weight: bold;	
+	font-size: 12px;
+	font-family:verdana;
+}
+
+.tab_select {
+	background-color: #0062A3;
+	color:   #FFFFFF;
+	font-weight: bold;	
+	font-size: 12px;
+	font-family:verdana;
+}
+

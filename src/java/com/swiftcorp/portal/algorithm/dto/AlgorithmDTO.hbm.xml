@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+  
+ <hibernate-mapping>
+  <class name="com.swiftcorp.portal.algorithm.dto.AlgorithmDTO" table="algorithm">
+	  <id name="componentId" column="componentId" type="long">
+	    <generator class="increment" /> 
+	  </id>
+	 <property name="algId" type="string" column="algId"/> 
+	 <property name="version" type="string" column="version" /> 
+	 <property name="name" type="string" column="name" /> 
+	 <property name="description" type="string" column="description"  />
+	 <property name="algStatus" type="int" column="status"  />  
+	
+    
+	 <many-to-one name="firstAlgQuestion" class="com.swiftcorp.portal.algorithm.dto.AlgQuestionDTO" 
+	 			  column="firstAlgQuestion" lazy="false" not-null="true" cascade="all" unique="true" />
+	 
+	 			  			  			  
+	  <set name="subAlgorithmSet" lazy="false" cascade="all">
+			<key column="algorithmId" />
+			<one-to-many class="com.swiftcorp.portal.algorithm.dto.SubAlgorithmDTO"/>
+	 </set>
+	 
+  </class>
+   
+ </hibernate-mapping>

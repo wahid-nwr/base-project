@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE form-validation PUBLIC "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.3.0//EN" "http://jakarta.apache.org/commons/dtds/validator_1_3_0.dtd">
+
+<form-validation>
+  <global/>
+  <formset>
+    <!-- userForm -->
+    <form name="/userActionWithValidation">
+      <field property="user.uniqueCode" depends="required">
+        <arg position="0" key="label.user.userId"/>
+      </field>
+      <field property="admin.lastName" depends="required">
+        <arg position="0" key="label.admin.lastName"/>
+      </field>
+      <field property="user.firstName" depends="required">
+        <arg position="0" key="label.user.firstName"/>
+      </field>
+      <field property="user.password" depends="required">
+        <arg position="0" key="label.user.password"/>
+      </field>
+    </form>
+    <!--   ROLE  -->
+    <form name="/roleActionWithValidation">
+      <field property="role.uniqueCode" depends="required">
+        <arg position="0" key="label.role.userId"/>
+      </field>
+      <field property="role.accessLevel" depends="required,mask">
+        <arg position="0" key="label.role.accessLevel"/>
+        <var>
+          <var-name>mask</var-name>
+          <var-value>^[1-9]{1}[0-9]*$</var-value>
+        </var>
+      </field>
+    </form>
+    <form name="/adminActionWithValidation">
+      <field property="admin.uniqueCode" depends="required">
+        <arg position="0" key="label.user.userId"/>
+      </field>
+      <field property="admin.lastName" depends="required">
+        <arg position="0" key="label.admin.lastName"/>
+      </field>
+      <field property="admin.firstName" depends="required">
+        <arg position="0" key="label.user.firstName"/>
+      </field>
+      <field property="admin.password" depends="required">
+        <arg position="0" key="label.user.password"/>
+      </field>
+      <field property="admin.role.componentId" depends="required,mask">
+        <arg position="0" key="label.user.role"/>
+        <var>
+          <var-name>mask</var-name>
+          <var-value>^[1-9]{1}[0-9]*$</var-value>
+        </var>
+      </field>
+    </form>
+    <!--     QUESTION    -->
+    <form name="/questionActionWithValidation"/>
+    <!--     BENEFICIARY    -->
+    <form name="/beneficiaryActionWithValidation"/>
+    <!--     ALGORITHM    -->
+    <form name="/algorithmActionWithValidation"/>
+    <!--     ALERT    -->
+    <form name="/alertActionWithValidation"/>
+    <!--     SCHEDULE    -->
+    <form name="/scheduleActionWithValidation"/>
+    <!--     HOUSEHOLD    -->
+    <form name="/householdActionWithValidation"/>
+    <!--     HOUSEHOLD    -->
+    <form name="/householdActionWithValidation"/>
+    <!--     DHAKAUNIVERSITY    -->
+    <form name="/dhakauniversityActionWithValidation"/>
+    <!--     RISK    -->
+    <form name="/riskActionWithValidation"/>
+   
+    <!--     GEO    -->
+    <form name="/geoActionWithValidation"/>
+  </formset>
+</form-validation>

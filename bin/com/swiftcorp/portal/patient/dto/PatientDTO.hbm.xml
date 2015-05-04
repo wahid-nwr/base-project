@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+  
+ <hibernate-mapping>
+  <class name="com.swiftcorp.portal.patient.dto.PatientDTO" table="patient">
+	  <id name="componentId" column="componentId" type="long">
+	    <generator class="increment" /> 
+	  </id>
+	  <!--
+	  <property name="uniqueCode" type="string" column="uniquecode" length="50"  />
+	  --> 
+	<property name="patientId" type="string" column="patientid" /> 
+	<property name="name" type="string" column="name" /> 
+	<property name="birthDate" type="calendar" column="birthdate" /> 
+	<property name="age" type="int" column="age" /> 
+	<property name="mobileNo" type="string" column="mobileno" /> 
+	<property name="email" type="string" column="email" /> 
+	<property name="address" type="string" column="address" /> 
+	 <!--
+	 <property name="description" type="string" column="description"  /> 
+	 <property name="status" type="int" column="status"  /> 
+     <property name="updatedDate" type="calendar" column="updateddate"  />	
+	 <property name="updatedBy" type="long" column="updatedby"  />
+	 -->
+  </class>
+   
+ </hibernate-mapping>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+  
+ <hibernate-mapping>
+  <class name="com.swiftcorp.portal.algorithm.dto.AlgAnswerDTO" table="alganswer">
+	  <id name="componentId" column="componentId" type="long">
+	    <generator class="increment" /> 
+	  </id>
+	
+	  <many-to-one name="questionDTO" class="com.swiftcorp.portal.question.dto.QuestionDTO"  lazy="false"  column="questionId"  cascade="all" />	
+	  <many-to-one name="answerTypeDTO" class="com.swiftcorp.portal.question.dto.AnswerTypeDTO"  lazy="false"  column="answerTypeId"  cascade="all" />	
+	  <many-to-one name="algorithmDTO" class="com.swiftcorp.portal.algorithm.dto.AlgorithmDTO"  lazy="false"  column="algorithmId"  cascade="all" />
+	  <many-to-one name="algQuestionBranchDTO" class="com.swiftcorp.portal.algorithm.dto.AlgQuestionBranchDTO"  lazy="false"  column="algBranchId"  cascade="all" />	
+	  	
+	  <property name="answer1" type="string" column="answer1"  />
+	  <property name="answer2" type="string" column="answer2"  />  	   
+  </class>
+   
+ </hibernate-mapping>

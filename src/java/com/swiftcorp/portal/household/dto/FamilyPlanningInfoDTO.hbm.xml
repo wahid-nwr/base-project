@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+  
+ <hibernate-mapping>
+  <class name="com.swiftcorp.portal.household.dto.FamilyPlanningInfoDTO" table="familyplanninginfo">
+	  <id name="componentId" column="componentId" type="long">
+	    <generator class="increment" /> 
+	  </id>
+	  <property name="birthControlKit" type="string" column="birthControlKit" /> 
+	  <property name="pillDate" type="calendar" column="pillDate"  />
+	  <property name="norplantDate" type="calendar" column="norplantDate"  />
+	  <property name="deadlineOfNorplant" type="calendar" column="deadlineOfNorplant"  />
+	  <property name="iudDate" type="calendar" column="iudDate"  />
+	  <property name="deadlineOfIUD" type="calendar" column="deadlineOfIUD"  />
+	  <property name="iudCheck" type="boolean" column="iudCheck"  />
+	  <property name="dateOfChange" type="calendar" column="dateOfChange"  />  
+	  <property name="causeOfChange" type="string" column="causeOfChange" /> 
+	  <property name="comments" type="string" column="comments"  /> 
+	  <property name="daysOfPeriod" type="int" column="daysOfPeriod"  /> 
+      <property name="stripCheck" type="boolean" column="stripCheck"  />
+      <!-- many-to-one name="householdMotherId" class="com.swiftcorp.portal.household.dto.HouseholdMotherVisitDTO"  lazy="false" column="householdMotherId"/-->
+    	
+
+  </class>
+   
+ </hibernate-mapping>

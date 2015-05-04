@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+  
+ <hibernate-mapping>
+  <class name="com.swiftcorp.portal.household.dto.HouseholdMemberDTO" table="householdmember">
+	  <id name="componentId" column="componentId" type="long">
+	    <generator class="increment" /> 
+	  </id>
+	  <property name="beneficiaryId" type="string" column="beneficiaryId" length="50"  /> 
+	  <property name="memberPicture" type="string" column="memberPicture" /> 
+	  <property name="memberName" type="string" column="memberName" /> 
+	  <property name="mobileNo" type="string" column="mobileNo"  /> 
+	  <property name="memberAge" type="int" column="age"  /> 
+	  <property name="gender" type="string" column="gender"  /> 
+	  <property name="husbandName" type="string" column="husbandName" /> 
+	  <property name="occupation" type="string" column="occupation" /> 
+	  <property name="pregnancyCondition" type="string" column="pregnancyCondition" /> 
+      <property name="otherInfo" type="boolean" column="otherInfo"  />	
+      <property name="householdId" type="string" column="householdId"  />
+      <property name="memberType" type="string" column="memberType"  />
+           
+	 <set name="householdMemberVisitSet" lazy="false" cascade="all">
+			<key column="householdMemberId" />
+			<one-to-many class="com.swiftcorp.portal.household.dto.HouseholdMemberVisitDTO"/>
+	 </set>
+	 <!--
+	  <set name="householdChildVisitSet" lazy="false" cascade="all">
+			<key column="householdMemberId" />
+			<one-to-many class="com.swiftcorp.portal.household.dto.HouseholdChildVisitDTO"/>
+	 </set>
+	  -->
+  </class>
+   
+ </hibernate-mapping>

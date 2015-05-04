@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+  
+ <hibernate-mapping>
+  <class name="com.swiftcorp.portal.schedule.dto.ScheduleDTO" table="visitschedule">
+	  <id name="componentId" column="componentId" type="long">
+	    <generator class="increment" /> 
+	  </id>	  
+	
+	 
+	 <property name="visitItemId" type="string" column="visitItemId"  />	 
+	 <property name="scheduleDate" type="calendar" column="scheduleDate"  />
+	 <property name="executionDate" type="calendar" column="executionDate"  />
+	 <property name="scheduleBy" type="string" column="scheduleBy"  />
+	 <property name="remarks" type="string" column="remarks"  />
+	 
+	 <property name="state" type="int" column="state"  /> 
+     <property name="visitItemType" type="int" column="visitItemType"  />
+    	
+	 <many-to-one name="visitDTO" 
+	 			  class="com.swiftcorp.portal.beneficiary.dto.VisitDTO"  
+	 			  lazy="false"  
+	 			  column="visitId" 
+	 			  cascade="all" />	 
+	 <many-to-one name="user" 
+	 			  class="com.swiftcorp.portal.user.dto.UserDTO"  
+	 			  lazy="false"  
+	 			  column="user" 
+	 			  cascade="all" />
+  </class>
+   
+ </hibernate-mapping>

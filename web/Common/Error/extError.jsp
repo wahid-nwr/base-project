@@ -1,0 +1,3 @@
+<%
+out.println("{failure:true}");
+%>

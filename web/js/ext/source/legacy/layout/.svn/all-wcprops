@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svnroot/ext-jame/!svn/ver/11/trunk/jame/web-app/js/ext2/source/legacy/layout
+END
+LayoutManager.js
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svnroot/ext-jame/!svn/ver/11/trunk/jame/web-app/js/ext2/source/legacy/layout/LayoutManager.js
+END
+LayoutStateManager.js
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svnroot/ext-jame/!svn/ver/11/trunk/jame/web-app/js/ext2/source/legacy/layout/LayoutStateManager.js
+END
+BorderLayout.js
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svnroot/ext-jame/!svn/ver/11/trunk/jame/web-app/js/ext2/source/legacy/layout/BorderLayout.js
+END
+ContentPanels.js
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svnroot/ext-jame/!svn/ver/11/trunk/jame/web-app/js/ext2/source/legacy/layout/ContentPanels.js
+END
+SplitLayoutRegion.js
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svnroot/ext-jame/!svn/ver/11/trunk/jame/web-app/js/ext2/source/legacy/layout/SplitLayoutRegion.js
+END
+ReaderLayout.js
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svnroot/ext-jame/!svn/ver/11/trunk/jame/web-app/js/ext2/source/legacy/layout/ReaderLayout.js
+END
+LayoutRegion.js
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svnroot/ext-jame/!svn/ver/11/trunk/jame/web-app/js/ext2/source/legacy/layout/LayoutRegion.js
+END
+BorderLayoutRegions.js
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svnroot/ext-jame/!svn/ver/11/trunk/jame/web-app/js/ext2/source/legacy/layout/BorderLayoutRegions.js
+END
+BasicLayoutRegion.js
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svnroot/ext-jame/!svn/ver/11/trunk/jame/web-app/js/ext2/source/legacy/layout/BasicLayoutRegion.js
+END

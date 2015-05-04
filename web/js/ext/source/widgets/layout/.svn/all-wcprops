@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svnroot/ext-jame/!svn/ver/69/trunk/jame/web-app/js/ext2/source/widgets/layout
+END
+TableLayout.js
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svnroot/ext-jame/!svn/ver/69/trunk/jame/web-app/js/ext2/source/widgets/layout/TableLayout.js
+END
+CardLayout.js
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svnroot/ext-jame/!svn/ver/69/trunk/jame/web-app/js/ext2/source/widgets/layout/CardLayout.js
+END
+AnchorLayout.js
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svnroot/ext-jame/!svn/ver/69/trunk/jame/web-app/js/ext2/source/widgets/layout/AnchorLayout.js
+END
+BorderLayout.js
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svnroot/ext-jame/!svn/ver/69/trunk/jame/web-app/js/ext2/source/widgets/layout/BorderLayout.js
+END
+ColumnLayout.js
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svnroot/ext-jame/!svn/ver/69/trunk/jame/web-app/js/ext2/source/widgets/layout/ColumnLayout.js
+END
+AbsoluteLayout.js
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svnroot/ext-jame/!svn/ver/69/trunk/jame/web-app/js/ext2/source/widgets/layout/AbsoluteLayout.js
+END
+AccordionLayout.js
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svnroot/ext-jame/!svn/ver/69/trunk/jame/web-app/js/ext2/source/widgets/layout/AccordionLayout.js
+END
+ContainerLayout.js
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svnroot/ext-jame/!svn/ver/69/trunk/jame/web-app/js/ext2/source/widgets/layout/ContainerLayout.js
+END
+FitLayout.js
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svnroot/ext-jame/!svn/ver/69/trunk/jame/web-app/js/ext2/source/widgets/layout/FitLayout.js
+END
+FormLayout.js
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svnroot/ext-jame/!svn/ver/69/trunk/jame/web-app/js/ext2/source/widgets/layout/FormLayout.js
+END

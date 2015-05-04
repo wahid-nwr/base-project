@@ -1,0 +1,36 @@
+delete from household;
+delete from householdmember;
+delete from householdchildvisit;
+delete from householdmothervisit;
+delete from familyplanninginfo;
+
+delete from pregrecord;
+delete from preghistory;
+delete from ancfollowup;
+delete from deliveryrecord;
+delete from healthrecord;
+delete from miscarriage;
+
+delete from childbeneficiary;
+delete from childcomplicacyrecord;
+delete from childfirstvisitrecord;
+delete from childvisitrecord;
+delete from infantvisitrecord;
+delete from neonatalvisitrecord;
+delete from neonatalvisitinfo;
+delete from neonatalcomplicacyrecord;
+
+
+delete from motherbeninfo;
+delete from pncfollowup;
+delete from referralrecord;
+
+
+delete from datatoken;
+delete from medicaladvice;
+delete from deathrecord;
+
+
+
+delete from visitinfo;
+delete visitschedule;

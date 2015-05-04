@@ -1,0 +1,44 @@
+
+/*Delete from Algorithm and question related Tables */
+delete from `alganswer`;
+delete from `algquestionbranch`;
+delete from `algorithm`;
+delete from subalgorithm;
+delete from  `algquestion`;
+delete from `validation`;
+delete from `questionmap`;
+
+delete from `mcqoption`;
+delete from `question`;
+delete from `questionnaire`;
+delete from `questionquestionnaire`;
+delete from `answertype`;
+delete from `questioncategory`;
+delete from `questionnairestatus`;
+
+
+
+/*Drop shiree Tables*/
+DROP TABLE IF EXISTS mjskssurvey;
+DROP TABLE IF EXISTS pabsurvey;
+DROP TABLE IF EXISTS activity;
+DROP TABLE IF EXISTS cmschange;
+DROP TABLE IF EXISTS  assessment;
+DROP TABLE IF EXISTS  household;
+
+/*Drop Algorithm and question related Tables */
+DROP TABLE IF EXISTS `alganswer`;
+DROP TABLE IF EXISTS `algquestionbranch`;
+DROP TABLE IF EXISTS `algorithm`;
+DROP TABLE IF EXISTS subalgorithm;
+DROP TABLE IF EXISTS `algquestion`;
+DROP TABLE IF EXISTS `validation`;
+DROP TABLE IF EXISTS `questionmap`;
+
+DROP TABLE IF EXISTS `mcqoption`;
+DROP TABLE IF EXISTS `question`;
+DROP TABLE IF EXISTS `questionnaire`;
+DROP TABLE IF EXISTS `questionquestionnaire`;
+DROP TABLE IF EXISTS `answertype`;
+DROP TABLE IF EXISTS `questioncategory`;
+DROP TABLE IF EXISTS `questionnairestatus`;

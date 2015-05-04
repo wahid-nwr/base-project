@@ -1,0 +1,16 @@
+/*Data for the table `answertype` */
+insert  into `answertype`(`componentId`,`answerTypeId`,`answerTypeName`) values (1,1,'Multiple choice'),(2,2,'Boolean'),(3,3,'Numeric value'),(4,4,'Audio record'),(5,5,'Text'),(6,6,'Picture'),(7,7,'Multiple Select'),(8,8,'Numeric Range'),(9,9,'Date'),(10,10,'Float'),(11,11,'Double Input'),(12,12,'Float Conditional'),(13,13,'Time'),(14,14,'NumericCond'),(15,15,'msg'),(16,16,'diop'),(17,17,'mlsc'),(18,18,'ymd');
+
+/*Data for the table `questionnairestatus` */
+insert  into `questionnairestatus`(`componentId`,`statusName`,`statusId`) values (1,'Live',1),(2,'Testing',2),(3,'Draft',3);
+
+
+/*Data for the table `validation` */
+insert  into `validation`(`componentId`,`qId`,`ansType`,`ansTypeCode`,`validationOrder`,`validationType`,`validationName`,`validationValue`,`secondValidationType`,`secondValidationName`,`secondValidationValue`) values (1,'244','text',5,0,5,'fixedLen','11',0,NULL,NULL),(2,'89','text',5,0,15,'valueRange','97;110',0,NULL,NULL),(3,'11','text',5,0,15,'valueRange','0;99',0,NULL,NULL),(4,NULL,'text',5,NULL,15,'valueRange','1;20',0,NULL,NULL),(5,'253','text',5,0,15,'valueRange','1;20',0,NULL,NULL),(15,'45','text',5,0,15,'valueRange','10;40',0,NULL,NULL),(16,'132','text',5,0,15,'valueRange','1;4',0,NULL,NULL),(104,'49','date',10,0,65,'pastDate','',0,NULL,NULL),(18,'53','date',10,0,65,'pastDate','',0,NULL,NULL),(19,'60','date',10,0,65,'pastDate','',0,NULL,NULL),(20,'68','date',10,0,65,'pastDate','',0,NULL,NULL),(21,'94','date',10,0,65,'pastDate','',0,NULL,NULL),(22,'120','date',10,0,65,'pastDate','',0,NULL,NULL),(23,'131','date',10,0,65,'pastDate','',0,NULL,NULL),(24,'142','date',10,0,65,'pastDate','',0,NULL,NULL),(25,'146','date',10,0,65,'pastDate','',0,NULL,NULL),(26,'258','date',10,0,65,'pastDate','',0,NULL,NULL),(27,'260','date',10,0,65,'pastDate','',0,NULL,NULL),(28,'262','date',10,0,65,'pastDate','',0,NULL,NULL),(29,'265','date',10,0,65,'pastDate','',0,NULL,NULL),(30,'290','date',10,0,65,'pastDate','',0,NULL,NULL),(31,'43','doubleVal',15,0,15,'valueRange','0;300',15,'valueRange','0;300'),(37,'322','text',5,0,0,NULL,NULL,0,NULL,NULL),(38,'90','doubleVal',15,0,15,'valueRange','0;300',15,'valueRange','0;300'),(41,'242','text',5,0,15,'valueRange','0;99',0,NULL,NULL),(42,'236','text',5,0,10,'lenthRange','3;5',0,NULL,NULL),(43,'238','text',5,0,15,'valueRange','0;20',0,NULL,NULL),(55,'16','text',5,0,15,'valueRange','0;5',0,NULL,NULL),(56,'15','text',5,0,15,'valueRange','0;20',0,NULL,NULL),(60,'20','text',5,0,15,'valueRange','0;5',0,NULL,NULL),(61,'21','text',5,0,15,'valueRange','0;5',0,NULL,NULL),(62,'22','text',5,0,15,'valueRange','0;5',0,NULL,NULL),(63,'23','text',5,0,15,'valueRange','0;5',0,NULL,NULL),(64,'24','text',5,0,15,'valueRange','0;20',0,NULL,NULL),(65,'65','text',5,0,10,'lenthRange','0;5',0,NULL,NULL),(66,'66','text',5,0,15,'valueRange','0;5',0,NULL,NULL),(67,'67','text',5,0,15,'valueRange','0;5',0,NULL,NULL),(68,'119','text',5,0,10,'lenthRange','0;5',0,NULL,NULL),(88,'163','text',5,0,15,'valueRange','97;110',0,NULL,NULL),(70,'229','text',5,0,15,'valueRange','1;4',0,NULL,NULL),(71,'230','text',5,0,15,'valueRange','1;4',0,NULL,NULL),(72,'254','text',5,0,15,'valueRange','0;20',0,NULL,NULL),(74,'17','text',5,0,15,'valueRange','0;15',0,NULL,NULL);
+
+
+
+
+
+
+

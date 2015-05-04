@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+  
+ <hibernate-mapping>
+  <class name="com.swiftcorp.portal.household.dto.HouseholdDTO" table="household">
+	  <id name="componentId" column="componentId" type="long">
+	    <generator class="increment" /> 
+	  </id>
+	  <property name="householdId" type="string" column="householdId" /> 
+	  <property name="houseNo" type="string" column="houseNo" />
+	  <property name="ssId" type="string" column="ssId" />  
+	  <property name="chiefName" type="string" column="chiefName" /> 
+	  <property name="financialType" type="string" column="financialType"  /> 
+	  <property name="sanitationType" type="string" column="sanitationType"  />
+	  <property name="totalMember" type="int" column="totalMember"  /> 
+      <property name="tubewell" type="boolean" column="tubewell"  />
+      <property name="isFamilyOrMess" type="string" column="isFamilyOrMess"  /> 
+      <property name="isFamilyPresent" type="int" column="isFamilyPresent"  /> 	
+
+	  <many-to-one name="visitDTO" class="com.swiftcorp.portal.beneficiary.dto.VisitDTO"  lazy="false"  column="visitId" cascade="all" />
+	 
+	  <many-to-one name="branch" class="com.swiftcorp.portal.geo.dto.GeoDTO"  lazy="false"  column="branch" cascade="all" />
+ 
+       <set name="householdMemberSet" lazy="false" cascade="all">
+			<key column="householdId" />
+			<one-to-many class="com.swiftcorp.portal.household.dto.HouseholdMemberDTO"/>
+	 </set>
+
+  </class>
+   
+ </hibernate-mapping>

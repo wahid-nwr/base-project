@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">  
+			
+	
+	
+	<bean class="org.springframework.remoting.jaxws.SimpleJaxWsServiceExporter">
+   	 <property name="baseAddress" value="http://localhost:9094/"/>
+	</bean>
+	
+	<bean id="loginServiceEndpoint" class="com.swiftcorp.portal.webservice.LoginWebServiceEndPoint">
+		<property name="loginServiceImpl"  ref="loginServiceImpl"/>
+		<property name="sessionIdGenerator"  ref="sessionIdGenerator"/>
+	</bean>
+	
+	<bean id="sessionIdGenerator" class="com.swiftcorp.portal.common.login.service.SessionIdGenerator" lazy-init="default" autowire="default" dependency-check="default">
+    </bean>
+    
+	<bean id="loginServiceImpl" class="com.swiftcorp.portal.common.login.service.LoginServiceImpl" lazy-init="default" autowire="default" dependency-check="default">
+	 	<property name="userService" ref="UserService"/>
+  	</bean>
+
+	
+	 <bean id="syncQuestionsWSEndPoint" class="com.swiftcorp.portal.webservice.SyncQuestionsWSEndPoint">
+			<property name="algorithmServiceImpl"  ref="algorithmServiceImpl"/>
+			<property name="questionServiceImpl"  ref="questionServiceImpl"/>
+			<property name="syncQuestionUtil"  ref="syncQuestionUtil"/>
+			
+	</bean>
+	
+	
+	
+  
+	<bean id="syncQuestionUtil" class="com.swiftcorp.portal.algorithm.service.SyncQuestionUtil" lazy-init="default" autowire="default" dependency-check="default">
+	</bean>
+	
+  <bean id="algorithmServiceImpl" class="com.swiftcorp.portal.algorithm.service.AlgorithmServiceImpl" lazy-init="default" autowire="default" dependency-check="default">
+    <property name="algorithmDAO">
+      <ref bean="AlgorithmDAOImpl"/>
+    </property>
+    <property name="searcher">
+      <ref bean="GenericSearcher"/>
+    </property>
+  </bean>
+  
+  <bean id="questionServiceImpl" class="com.swiftcorp.portal.question.service.QuestionServiceImpl" lazy-init="default" autowire="default" dependency-check="default">
+    <property name="questionDAO">
+      <ref bean="QuestionDAOImpl"/>
+    </property>
+    <property name="searcher">
+      <ref bean="GenericSearcher"/>
+    </property>
+  </bean>
+  
+		
+	<bean id="beneficiaryServiceImpl" class="com.swiftcorp.portal.beneficiary.service.BeneficiaryServiceImpl" lazy-init="default" autowire="default" dependency-check="default">
+	   <property name="beneficiaryDAO" ref="BeneficiaryDAOImpl"/>
+    	<property name="searcher" ref="GenericSearcher"/>
+    </bean>
+    
+     <bean id="userServiceImpl" class="com.swiftcorp.portal.user.service.UserServiceImpl" lazy-init="default" autowire="default" dependency-check="default">
+	    <property name="userDAO" ref="UserDAOImpl"/>  
+	    <property name="searcher" ref="GenericSearcher"/>   
+   	 </bean>
+   	 
+   	 <bean id="dcrInfoServiceImpl" class="com.swiftcorp.portal.dcrinfo.service.DcrinfoServiceImpl" lazy-init="default" autowire="default" dependency-check="default">
+	    <property name="dcrinfoDAO" ref="DcrInfoDAOImpl"/>  
+	    <property name="searcher" ref="GenericSearcher"/>   
+   	 </bean>
+   	
+	<bean id="dcrReportServiceImpl" class="com.swiftcorp.portal.dcrreport.service.DcrReportServiceImpl" lazy-init="default" autowire="default" dependency-check="default">
+	    <property name="dcrreportDAO" ref="DcrReportDAOImpl"/>  
+	    <property name="searcher" ref="GenericSearcher"/>   
+   	 </bean>
+	
+	<bean id="dcrInfoServiceEndpoint" class="com.swiftcorp.portal.webservice.DcrInfoWebServiceEndPoint">
+		<property name="dcrInfoAddService"  ref="dcrInfoAddService"/>
+	</bean>
+	
+	<bean id="dcrReportWebServiceEndPoint" class="com.swiftcorp.portal.webservice.DcrReportWebServiceEndPoint">
+		<property name="dcrReportService"  ref="dcrReportService"/>
+	</bean>
+</beans>	

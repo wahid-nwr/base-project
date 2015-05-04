@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+  <form-beans>
+    <form-bean name="loginForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      <form-property name="authDTO" type="com.swiftcorp.portal.common.login.dto.LoginDTO"/>
+    </form-bean>
+    <form-bean name="userForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      <form-property name="user" type="com.swiftcorp.portal.user.dto.UserDTO"/>
+      <form-property name="role" type="java.lang.Long"/>
+      <form-property name="searchQuery" type="java.lang.String"/>
+    </form-bean>
+    <form-bean name="reportForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      <form-property name="searchQuery" type="java.lang.String"/>
+      <form-property name="report" type="com.swiftcorp.portal.report.dto.ReportInputDTO"/>
+    </form-bean>
+    <!--Bean defination of ROLE-->
+    <form-bean name="roleForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      <form-property name="role" type="com.swiftcorp.portal.role.dto.RoleDTO"/>
+      <form-property name="searchQuery" type="java.lang.String"/>
+    </form-bean>
+    <form-bean name="roleFunctionForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      <form-property name="role" type="java.lang.String"/>
+      <form-property name="checkedIndex" type="java.lang.String"/>
+      <!--  <form-property name="functionList" type="com.swiftcorp.portal.role.web.FunctionList"/>-->
+    </form-bean>
+    <!--Bean defination of GROUP-->
+    <form-bean name="groupForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      <form-property name="group" type="com.swiftcorp.portal.group.dto.GroupDTO"/>
+      <form-property name="searchQuery" type="java.lang.String"/>
+    </form-bean>
+    <!--Bean defination of QUESTION-->
+    <form-bean name="questionForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      <form-property name="question" type="com.swiftcorp.portal.question.dto.QuestionDTO"/>
+      <form-property name="searchQuery" type="java.lang.String"/>
+      <form-property name="answerType" type="java.lang.Long"/>
+      <form-property name="category" type="java.lang.Long"/>
+    </form-bean>
+    <!--Bean defination of QUESTIONNAIRE-->
+    <form-bean name="questionnaireForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      <form-property name="questionnaire" type="com.swiftcorp.portal.question.dto.QuestionnaireDTO"/>
+      <form-property name="searchQuery" type="java.lang.String"/>
+    </form-bean>
+    <!--Bean defination of BENEFICIARY-->
+    <form-bean name="beneficiaryForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      <form-property name="beneficiary" type="com.swiftcorp.portal.beneficiary.dto.BeneficiaryDTO"/>
+      <form-property name="searchQuery" type="java.lang.String"/>
+    </form-bean>
+    <form-bean name="medicalAdviceForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      <form-property name="phAdvice" type="java.lang.String"/>
+    </form-bean>
+    <!--Bean defination of ALGORITHM-->
+    <form-bean name="algorithmForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      <form-property name="algorithm" type="com.swiftcorp.portal.algorithm.dto.AlgorithmDTO"/>
+      <form-property name="searchQuery" type="java.lang.String"/>
+      <form-property name="category" type="java.lang.Long"/>
+    </form-bean>
+    <!--Bean defination of ALGORITHM-->
+    <form-bean name="algorithmForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      <form-property name="algorithm" type="com.swiftcorp.portal.algorithm.dto.AlgorithmDTO"/>
+      <form-property name="searchQuery" type="java.lang.String"/>
+    </form-bean>
+    <!--Bean defination of ALERT-->
+    <form-bean name="alertForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      <form-property name="alert" type="com.swiftcorp.portal.alert.dto.AlertDTO"/>
+      <form-property name="searchQuery" type="java.lang.String"/>
+    </form-bean>
+    <!--Bean defination of SCHEDULE-->
+    <form-bean name="scheduleForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      <form-property name="schedule" type="com.swiftcorp.portal.schedule.dto.ScheduleDTO"/>
+      <form-property name="searchQuery" type="java.lang.String"/>
+    </form-bean>
+    <!--Bean defination of HOUSEHOLD-->
+    <form-bean name="householdForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      <form-property name="household" type="com.swiftcorp.portal.household.dto.HouseholdDTO"/>
+      <form-property name="searchQuery" type="java.lang.String"/>
+    </form-bean>
+    <!--Bean defination of FRIENDSHIP HOUSEHOLD-->
+    <form-bean name="frndHouseholdForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      <form-property name="household" type="com.clickdiagnostics.friendship.dto.FrndHouseholdDTO"/>
+      <form-property name="searchQuery" type="java.lang.String"/>
+    </form-bean>
+    <!--Bean defination of RISK-->
+    <form-bean name="riskForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      <form-property name="risk" type="com.swiftcorp.portal.risk.dto.RiskDTO"/>
+      <form-property name="searchQuery" type="java.lang.String"/>
+    </form-bean>
+    <!--Bean defination of GEO-->
+    <form-bean name="geoForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      <form-property name="geo" type="com.swiftcorp.portal.geo.dto.GeoDTO"/>
+      <form-property name="searchQuery" type="java.lang.String"/>
+    </form-bean>
+    <form-bean name="geoImportForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      <form-property name="fileObject" type="com.swiftcorp.portal.geo.StrutsUploadObject"/>
+    </form-bean>
+    <!--Bean defination of DCRINFO-->
+    <form-bean name="dcrinfoForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      <form-property name="dcrinfo" type="com.swiftcorp.portal.dcrinfo.dto.DcrinfoDTO"/>
+      <form-property name="productInfoList" type="java.util.List"/>
+      <form-property name="searchQuery" type="java.lang.String"/>
+    </form-bean>
+    <!--Bean defination of DCRREPORT-->
+    <form-bean name="dcrreportForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      <form-property name="dcrreport" type="com.swiftcorp.portal.dcrreport.dto.DcrReportDTO"/>
+      <form-property name="searchQuery" type="java.lang.String"/>
+    </form-bean>
+    <form-bean name="importForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      <form-property name="fileObject" type="com.swiftcorp.portal.dcrinfo.StrutsUploadObject"/>
+    </form-bean>
+    <!--Bean defination of ACCOUNT-->
+    <form-bean name="accountForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      <form-property name="account" type="com.swiftcorp.portal.account.dto.AccountDTO"/>
+      <form-property name="searchQuery" type="java.lang.String"/>
+    </form-bean>
+    <!--Bean defination of PATIENT-->
+    <form-bean name="patientForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      <form-property name="patient" type="com.swiftcorp.portal.patient.dto.PatientDTO"/>
+      <form-property name="searchQuery" type="java.lang.String"/>
+    </form-bean>
+  </form-beans>
+  <!-- Global Exception Declarations -->
+  <global-exceptions>
+    <exception key="exception.BusinessRuleViolationException" type="com.swiftcorp.portal.common.exception.BusinessRuleViolationException" handler="com.swiftcorp.portal.common.CommonExceptionHandler"/>
+    <exception key="exception.SystemException" type="com.swiftcorp.portal.common.exception.SystemException" handler="com.swiftcorp.portal.common.CommonExceptionHandler"/>
+    <exception key="exception.Exception" type="java.lang.Exception" handler="com.swiftcorp.portal.common.CommonExceptionHandler"/>
+  </global-exceptions>
+  <global-forwards>
+    <forward name="error" path="/Common/Error/index.jsp"/>
+    <forward name="ext_form_submit_exception" path="/Common/Error/extError.jsp"/>
+    <forward name="ext_form_add_success" path="/Dcrinfo/Add/success.jsp"/>
+    <forward name="user_home" path="/Home/User/index.jsp"/>
+  </global-forwards>
+  <action-mappings>
+    <!-- 
+		=============================================================================
+									LOGIN
+		=============================================================================
+		-->
+    <action path="/loginAction" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="loginForm" scope="session">
+      <forward name="prompt_login" path="/loginExt.jsp"/>
+      <forward name="failure" path="/loginExt.jsp"/>
+      <forward name="user_home" path="/Home/User/index.jsp"/>
+      <forward name="user_role_functions" path="/Home/Leftbar/ExtUserLeftBar.jsp"/>
+    </action>
+    <!-- 
+		=============================================================================
+									USER 
+		=============================================================================
+		-->
+    <action path="/userAction" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="userForm" validate="false" input="/User/Modify/index.jsp" scope="session">
+      <exception type="com.swiftcorp.portal.common.exception.BusinessRuleViolationException" scope="request" key="operation.failure" path="/User/Modify/index.jsp"/>
+      <exception type="com.swiftcorp.portal.common.exception.BusinessRuleViolationException" scope="request" key="user.already.exist.same.code" path="/User/Modify/index.jsp"/>
+      <forward name="user_home" path="/Home/User/index.jsp"/>
+      <forward name="user_search_system_level" path="/User/Search/System/index.jsp"/>
+      <forward name="user_search_group_level" path="/User/Search/System/index.jsp"/>
+      <forward name="prompt_add_user" path="/User/Modify/index.jsp"/>
+      <forward name="prompt_modify_user" path="/User/Modify/index.jsp"/>
+      <forward name="prompt_pass_modify_user" path="/User/PassModify/index.jsp"/>
+      <forward name="admin_search_system_level" path="/Admin/Search/index.jsp"/>
+    </action>
+    <action path="/userActionWithValidation" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="userForm" validate="true" input="/User/Modify/index.jsp" scope="session">
+      <exception type="com.swiftcorp.portal.common.exception.BusinessRuleViolationException" scope="request" key="operation.failure" path="/User/Modify/index.jsp"/>
+      <exception type="com.swiftcorp.portal.common.exception.BusinessRuleViolationException" scope="request" key="user.already.exist.same.code" path="/User/Modify/index.jsp"/>
+      <forward name="user_home" path="/Home/User/index.jsp"/>
+      <forward name="user_search_system_level" path="/User/Search/System/index.jsp"/>
+      <forward name="user_search_group_level" path="/User/Search/Group/index.jsp"/>
+      <forward name="prompt_add_user" path="/User/Modify/index.jsp"/>
+      <forward name="prompt_modify_user" path="/User/Modify/index.jsp"/>
+      <forward name="prompt_pass_modify_user" path="/User/PassModify/index.jsp"/>
+      <forward name="admin_search_system_level" path="/Admin/Search/index.jsp"/>
+    </action>
+    <!--
+	=============================================================================
+                        ROLE
+	=============================================================================
+	-->
+    <action path="/roleAction" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="roleForm" scope="session">
+      <exception type="com.swiftcorp.portal.common.exception.BusinessRuleViolationException" scope="request" key="already.exist.same.code" path="/Role/Modify/index.jsp"/>
+      <forward name="role_search_system_level" path="/Role/Search/System/index.jsp"/>
+      <forward name="role_search_group_level" path="/Role/Search/Group/index.jsp"/>
+      <forward name="prompt_add_role" path="/Role/Modify/index.jsp"/>
+      <forward name="prompt_modify_role" path="/Role/Modify/index.jsp"/>
+    </action>
+    <action path="/roleActionWithValidation" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="roleForm" validate="true" input="/Role/Modify/index.jsp" scope="session">
+      <exception type="com.swiftcorp.portal.common.exception.BusinessRuleViolationException" scope="request" key="already.exist.same.code" path="/Role/Modify/index.jsp"/>
+      <forward name="role_search_system_level" path="/Role/Search/System/index.jsp"/>
+      <forward name="role_search_group_level" path="/Role/Search/Group/index.jsp"/>
+      <forward name="prompt_add_role" path="/Role/Modify/index.jsp"/>
+      <forward name="prompt_modify_role" path="/Role/Modify/index.jsp"/>
+    </action>
+    <action path="/roleFunctionAction" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="roleFunctionForm" validate="false" scope="session">
+      <exception type="com.swiftcorp.portal.common.exception.BusinessRuleViolationException" scope="request" key="operation.failure" path="/User/Modify/index.jsp"/>
+      <exception type="com.swiftcorp.portal.common.exception.BusinessRuleViolationException" scope="request" key="user.already.exist.same.code" path="/User/Modify/index.jsp"/>
+      <forward name="show_functions" path="/Role/Modify/RoleFunction.jsp"/>
+      <forward name="user_search_system_level" path="/User/Search/System/index.jsp"/>
+      <forward name="user_search_group_level" path="/User/Search/Group/index.jsp"/>
+      <forward name="prompt_add_user" path="/User/Modify/index.jsp"/>
+      <forward name="prompt_modify_user" path="/User/Modify/index.jsp"/>
+      <forward name="prompt_pass_modify_user" path="/User/PassModify/index.jsp"/>
+      <forward name="admin_search_system_level" path="/Admin/Search/index.jsp"/>
+    </action>
+    <!--
+	=============================================================================
+                        GROUP
+	=============================================================================
+	-->
+    <action path="/groupAction" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="groupForm" scope="session">
+      <exception type="com.swiftcorp.portal.common.exception.BusinessRuleViolationException" scope="request" key="already.exist.same.code" path="/Group/Modify/index.jsp"/>
+      <forward name="group_search_system_level" path="/Group/Search/System/index.jsp"/>
+      <forward name="group_search_group_level" path="/Group/Search/Group/index.jsp"/>
+      <forward name="prompt_add_group" path="/Group/Modify/index.jsp"/>
+      <forward name="prompt_modify_group" path="/Group/Modify/index.jsp"/>
+      <forward name="prompt_modify_group_profile" path="/Group/Profile/index.jsp"/>
+    </action>
+    <action path="/groupActionWithValidation" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="groupForm" validate="true" input="/Group/Modify/index.jsp" scope="session">
+      <exception type="com.swiftcorp.portal.common.exception.BusinessRuleViolationException" scope="request" key="already.exist.same.code" path="/Group/Modify/index.jsp"/>
+      <forward name="group_search_system_level" path="/Group/Search/System/index.jsp"/>
+      <forward name="group_search_group_level" path="/Group/Search/Group/index.jsp"/>
+      <forward name="prompt_add_group" path="/Group/Modify/index.jsp"/>
+      <forward name="prompt_modify_group" path="/Group/Modify/index.jsp"/>
+    </action>
+    <!--
+	=============================================================================
+                        REPORT
+	=============================================================================
+	<action path="/reportDownloadAction" type="com.swiftcorp.portal.report.web.ReportDownload" parameter="method" name="reportForm" validate="false" scope="session"/>
+	-->
+    <action path="/reportDownloadAction" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="reportForm" validate="false" scope="session"/>
+    <action path="/reportAction" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="reportForm" validate="false" scope="session">
+      <forward name="reporthome" path="/Report/Home/index.jsp"/>
+    </action>
+    <action path="/reportActionWithValidation" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="reportForm" validate="true" input="/Report/Home/index.jsp" scope="session">
+      <forward name="reporthome" path="/Report/Home/index.jsp"/>
+    </action>
+    <!--
+	=============================================================================
+                        QUESTION
+	=============================================================================
+	-->
+    <action path="/questionAction" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="questionForm" validate="false" input="/Question/Modify/index.jsp" scope="session">
+      <exception type="com.swiftcorp.portal.common.exception.BusinessRuleViolationException" scope="request" key="already.exist.same.code" path="/Question/Modify/index.jsp"/>
+      <exception type="com.swiftcorp.portal.common.exception.QuestionAlreadyExistsException" scope="request" key="exception.QuestionAlreadyExistException" path="/Question/Modify/index.jsp"/>
+      <forward name="question_search_system_level" path="/Question/Search/System/index.jsp"/>
+      <forward name="question_search_group_level" path="/Question/Search/Group/index.jsp"/>
+      <forward name="prompt_add_question" path="/Question/Modify/index.jsp"/>
+      <forward name="prompt_modify_question" path="/Question/Modify/index.jsp"/>
+      <forward name="question_home" path="/Question/Home/index.jsp"/>
+    </action>
+    <action path="/questionnaireAction" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="questionnaireForm" validate="false" input="/Question/Set/Modify/index.jsp" scope="session">
+      <exception type="com.swiftcorp.portal.common.exception.BusinessRuleViolationException" scope="request" key="already.exist.same.code" path="/Question/Set/Modify/index.jsp"/>
+      <exception type="com.swiftcorp.portal.common.exception.QuestionAlreadyExistsException" scope="request" key="exception.QuestionnaireAlreadyExistException" path="/Question/Set/Modify/index.jsp"/>
+      <forward name="questionnaire_search_system_level" path="/Question/Set/Search/index.jsp"/>
+      <forward name="prompt_add_questionnaire" path="/Question/Set/Modify/index.jsp"/>
+      <forward name="prompt_modify_questionnaire" path="/Question/Set/Modify/index.jsp"/>
+    </action>
+    <action path="/questionActionWithValidation" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="questionForm" validate="true" input="/Question/Modify/index.jsp" scope="session">
+      <exception type="com.swiftcorp.portal.common.exception.RuntimeException" scope="request" key="modify.failure" path="/Question/Modify/index.jsp"/>
+      <exception type="com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException" scope="request" key="exception.QuestionAlreadyExistException" path="/Question/Modify/index.jsp"/>
+      <exception type="com.swiftcorp.portal.common.exception.BusinessRuleViolationException" scope="request" key="already.exist.same.code" path="/Question/Modify/index.jsp"/>
+      <exception type="com.swiftcorp.portal.question.exception.QuestionAlreadyExistsException" scope="request" key="exception.QuestionAlreadyExistException" path="/Question/Modify/index.jsp"/>
+      <forward name="question_search_system_level" path="/Question/Search/System/index.jsp"/>
+      <forward name="question_search_group_level" path="/Question/Search/Group/index.jsp"/>
+      <forward name="prompt_add_question" path="/Question/Modify/index.jsp"/>
+      <forward name="prompt_modify_question" path="/Question/Modify/index.jsp"/>
+    </action>
+    <action path="/questionnaireActionWithValidation" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="questionnaireForm" validate="true" input="/Question/Set/Modify/index.jsp" scope="session">
+      <exception type="com.swiftcorp.portal.common.exception.RuntimeException" scope="request" key="modify.failure" path="/Question/Set/Modify/index.jsp"/>
+      <exception type="com.swiftcorp.portal.common.exception.BusinessRuleViolationException" scope="request" key="already.exist.same.code" path="/Question/Set/Modify/index.jsp"/>
+      <exception type="com.swiftcorp.portal.question.exception.QuestionAlreadyExistsException" scope="request" key="exception.QuestionnaireAlreadyExistException" path="/Question/Set/Modify/index.jsp"/>
+      <forward name="questionnaire_search_system_level" path="/Question/Set/Search/index.jsp"/>
+      <forward name="questionnaire_question_serial" path="/Question/Set/Modify/questionSerialIndex.jsp"/>
+      <forward name="questionnaire_question_serial_add" path="/Question/Set/Search/index.jsp"/>
+      <forward name="prompt_add_questionnaire" path="/Question/Set/Modify/index.jsp"/>
+      <forward name="prompt_modify_questionnaire" path="/Question/Set/Modify/index.jsp"/>
+    </action>
+    <!--
+	=============================================================================
+                        BENEFICIARY
+	=============================================================================
+	-->
+    <action path="/beneficiaryAction" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="beneficiaryForm" scope="session">
+      <exception type="com.swiftcorp.portal.common.exception.BusinessRuleViolationException" scope="request" key="already.exist.same.code" path="/Beneficiary/Modify/index.jsp"/>
+      <forward name="beneficiary_home" path="/Beneficiary/Search/System/index.jsp"/>
+      <forward name="child_beneficiary_home" path="/ChildBeneficiary/Search/System/index.jsp"/>
+      <forward name="beneficiary_search_system_level" path="/Beneficiary/Search/System/index.jsp"/>
+      <forward name="beneficiary_search_group_level" path="/Beneficiary/Search/Group/index.jsp"/>
+      <forward name="prompt_add_beneficiary" path="/Beneficiary/Modify/index.jsp"/>
+      <forward name="prompt_modify_beneficiary" path="/Beneficiary/Modify/index.jsp"/>
+      <forward name="prompt_show_mother_beneficiary" path="/Beneficiary/View/index.jsp"/>
+      <forward name="prompt_show_child_beneficiary" path="/Beneficiary/View/childIndex.jsp"/>
+      <forward name="prompt_modify_child_beneficiary" path="/Beneficiary/Modify/childIndex.jsp"/>
+    </action>
+    <action path="/medicalAdviceAction" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="medicalAdviceForm" scope="session">
+      <exception type="com.swiftcorp.portal.common.exception.BusinessRuleViolationException" scope="request" key="already.exist.same.code" path="/Beneficiary/Modify/index.jsp"/>
+      <forward name="beneficiary_home" path="/Beneficiary/Search/System/index.jsp"/>
+      <forward name="child_beneficiary_home" path="/ChildBeneficiary/Search/System/index.jsp"/>
+      <forward name="beneficiary_search_system_level" path="/Beneficiary/Search/System/index.jsp"/>
+      <forward name="beneficiary_search_group_level" path="/Beneficiary/Search/Group/index.jsp"/>
+      <forward name="medicalAdviceAdd" path="/Beneficiary/Modify/medicalAdvice.jsp"/>
+      <forward name="prompt_modify_beneficiary" path="/Beneficiary/Modify/index.jsp"/>
+      <forward name="prompt_modify_child_beneficiary" path="/Beneficiary/Modify/childIndex.jsp"/>
+    </action>
+    <action path="/beneficiaryActionWithValidation" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="beneficiaryForm" validate="true" input="/Beneficiary/Modify/index.jsp" scope="session">
+      <exception type="com.swiftcorp.portal.common.exception.BusinessRuleViolationException" scope="request" key="already.exist.same.code" path="/Beneficiary/Modify/index.jsp"/>
+      <forward name="beneficiary_search_system_level" path="/Beneficiary/Search/System/index.jsp"/>
+      <forward name="child_beneficiary_search_system_level" path="/ChildBeneficiary/Search/System/index.jsp"/>
+      <forward name="beneficiary_search_group_level" path="/Beneficiary/Search/Group/index.jsp"/>
+      <forward name="prompt_add_beneficiary" path="/Beneficiary/Modify/index.jsp"/>
+      <forward name="prompt_modify_beneficiary" path="/Beneficiary/Modify/index.jsp"/>
+    </action>
+    <!--
+	=============================================================================
+                        ALGORITHM
+	=============================================================================
+	-->
+    <action path="/algorithmAction" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="algorithmForm" scope="session">
+      <exception type="com.swiftcorp.portal.common.exception.BusinessRuleViolationException" scope="request" key="already.exist.same.code" path="/Algorithm/Modify/index.jsp"/>
+      <forward name="algorithm_search_system_level" path="/Algorithm/Search/System/index.jsp"/>
+      <forward name="algorithm_search_group_level" path="/Algorithm/Search/Group/index.jsp"/>
+      <forward name="prompt_add_algorithm" path="/Algorithm/Modify/index.jsp"/>
+      <forward name="prompt_modify_algorithm" path="/Algorithm/Modify/index.jsp"/>
+      <forward name="prompt_add_algorithm_first_alg" path="/Algorithm/Modify/AlgIndex.jsp"/>
+    </action>
+    <action path="/algorithmActionWithValidation" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="algorithmForm" validate="true" input="/Algorithm/Modify/index.jsp" scope="session">
+      <exception type="com.swiftcorp.portal.common.exception.BusinessRuleViolationException" scope="request" key="already.exist.same.code" path="/Algorithm/Modify/index.jsp"/>
+      <forward name="algorithm_search_system_level" path="/Algorithm/Search/System/index.jsp"/>
+      <forward name="algorithm_search_group_level" path="/Algorithm/Search/Group/index.jsp"/>
+      <forward name="prompt_add_algorithm" path="/Algorithm/Modify/index.jsp"/>
+      <forward name="prompt_modify_algorithm" path="/Algorithm/Modify/index.jsp"/>
+      <forward name="prompt_add_algorithm_first_alg" path="/Algorithm/Modify/AlgIndex.jsp"/>
+    </action>
+    <!--
+	=============================================================================
+                        ALERT
+	=============================================================================
+	-->
+    <action path="/alertAction" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="alertForm" scope="session">
+      <exception type="com.swiftcorp.portal.common.exception.BusinessRuleViolationException" scope="request" key="already.exist.same.code" path="/Alert/Modify/index.jsp"/>
+      <forward name="alert_search_system_level" path="/Alert/Search/System/index.jsp"/>
+      <forward name="alert_search_group_level" path="/Alert/Search/Group/index.jsp"/>
+      <forward name="prompt_add_alert" path="/Alert/Modify/index.jsp"/>
+      <forward name="prompt_modify_alert" path="/Alert/Modify/index.jsp"/>
+      <forward name="alert_search_by_user_popup" path="/Alert/Search/System/AlertByUser.jsp"/>
+    </action>
+    <action path="/alertActionWithValidation" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="alertForm" validate="true" input="/Alert/Modify/index.jsp" scope="session">
+      <exception type="com.swiftcorp.portal.common.exception.BusinessRuleViolationException" scope="request" key="already.exist.same.code" path="/Alert/Modify/index.jsp"/>
+      <forward name="alert_search_system_level" path="/Alert/Search/System/index.jsp"/>
+      <forward name="alert_search_group_level" path="/Alert/Search/Group/index.jsp"/>
+      <forward name="prompt_add_alert" path="/Alert/Modify/index.jsp"/>
+      <forward name="prompt_modify_alert" path="/Alert/Modify/index.jsp"/>
+      <forward name="alert_search_by_user_popup" path="/Alert/Search/System/AlertByUser.jsp"/>
+    </action>
+    <!--
+	=============================================================================
+                        SCHEDULE
+	=============================================================================
+	-->
+    <action path="/scheduleAction" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="scheduleForm" scope="session">
+      <exception type="com.swiftcorp.portal.common.exception.BusinessRuleViolationException" scope="request" key="already.exist.same.code" path="/Schedule/Modify/index.jsp"/>
+      <forward name="schedule_search_system_level" path="/Schedule/Search/System/index.jsp"/>
+      <forward name="schedule_search_group_level" path="/Schedule/Search/Group/index.jsp"/>
+      <forward name="prompt_add_schedule" path="/Schedule/Modify/index.jsp"/>
+      <forward name="prompt_modify_schedule" path="/Schedule/Modify/index.jsp"/>
+    </action>
+    <action path="/scheduleActionWithValidation" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="scheduleForm" validate="true" input="/Schedule/Modify/index.jsp" scope="session">
+      <exception type="com.swiftcorp.portal.common.exception.BusinessRuleViolationException" scope="request" key="already.exist.same.code" path="/Schedule/Modify/index.jsp"/>
+      <forward name="schedule_search_system_level" path="/Schedule/Search/System/index.jsp"/>
+      <forward name="schedule_search_group_level" path="/Schedule/Search/Group/index.jsp"/>
+      <forward name="prompt_add_schedule" path="/Schedule/Modify/index.jsp"/>
+      <forward name="prompt_modify_schedule" path="/Schedule/Modify/index.jsp"/>
+    </action>
+    <!--
+	=============================================================================
+                        HOUSEHOLD
+	=============================================================================
+	-->
+    <action path="/householdAction" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="householdForm" scope="session">
+      <exception type="com.swiftcorp.portal.common.exception.BusinessRuleViolationException" scope="request" key="already.exist.same.code" path="/Household/Modify/index.jsp"/>
+      <forward name="household_search_system_level" path="/Household/Search/System/index.jsp"/>
+      <forward name="household_search_group_level" path="/Household/Search/Group/index.jsp"/>
+      <forward name="prompt_add_household" path="/Household/Modify/index.jsp"/>
+      <forward name="prompt_modify_household" path="/Household/Modify/index.jsp"/>
+    </action>
+    <action path="/householdActionWithValidation" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="householdForm" validate="true" input="/Household/Modify/index.jsp" scope="session">
+      <exception type="com.swiftcorp.portal.common.exception.BusinessRuleViolationException" scope="request" key="already.exist.same.code" path="/Household/Modify/index.jsp"/>
+      <forward name="household_search_system_level" path="/Household/Search/System/index.jsp"/>
+      <forward name="household_search_group_level" path="/Household/Search/Group/index.jsp"/>
+      <forward name="prompt_add_household" path="/Household/Modify/index.jsp"/>
+      <forward name="prompt_modify_household" path="/Household/Modify/index.jsp"/>
+    </action>
+    <!--
+	=============================================================================
+                        HOUSEHOLD
+	=============================================================================
+	-->
+    <action path="/householdAction" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="householdForm" scope="session">
+      <exception type="com.clickdiagnostics.test.common.exception.BusinessRuleViolationException" scope="request" key="already.exist.same.code" path="/Household/Modify/index.jsp"/>
+      <forward name="household_search_system_level" path="/Household/Search/System/index.jsp"/>
+      <forward name="household_search_group_level" path="/Household/Search/Group/index.jsp"/>
+      <forward name="prompt_add_household" path="/Household/Modify/index.jsp"/>
+      <forward name="prompt_modify_household" path="/Household/Modify/index.jsp"/>
+    </action>
+    <action path="/householdActionWithValidation" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="householdForm" validate="true" input="/Household/Modify/index.jsp" scope="session">
+      <exception type="com.clickdiagnostics.test.common.exception.BusinessRuleViolationException" scope="request" key="already.exist.same.code" path="/Household/Modify/index.jsp"/>
+      <forward name="household_search_system_level" path="/Household/Search/System/index.jsp"/>
+      <forward name="household_search_group_level" path="/Household/Search/Group/index.jsp"/>
+      <forward name="prompt_add_household" path="/Household/Modify/index.jsp"/>
+      <forward name="prompt_modify_household" path="/Household/Modify/index.jsp"/>
+    </action>
+    <!--
+	=============================================================================
+                        DHAKAUNIVERSITY
+	=============================================================================
+	-->
+    <action path="/dhakauniversityAction" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="dhakauniversityForm" scope="session">
+      <exception type="com.cse.resultservice.common.exception.BusinessRuleViolationException" scope="request" key="already.exist.same.code" path="/Dhakauniversity/Modify/index.jsp"/>
+      <forward name="dhakauniversity_search_system_level" path="/Dhakauniversity/Search/System/index.jsp"/>
+      <forward name="dhakauniversity_search_group_level" path="/Dhakauniversity/Search/Group/index.jsp"/>
+      <forward name="prompt_add_dhakauniversity" path="/Dhakauniversity/Modify/index.jsp"/>
+      <forward name="prompt_modify_dhakauniversity" path="/Dhakauniversity/Modify/index.jsp"/>
+    </action>
+    <action path="/dhakauniversityActionWithValidation" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="dhakauniversityForm" validate="true" input="/Dhakauniversity/Modify/index.jsp" scope="session">
+      <exception type="com.cse.resultservice.common.exception.BusinessRuleViolationException" scope="request" key="already.exist.same.code" path="/Dhakauniversity/Modify/index.jsp"/>
+      <forward name="dhakauniversity_search_system_level" path="/Dhakauniversity/Search/System/index.jsp"/>
+      <forward name="dhakauniversity_search_group_level" path="/Dhakauniversity/Search/Group/index.jsp"/>
+      <forward name="prompt_add_dhakauniversity" path="/Dhakauniversity/Modify/index.jsp"/>
+      <forward name="prompt_modify_dhakauniversity" path="/Dhakauniversity/Modify/index.jsp"/>
+    </action>
+    <!--
+	=============================================================================
+                        RISK
+	=============================================================================
+	-->
+    <action path="/riskAction" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="riskForm" scope="session">
+      <exception type="com.swiftcorp.portal.common.exception.BusinessRuleViolationException" scope="request" key="already.exist.same.code" path="/Risk/Modify/index.jsp"/>
+      <forward name="risk_search_system_level" path="/Risk/Search/System/index.jsp"/>
+      <forward name="risk_search_group_level" path="/Risk/Search/Group/index.jsp"/>
+      <forward name="prompt_add_risk" path="/Risk/Modify/index.jsp"/>
+      <forward name="prompt_modify_risk" path="/Risk/Modify/index.jsp"/>
+    </action>
+    <action path="/riskActionWithValidation" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="riskForm" validate="true" input="/Risk/Modify/index.jsp" scope="session">
+      <exception type="com.swiftcorp.portal.common.exception.BusinessRuleViolationException" scope="request" key="already.exist.same.code" path="/Risk/Modify/index.jsp"/>
+      <forward name="risk_search_system_level" path="/Risk/Search/System/index.jsp"/>
+      <forward name="risk_search_group_level" path="/Risk/Search/Group/index.jsp"/>
+      <forward name="prompt_add_risk" path="/Risk/Modify/index.jsp"/>
+      <forward name="prompt_modify_risk" path="/Risk/Modify/index.jsp"/>
+    </action>
+    <!--
+	=============================================================================
+                        GEO
+	=============================================================================
+	-->
+    <action path="/geoImportAction" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="geoImportForm" validate="false" scope="session">
+      <forward name="prompt_import_geo" path="/Geo/ImportData/index.jsp"/>
+    </action>
+    <action path="/geoAction" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="geoForm" scope="session">
+      <exception type="com.swiftcorp.portal.common.exception.BusinessRuleViolationException" scope="request" key="already.exist.same.code" path="/Geo/Modify/index.jsp"/>
+      <forward name="geo_search_system_level" path="/Geo/Search/System/index.jsp"/>
+      <forward name="geo_search_group_level" path="/Geo/Search/Group/index.jsp"/>
+      <forward name="prompt_add_geo" path="/Geo/Modify/index.jsp"/>
+      <forward name="prompt_modify_geo" path="/Geo/Modify/index.jsp"/>
+      <forward name="prompt_import_geo" path="/Geo/ImportData/index.jsp"/>
+    </action>
+    <action path="/geoActionWithValidation" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="geoForm" validate="true" input="/Geo/Modify/index.jsp" scope="session">
+      <exception type="com.swiftcorp.portal.common.exception.BusinessRuleViolationException" scope="request" key="already.exist.same.code" path="/Geo/Modify/index.jsp"/>
+      <forward name="geo_search_system_level" path="/Geo/Search/System/index.jsp"/>
+      <forward name="geo_search_group_level" path="/Geo/Search/Group/index.jsp"/>
+      <forward name="prompt_add_geo" path="/Geo/Modify/index.jsp"/>
+      <forward name="prompt_modify_geo" path="/Geo/Modify/index.jsp"/>
+      <forward name="prompt_import_geo" path="/Geo/ImportData/index.jsp"/>
+    </action>
+    <!--
+	=============================================================================
+                        DCRINFO
+	=============================================================================
+	-->
+    <action path="/dcrinfoAction" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="dcrinfoForm" scope="session">
+      <exception type="com.swiftcorp.portal.common.exception.BusinessRuleViolationException" scope="request" key="already.exist.same.code" path="/Dcrinfo/Modify/index.jsp"/>
+      <forward name="dcrinfo_search_system_level" path="/Dcrinfo/Search/System/index.jsp"/>
+      <forward name="ext_dcrinfo_search_system_level" path="/Common/Search/ExtSearchResult.jsp?component=dcrinfo"/>
+      <forward name="dcrinfo_search_group_level" path="/Dcrinfo/Search/Group/index.jsp"/>
+      <forward name="prompt_add_dcrinfo" path="/Dcrinfo/Modify/index.jsp"/>
+      <forward name="prompt_modify_dcrinfo" path="/Dcrinfo/Modify/index.jsp"/>
+      <forward name="prompt_import" path="/Import/ImportData/index.jsp"/>
+      <forward name="dcrinfo_add_success" path="/Dcrinfo/Add/success.jsp"/>
+    </action>
+    <action path="/dcrinfoActionWithValidation" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="dcrinfoForm" validate="true" input="/Dcrinfo/Modify/index.jsp" scope="session">
+      <exception type="com.swiftcorp.portal.common.exception.BusinessRuleViolationException" scope="request" key="already.exist.same.code" path="/Dcrinfo/Modify/index.jsp"/>
+      <forward name="dcrinfo_search_system_level" path="/Dcrinfo/Search/System/index.jsp"/>
+      <forward name="dcrinfo_search_group_level" path="/Dcrinfo/Search/Group/index.jsp"/>
+      <forward name="prompt_add_dcrinfo" path="/Dcrinfo/Modify/index.jsp"/>
+      <forward name="prompt_modify_dcrinfo" path="/Dcrinfo/Modify/index.jsp"/>
+      <forward name="prompt_import" path="/Import/ImportData/index.jsp"/>
+    </action>
+    <!--
+	=============================================================================
+                        DCRREPORT
+	=============================================================================
+	-->
+    <action path="/dcrreportAction" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="dcrreportForm" scope="session">
+      <exception type="com.swiftcorp.portal.common.exception.BusinessRuleViolationException" scope="request" key="already.exist.same.code" path="/Dcrreport/Modify/index.jsp"/>
+      <forward name="dcrreport_search_system_level" path="/Dcrreport/Search/System/index.jsp"/>
+      <forward name="dcrreport_search_group_level" path="/Dcrreport/Search/Group/index.jsp"/>
+      <forward name="prompt_add_dcrreport" path="/Dcrreport/Modify/index.jsp"/>
+      <forward name="prompt_modify_dcrreport" path="/Dcrreport/Modify/index.jsp"/>
+    </action>
+    <action path="/dcrreportActionWithValidation" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="dcrreportForm" validate="true" input="/Dcrreport/Modify/index.jsp" scope="session">
+      <exception type="com.swiftcorp.portal.common.exception.BusinessRuleViolationException" scope="request" key="already.exist.same.code" path="/Dcrreport/Modify/index.jsp"/>
+      <forward name="dcrreport_search_system_level" path="/Dcrreport/Search/System/index.jsp"/>
+      <forward name="dcrreport_search_group_level" path="/Dcrreport/Search/Group/index.jsp"/>
+      <forward name="prompt_add_dcrreport" path="/Dcrreport/Modify/index.jsp"/>
+      <forward name="prompt_modify_dcrreport" path="/Dcrreport/Modify/index.jsp"/>
+    </action>
+    <!-- import action -->
+    <action path="/importAction" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="importForm" validate="false" scope="session">
+      <forward name="prompt_import" path="/Import/ImportData/index.jsp"/>
+    </action>
+    <!--
+	=============================================================================
+                        ACCOUNT
+	=============================================================================
+	-->
+    <action path="/accountAction" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="accountForm" scope="session">
+      <exception type="com.swiftcorp.portal.common.exception.BusinessRuleViolationException" scope="request" key="already.exist.same.code" path="/Account/Modify/index.jsp"/>
+      <forward name="account_search_system_level" path="/Account/Search/System/index.jsp"/>
+      <forward name="ext_account_search_system_level" path="/Common/Search/ExtSearchResult.jsp?component=account"/>
+      <forward name="account_search_group_level" path="/Account/Search/Group/index.jsp"/>
+      <forward name="prompt_add_account" path="/Account/Modify/index.jsp"/>
+      <forward name="prompt_modify_account" path="/Account/Modify/index.jsp"/>
+    </action>
+    <action path="/accountActionWithValidation" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="accountForm" validate="true" input="/Account/Modify/index.jsp" scope="session">
+      <exception type="com.swiftcorp.portal.common.exception.BusinessRuleViolationException" scope="request" key="already.exist.same.code" path="/Account/Modify/index.jsp"/>
+      <forward name="account_search_system_level" path="/Account/Search/System/index.jsp"/>
+      <forward name="ext_account_search_system_level" path="/Common/Search/ExtSearchResult.jsp?component=account"/>
+      <forward name="account_search_group_level" path="/Account/Search/Group/index.jsp"/>
+      <forward name="prompt_add_account" path="/Account/Modify/index.jsp"/>
+      <forward name="prompt_modify_account" path="/Account/Modify/index.jsp"/>
+    </action>
+    <!--
+	=============================================================================
+                        PATIENT
+	=============================================================================
+	-->
+    <action path="/patientAction" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="patientForm" scope="session">
+      <exception type="com.swiftcorp.portal.common.exception.BusinessRuleViolationException" scope="request" key="already.exist.same.code" path="/Patient/Modify/index.jsp"/>
+      <forward name="patient_search_system_level" path="/Patient/Search/System/index.jsp"/>
+      <forward name="ext_patient_search_system_level" path="/Common/Search/ExtSearchResult.jsp?component=patient"/>
+      <forward name="patient_search_group_level" path="/Patient/Search/Group/index.jsp"/>
+      <forward name="prompt_add_patient" path="/Patient/Modify/index.jsp"/>
+      <forward name="prompt_modify_patient" path="/Patient/Modify/index.jsp"/>
+    </action>
+    <action path="/patientActionWithValidation" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method" name="patientForm" validate="true" input="/Patient/Modify/index.jsp" scope="session">
+      <exception type="com.swiftcorp.portal.common.exception.BusinessRuleViolationException" scope="request" key="already.exist.same.code" path="/Patient/Modify/index.jsp"/>
+      <forward name="patient_search_system_level" path="/Patient/Search/System/index.jsp"/>
+      <forward name="ext_patient_search_system_level" path="/Common/Search/ExtSearchResult.jsp?component=patient"/>
+      <forward name="patient_search_group_level" path="/Patient/Search/Group/index.jsp"/>
+      <forward name="prompt_add_patient" path="/Patient/Modify/index.jsp"/>
+      <forward name="prompt_modify_patient" path="/Patient/Modify/index.jsp"/>
+    </action>
+  </action-mappings>
+  <message-resources parameter="Messages"/>
+  <message-resources key="Errors" parameter="Errors"/>
+  <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+    <set-property property="pathnames" value="/org/apache/struts/validator/validator-rules.xml,/WEB-INF/validation.xml"/>
+  </plug-in>
+</struts-config>

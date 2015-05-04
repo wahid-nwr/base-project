@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+  
+ <hibernate-mapping>
+  <class name="com.swiftcorp.portal.question.dto.ValidationDTO" table="validation">
+	  <id name="componentId" column="componentId" type="long">
+	      <generator class="increment" /> 
+	  </id>
+	 <property name="ansType" type="string" column="ansType" /> 
+	  <property name="ansTypeCode" type="long" column="ansTypeCode"  />
+	  <property name="validationType" type="int" column="validationType"  />
+	  <property name="validationName" type="string" column="validationName" />
+	  <property name="validationValue" type="string" column="validationValue" /> 
+	  <property name="secondValidationType" type="int" column="secondValidationType"  />
+	  <property name="secondValidationName" type="string" column="secondValidationName" />
+	  <property name="secondValidationValue" type="string" column="secondValidationValue" />   
+	 <!-- <property name="questionOrder" type="int" column="questionOrder"  /> 
+	 
+	  
+	  
+	    <many-to-one 	name="questionDTO" 		
+						class="com.swiftcorp.portal.question.dto.QuestionDTO" 		
+						column="questionId"/>   
+		--> 				
+      </class>
+ </hibernate-mapping>

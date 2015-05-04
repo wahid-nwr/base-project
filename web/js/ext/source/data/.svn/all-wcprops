@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svnroot/ext-jame/!svn/ver/69/trunk/jame/web-app/js/ext2/source/data
+END
+SimpleStore.js
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svnroot/ext-jame/!svn/ver/69/trunk/jame/web-app/js/ext2/source/data/SimpleStore.js
+END
+GroupingStore.js
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svnroot/ext-jame/!svn/ver/69/trunk/jame/web-app/js/ext2/source/data/GroupingStore.js
+END
+MemoryProxy.js
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svnroot/ext-jame/!svn/ver/69/trunk/jame/web-app/js/ext2/source/data/MemoryProxy.js
+END
+DataProxy.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svnroot/ext-jame/!svn/ver/69/trunk/jame/web-app/js/ext2/source/data/DataProxy.js
+END
+SortTypes.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svnroot/ext-jame/!svn/ver/69/trunk/jame/web-app/js/ext2/source/data/SortTypes.js
+END
+DataField.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svnroot/ext-jame/!svn/ver/69/trunk/jame/web-app/js/ext2/source/data/DataField.js
+END
+Record.js
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svnroot/ext-jame/!svn/ver/69/trunk/jame/web-app/js/ext2/source/data/Record.js
+END
+HttpProxy.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svnroot/ext-jame/!svn/ver/69/trunk/jame/web-app/js/ext2/source/data/HttpProxy.js
+END
+XmlReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svnroot/ext-jame/!svn/ver/69/trunk/jame/web-app/js/ext2/source/data/XmlReader.js
+END
+JsonStore.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svnroot/ext-jame/!svn/ver/69/trunk/jame/web-app/js/ext2/source/data/JsonStore.js
+END
+Store.js
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svnroot/ext-jame/!svn/ver/69/trunk/jame/web-app/js/ext2/source/data/Store.js
+END
+JsonReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svnroot/ext-jame/!svn/ver/69/trunk/jame/web-app/js/ext2/source/data/JsonReader.js
+END
+DataReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svnroot/ext-jame/!svn/ver/69/trunk/jame/web-app/js/ext2/source/data/DataReader.js
+END
+Connection.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svnroot/ext-jame/!svn/ver/69/trunk/jame/web-app/js/ext2/source/data/Connection.js
+END
+Tree.js
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svnroot/ext-jame/!svn/ver/69/trunk/jame/web-app/js/ext2/source/data/Tree.js
+END
+ArrayReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svnroot/ext-jame/!svn/ver/69/trunk/jame/web-app/js/ext2/source/data/ArrayReader.js
+END
+StoreMgr.js
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svnroot/ext-jame/!svn/ver/69/trunk/jame/web-app/js/ext2/source/data/StoreMgr.js
+END
+ScriptTagProxy.js
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svnroot/ext-jame/!svn/ver/69/trunk/jame/web-app/js/ext2/source/data/ScriptTagProxy.js
+END

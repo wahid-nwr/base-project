@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:p="http://www.springframework.org/schema/p" 
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans 
+			http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+			
+		<!-- visit dto accessor  -->
+		
+		
+		<bean id="visitDTOAccesor" class="com.swiftcorp.portal.common.service.MhealthDTOAccesor">
+			<property name="entityClass" value="com.swiftcorp.portal.beneficiary.dto.VisitDTO"/>			
+			<property name="questionPropertyAccessorMap" ref="visitQuestionPropertyAccessorMap"/>
+			<property name="dtoPostProcessor" ref="visitDTOPostProcesseor"/>			
+		</bean>
+		<bean id="visitQuestionPropertyAccessorMap" class="com.swiftcorp.portal.common.service.QuestionPropertyAccessorMap">
+	  		<property name="qidPropertyAccessorMap">
+			
+				<map>
+					
+					<entry key="startTimeStamp">
+						<ref local="startTimeStampAccessor"/>
+					</entry>
+					
+					<entry key="endTimeStamp">
+						<ref local="endTimeStampAccessor"/>
+					</entry>
+					
+					<entry key="visitPic">
+						<ref local="visitPicAccessor"/>
+					</entry>
+					<entry key="visitType">
+						<ref local="visitTypeAccessor"/>
+					</entry>
+					<entry key="userId">
+						<ref local="userIdAccessor"/>
+					</entry>
+					<entry key="visitPicTimeStamp">
+						<ref local="visitPicTimeStampAccessor"/>
+					</entry>
+				</map>				
+				
+			</property>
+	  	</bean>
+		
+		<!-- Bean DTO -->
+		
+		<bean id="visitDTOPostProcesseor" class="com.swiftcorp.portal.common.service.VisitDTOPostProcesseor">
+	 		<property name="userService" ref="userServiceImpl" />
+  		</bean>   		
+  		<bean id="visitPicAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 		<property name="propertyName" value="visitPic"/>
+	 		<property name="mhealthDTODataProcessor" ref="imageFilePersister" />
+  		</bean>  		
+  		
+  		<bean id="startTimeStampAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+		 	<property name="propertyName" value="startTimeStamp"/>
+		 	<property name="mhealthDTODataProcessor" ref="timeStampStringToCalConverter" />
+	  	</bean>
+  	
+	  	<bean id="endTimeStampAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+		 	<property name="propertyName" value="endTimeStamp"/>
+		 	<property name="mhealthDTODataProcessor" ref="timeStampStringToCalConverter" />
+	  	</bean>
+	  	
+	  	<bean id="visitTypeAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+		 	<property name="propertyName" value="visitType"/>
+		 	<property name="mhealthDTODataProcessor" ref="stringToIntConverter" />
+	  	</bean>
+	  	
+	  	<bean id="userIdAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+		 	<property name="propertyName" value="userId"/>
+	  	</bean>  
+	  	
+	  	<bean id="visitPicTimeStampAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+		 	<property name="propertyName" value="visitPicTimeStamp"/>
+		 	<property name="mhealthDTODataProcessor" ref="timeStampStringToCalConverter" />
+	  	</bean>
+
+</beans>

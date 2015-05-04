@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="swift" basedir=".">
+	
+   <property file="build.properties"/>
+   <property file="database.properties"/>	
+   <property name="xdoclet.force" value="false"/>
+	
+    <property name="appname"          value="${ant.project.name}"/>
+	<property name="source.home"      value="src"/>
+	<property name="webservice.source.home" value="src/java"/>
+	<property name="compile.debug"    value="true"/>
+	<property name="compile.optimize" value="false"/>
+
+	<property name="config.rpcenc.file" value="${basedir}/src/conf/config.xml"/>
+	<property name="model.rpcenc.file" value="model-wsdl-rpcenc.xml.gz"/>
+	<property name="webapp.webxml" value="${basedir}/etc/web.xml"/>
+
+	<!-- 
+	=====================================================================================================
+									CUSTOM-ATTRIBUTES [DEFAULT VALUES]
+		These attribute will only work if they are not	overridden by build.properties file
+	=====================================================================================================	
+	-->
+	
+	<property name="war.name" value="swift"/>    
+    <property name="hotswap.port" value="8787"/>
+	<property name="date-pattern" value="MM/dd/yyyy kk:mm:ss"/>
+		
+	<!--
+		=====================================================================================================
+									CLASS-PATHS 
+		=====================================================================================================
+	-->
+	
+	<path id="compile-classpath">
+		<fileset dir="${compile.lib.dir}">
+		  	<include name="*.jar"/>
+		</fileset>
+	</path>
+	
+	<path id="run-classpath">
+		<fileset dir="${compile.lib.dir}">
+			<include name="*.jar"/>
+		</fileset>
+
+		<fileset dir="${run.lib.dir}">
+			<include name="*.jar"/>
+		</fileset>
+		<pathelement path="${build.classes.dir}"/>
+	</path>
+		
+	<!--
+		=====================================================================================================
+									PREPARE-TASKS 
+		=====================================================================================================
+	-->
+	<target name="prepare-common"> 
+  		<mkdir dir="${temp.dir}" />
+  		<mkdir dir="${dist.dir}" />
+		<mkdir dir="${build.classes.dir}"/>
+	</target>
+	
+
+	
+	<target name="prepare-web" depends="prepare-common">		
+		<mkdir dir="${web-build.dir}/WEB-INF" />
+		<mkdir dir="${web-build.dir}/WEB-INF/lib" />
+	</target>
+
+	<target name="prepare-test" depends="prepare-common"> 
+		<mkdir dir="${test-build.dir}"/>
+	</target>
+
+	<!--
+		=====================================================================================================
+									CLEAN-TASKS 
+		=====================================================================================================
+	-->
+	
+	<target name="clean" description="Cleans all generated folders and files">
+  		<delete dir="${temp.dir}" failonerror="false"/>
+  		<delete dir="${dist.dir}" failonerror="false"/>
+  		<delete dir="${web-build.dir}" failonerror="false"/>
+	    <delete dir="${buildhome}"/>
+	    <delete file="jaxrpc-${appname}.war"/>
+	</target>
+	
+	<target name="clean-deploy" description="Cleans all deployed-applications">
+		<delete failonerror="false" includeemptydirs="true">
+			<fileset dir="${deploy.dir}" includes="${war.name}*"> 
+			</fileset>
+	    </delete>
+		
+		<delete failonerror="false" includeemptydirs="true">
+			<fileset dir="${deploy.dir}/${war.name}" />			
+	    </delete>		
+	</target>
+	
+	<target name="clean-compile" description="Cleans all compiled-classes">
+		<delete failonerror="false" includeemptydirs="true">
+			<fileset dir="${build.classes.dir}" includes="**/*"> 
+			</fileset>
+	    </delete>		
+	</target>
+	
+
+	
+	
+	<!--
+		=====================================================================================================
+									COMPILE-TASKS 
+		=====================================================================================================
+	-->
+  	<target name="compile" depends="prepare-common"
+      	description="Compiles the application source code">
+      	<echo message="Compiling the application source code...."/>
+  		
+  		<!--enable timestamping upto second level (required for hotswapping)-->
+	  	  <tstamp>
+	  	    <format property="class.tstamp" pattern="${date-pattern}" />
+	  	  </tstamp>
+
+     	<javac
+        	srcdir="${src.dir}"
+         	destdir="${build.classes.dir}"         	
+      		verbose="false" debug="true"
+     		listfiles="false"> <!-- Use this when you want to see which files are being compiled -->
+			<classpath refid="run-classpath"/>
+      	</javac> 
+ 	</target>
+	
+  	<target name="compile-test" depends="prepare-test, compile"
+      	description="Compiles the application test code">
+      	<echo message="Compiling the test code...."/>
+     	<javac
+        	srcdir="${test-src.dir}"
+         	destdir="${test-build.dir}"         	
+      		verbose="false" debug="true"
+     		listfiles="false"> <!-- Use this when you want to see which files are being compiled -->
+         	<classpath refid="run-classpath"/> <!-- include all the main src builds into the class-path-->
+      	</javac> 
+ 	</target>
+
+	<!--
+		=====================================================================================================
+									WEB-TASKS 
+		=====================================================================================================
+	-->
+	
+    <target name="copy-hbm">	
+        <echo message="Copying hbm files......"/>
+		<copy todir="${build.classes.dir}">
+			<fileset dir="${src.dir}">
+				<include name="**/*.hbm.xml"/>				
+			</fileset>
+		</copy>
+	
+	</target>
+	
+	<target name="copy-lib" depends="prepare-web">
+		
+		<copy todir="${web-build.dir}/WEB-INF/lib">
+			<fileset dir="${run.lib.dir}">
+				<include name="**/*.jar"/>				
+			</fileset>
+		</copy>
+		
+	</target>
+	
+	<target name="copy-log4j-config">		
+		<copy todir="${build.classes.dir}" failonerror="true">
+			<fileset dir="${src.dir}" >
+				<include name="service-list.xml"/>
+			</fileset>
+		</copy>	
+	</target>
+	
+	<target name="copy-service-xml">		
+		<copy todir="${build.classes.dir}" failonerror="true">
+			<fileset dir="${configuration.dir}" >
+				<include name="log4j.properties"/>
+			</fileset>
+		</copy>	
+	</target>
+	
+	<target name="web" depends="copy-lib, copy-log4j-config, copy-service-xml">
+		<echo>Preparing the web application folder</echo>
+		
+		<copy todir="${web-build.dir}" failonerror="true">
+			<fileset dir="${web.dir}">
+				<include name="**/*"/>				
+			</fileset>				
+		</copy>
+		      
+		<copy todir="${build.classes.dir}" failonerror="true">
+			<fileset dir="${configuration.dir}">
+				<include name="**/*"/>
+			</fileset>
+		</copy>
+		
+	</target>
+	
+	<target name="create-war" depends="compile, web, copy-hbm"
+		description="Prepare deployable war">
+		<echo message="Preparing deployable war"/>
+
+		<jar destfile="${dist.dir}/${war.name}.war" basedir="${web-build.dir}" >
+		</jar>
+	</target>
+
+	  <target name="build-war" depends="create-war">
+	    <echo message="-------- ${appname} --------"/>
+	  </target>
+
+		<!--
+		=====================================================================================================
+									DEPLOY-TASKS 
+		=====================================================================================================
+	-->
+
+	
+	<target name="deploy-web" depends="web"
+		description="deploying exploded web application">
+		<echo message="deploying exploded web application"/>
+		
+		<mkdir dir="${deploy.dir}/${war.name}"/>
+		
+		<copy todir="${deploy.dir}/${war.name}" failonerror="true">
+			<fileset dir="${web-build.dir}">
+				<include name="**/*"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="deploy-war" depends="clean,clean-compile,clean-deploy,build-war"
+		description="deploying exploted web application">
+		<echo message="deploying exploted web application"/>
+		
+		<copy todir="${deploy.dir}" failonerror="true">
+			<fileset dir="${dist.dir}">
+				<include name="${war.name}.war"/>
+			</fileset>
+		</copy>
+	</target>
+
+	
+	
+	    <target name="prepare" description="make sure hibernatedoclet is necessary">
+
+	        <!-- Make sure hibernatedoclet is necessary -->
+	    	<uptodate property="hibernatedoclet.unnecessary">
+	            <srcfiles dir="src/java" includes="**/*.java"/>
+	            <srcfiles dir="${web-build.dir}/WEB-INF" includes="**/*.xml"/>
+	            <mapper type="glob" from="*.java" to="${build.classes.dir}/com/jsynergy/vcp/user/dto/*.hbm.xml"/>
+
+	        </uptodate>
+	    	
+		    <mkdir dir="${buildhome}"/>
+		    <mkdir dir="${buildhome}/${appname}/classes"/>
+		    <mkdir dir="${buildhome}/${appname}/classes/server"/>
+		    <mkdir dir="${buildhome}/${appname}/classes/client"/>
+
+	    </target>
+	
+ 
+	<!--
+		=====================================================================================================
+									TOMCAT-TASKS 
+		=====================================================================================================
+	-->
+	
+    <target name="tomcat-start"
+            description="Start Tomcat with hotswapping enabled" >
+
+    	<exec executable="${tomcat.home}/bin/tomcat5.exe" >
+            <arg value="start"/>
+            <env key="JAVA_OPTS"
+                 value="-Xint -Xdebug -Xrunjdwp:transport=dt_socket,address=${hotswap.port},server=y,suspend=n"/>
+        </exec>
+    </target>
+
+    <target name="tomcat-stop"
+            description="Stops Tomcat">
+        <exec executable="${tomcat.home}/bin/tomcat5.exe">
+            <arg value="stop"/>
+        </exec>
+    </target>
+	
+	
+	  <target name="init">
+	    <echo message="-------- ${appname} Sample --------"/>
+	  </target>
+
+	  <target name="build" depends="build-war ">
+		<echo message=" Building...."/>
+	  </target>
+
+
+</project>

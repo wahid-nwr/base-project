@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">  
+	
+	
+	
+	
+	  	<!-- Beneficiary Registration -->
+	<bean id="motherBeneficiaryRegService" class="com.swiftcorp.portal.beneficiary.service.MotherBeneficiaryRegService">
+	
+		<property name="motherBeneficiaryDTOAccessor" ref="motherBeneficiaryDTOAccessor"/>	
+		<property name="pregnancyRecordDTOAccessor" ref="pregnancyRecordDTOAccessor"/>	
+		<property name="motherBeneficiaryHistoryDTOAccessor" ref="motherBeneficiaryHistoryDTOAccessor"/>	 	 	
+		<property name="beneficiaryService" ref="beneficiaryServiceImpl"/>
+		<property name="userServiceImpl" ref="userServiceImpl"/>
+
+		<property name="routineVisitScheduler" ref="motherVisitScheduler"/> 		
+
+		<property name="scheduleServiceImpl" ref="scheduleServiceImpl"/>
+		<property name="visitDTOAccesor" ref="visitDTOAccesor" />  		
+
+  	</bean>		
+
+	<bean id="motherVisitScheduler" class="com.swiftcorp.portal.schedule.service.mother.MotherVisitScheduler">
+		<property name="scheduleService" 	  ref="ScheduleService"/>
+	</bean>
+	
+	<bean id="motherBeneficiaryDTOAccessor" class="com.swiftcorp.portal.common.service.MhealthDTOAccesor">
+	 	<property name="entityClass" value="com.swiftcorp.portal.beneficiary.dto.MotherBeneficiaryDTO"/>
+	 	<property name="questionPropertyAccessorMap" ref="motherBenQuestionPropertyAccessorMap"/>
+	 	<property name="questionnairePropertyAccessorMap">	 	 	
+		 		 <map>            	
+	            	<entry key="identityInfo">
+	                     <ref local="identityInfoQuestionnairePropAccessMap"/>
+	                </entry>
+	                <entry key="healthInfo">
+	                     <ref local="healthInfoQuestionnairePropAccessMap"/>
+	                </entry>
+	            </map>
+           
+         </property>   
+  	</bean>
+  	<bean id="motherBenQuestionPropertyAccessorMap" class="com.swiftcorp.portal.common.service.QuestionPropertyAccessorMap">
+  		<property name="qidPropertyAccessorMap">
+  				<map>            	
+	            	<entry key="womanId">
+	                     <ref local="womanIdAccessor"/>
+	                </entry>
+	                
+	            </map>
+	     </property>
+  	</bean>
+  	<bean id="pregnancyRecordDTOAccessor" class="com.swiftcorp.portal.common.service.MhealthDTOAccesor">
+	 	<property name="entityClass" value="com.swiftcorp.portal.beneficiary.dto.PregnancyRecordDTO"/>
+	 	<property name="questionPropertyAccessorMap" ref="pregRecordQuestionPropertyAccessorMap"/>	 	 	
+		
+  	</bean>
+  	<bean id="pregRecordQuestionPropertyAccessorMap" class="com.swiftcorp.portal.common.service.QuestionPropertyAccessorMap">
+  		<property name="qidPropertyAccessorMap">
+  			 <map>            	
+	            	<entry key="birthControlKit">
+	                     <ref local="birthControlKitAccessor"/>
+	                </entry>
+	                <entry key="LMP">
+	                     <ref local="LMPAccessor"/>
+	                </entry>
+	                
+	                <entry key="EDD">
+	                     <ref local="EDDAccessor"/>
+	                </entry>
+	                
+	                 <entry key="nameFile">
+	                     <ref local="nameFileAccessor"/>
+	                </entry>
+	                <entry key="contactNo">
+	                     <ref local="contactNoAccessor"/>
+	                </entry>
+	                
+	                <entry key="pictureFile">
+	                     <ref local="pictureFileAccessor"/>
+	                </entry>
+	                
+	                <entry key="stripResult">
+	                     <ref local="stripResultAccessor"/>
+	                </entry>
+	                <entry key="regDate">
+	                     <ref local="regDateAccessor"/>
+	                </entry>
+	                <entry key="updatedby">
+	                     <ref local="updatedbyAccessor"/>
+	                </entry>	               
+	                <entry key="userId">
+	                     <ref local="visitByAccessor"/>
+	                </entry>
+	                
+	            </map>        
+  		</property>
+  	</bean>
+  	
+  	<bean id="motherBeneficiaryHistoryDTOAccessor" class="com.swiftcorp.portal.common.service.MhealthDTOAccesor">
+	 	<property name="entityClass" value="com.swiftcorp.portal.beneficiary.dto.MotherBeneficiaryHistoryDTO"/>
+	 	<property name="questionnairePropertyAccessorMap">	 	 	
+		 		  <map>            	
+	            	<entry key="pregnancyInfo">
+	                     <ref local="pregnancyInfoQuestionnairePropAccessMap"/>
+	                </entry>
+	            </map>           
+         </property>   
+  	</bean>
+  	
+  	  	<!-- Pregnancy test details -->
+  	<bean id="pregnancyTestQuestionnairePropAccessMap" class="com.swiftcorp.portal.common.service.QuestionPropertyAccessorMap">
+	 	<property name="qidPropertyAccessorMap" >	
+	 	
+	 	 	 	
+		 		 <map>            	
+	            	<entry key="birthControlKit">
+	                     <ref local="birthControlKitAccessor"/>
+	                </entry>
+	                <entry key="LMP">
+	                     <ref local="LMPAccessor"/>
+	                </entry>
+	                
+	                <entry key="EDD">
+	                     <ref local="EDDAccessor"/>
+	                </entry>
+	                
+	                 <entry key="nameFile">
+	                     <ref local="nameFileAccessor"/>
+	                </entry>
+	                <entry key="contactNo">
+	                     <ref local="contactNoAccessor"/>
+	                </entry>
+	                
+	                <entry key="pictureFile">
+	                     <ref local="pictureFileAccessor"/>
+	                </entry>
+	                
+	                <entry key="stripResult">
+	                     <ref local="stripResultAccessor"/>
+	                </entry>
+	                <entry key="regDate">
+	                     <ref local="regDateAccessor"/>
+	                </entry>
+	                <entry key="updatedby">
+	                     <ref local="updatedbyAccessor"/>
+	                </entry>
+	                <entry key="userId">
+	                     <ref local="visitByAccessor"/>
+	                </entry>
+	                
+	            </map>
+           
+         </property> 
+  	</bean>
+  	
+  	<!-- Beneficiary details -->
+  	
+  	<bean id="identityInfoQuestionnairePropAccessMap" class="com.swiftcorp.portal.common.service.QuestionPropertyAccessorMap">
+	 	<property name="qidPropertyAccessorMap" >	 	 	
+		 		 <map>            	
+	            	
+	                <entry key="beneficiaryName">
+	                     <ref local="beneficiaryNameAccessor"/>
+	                </entry>
+	                
+	                <entry key="nameFile">
+	                     <ref local="nameFileAccessor"/>
+	                </entry>
+	                <entry key="pictureFile">
+	                     <ref local="pictureFileAccessor"/>
+	                </entry>
+	               
+	            </map>
+           
+         </property> 
+  	</bean>
+  	
+  	<bean id="healthInfoQuestionnairePropAccessMap" class="com.swiftcorp.portal.common.service.QuestionPropertyAccessorMap">
+	 	<property name="qidPropertyAccessorMap" >	 	 	
+		 		 <map>            	
+	            	<entry key="age">
+	                     <ref local="ageAccessor"/>
+	                </entry>
+	                
+	                <entry key="fatherName">
+	                     <ref local="fatherNameAccessor"/>
+	                </entry>
+	                <entry key="husbandName">
+	                     <ref local="husbandNameAccessor"/>
+	                </entry>
+	                <entry key="householdName">
+	                     <ref local="householdNameAccessor"/>
+	                </entry>
+	                
+	                <entry key="contactNo">
+	                     <ref local="contactNoAccessor"/>
+	                </entry>
+	                <entry key="beneficiaryType">
+	                     <ref local="beneficiaryTypeAccessor"/>
+	                </entry>
+	                <entry key="regDate">
+	                     <ref local="regDateAccessor"/>
+	                </entry>
+	                <entry key="updatedby">
+	                     <ref local="updatedbyAccessor"/>
+	                </entry>
+	                <entry key="nationalId">
+	                     <ref local="nationalIdAccessor"/>
+	                </entry>
+	            </map>
+           
+         </property> 
+  	</bean>
+  	
+  	
+  	
+  	<!-- Pregnancy Info Details -->
+  	
+  	
+  	<bean id="pregnancyInfoQuestionnairePropAccessMap" class="com.swiftcorp.portal.common.service.QuestionPropertyAccessorMap">
+	 	<property name="qidPropertyAccessorMap" >	
+	 		 	 	 	
+
+		 		 <map>  
+		 		 	<entry key="titiTica">
+	                     <ref local="titiTicaAccessor"/>
+	                </entry>
+		 		 	<entry key="lChildLive">
+	                     <ref local="lChildLiveAccessor"/>
+	                </entry>
+	                <entry key="childLive">
+	                     <ref local="childLiveAccessor"/>
+	                </entry>
+	                
+	                <entry key="dth5Pls">
+	                     <ref local="dth5PlsAccessor"/>
+	                </entry>
+	                
+	                 <entry key="dth5Year">
+	                     <ref local="dth5YearAccessor"/>
+	                </entry>
+	                <entry key="dth1Year">
+	                     <ref local="dth1YearAccessor"/>
+	                </entry>
+	                
+	                <entry key="dth7Day">
+	                     <ref local="dth7DayAccessor"/>
+	                </entry>
+	                
+	                <entry key="apcoTomy">
+	                     <ref local="apcoTomyAccessor"/>
+	                </entry>
+	                <entry key="cesrCnt">
+	                     <ref local="cesrCntAccessor"/>
+	                </entry>
+	                <entry key="mrCount">
+	                     <ref local="mrCountAccessor"/>
+	                </entry>
+	                   <entry key="dthChild">
+	                     <ref local="dthChildAccessor"/>
+	                </entry>
+	                <entry key="totPreg">
+	                     <ref local="totPregAccessor"/>
+	                </entry>
+		 		    	
+	            	<entry key="seriousProb">
+	                     <ref local="seriousProbAccessor"/>
+	                </entry>
+	                <entry key="asma">
+	                     <ref local="asmaAccessor"/>
+	                </entry>
+	                
+	                <entry key="diabetcs">
+	                     <ref local="diabetcsAccessor"/>
+	                </entry>
+	                
+	                 <entry key="histerica">
+	                     <ref local="histericaAccessor"/>
+	                </entry>
+	                <entry key="defectChild">
+	                     <ref local="defectChildAccessor"/>
+	                </entry>
+	                
+	                <entry key="smallChild">
+	                     <ref local="smallChildAccessor"/>
+	                </entry>
+	                
+	                <entry key="earlyDel">
+	                     <ref local="earlyDelAccessor"/>
+	                </entry>
+	                <entry key="delProb">
+	                     <ref local="delProbAccessor"/>
+	                </entry>
+	                <entry key="EXbleed">
+	                     <ref local="EXbleedAccessor"/>
+	                </entry>
+	                
+	            </map>
+           
+         </property> 
+  	</bean>
+  	
+
+  	
+  	
+  	
+  	<!-- Pregnancy Info Details -->
+  	
+  	<bean id="EXbleedAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 	<property name="propertyName" value="EXbleed"/>
+	 	<property name="mhealthDTODataProcessor" ref="stringToIntConverter" />
+  	</bean>
+  	
+  	<bean id="womanIdAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 	<property name="propertyName" value="beneficiaryId"/>
+  	</bean>
+  	
+  	<bean id="delProbAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 	<property name="propertyName" value="delProb"/>
+	 	<property name="mhealthDTODataProcessor" ref="stringToIntConverter" />
+  	</bean>
+  	
+  	<bean id="earlyDelAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 	<property name="propertyName" value="earlyDel"/>
+	 	<property name="mhealthDTODataProcessor" ref="stringToIntConverter" />
+  	</bean>
+  	
+  	<bean id="smallChildAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 	<property name="propertyName" value="smallChild"/>
+	 	<property name="mhealthDTODataProcessor" ref="stringToIntConverter" />
+  	</bean>
+  	
+  	<bean id="histericaAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 	<property name="propertyName" value="histerica"/>
+	 	<property name="mhealthDTODataProcessor" ref="stringToIntConverter" />
+  	</bean>
+  	
+  	
+  	<bean id="asmaAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 	<property name="propertyName" value="asma"/>
+	 	<property name="mhealthDTODataProcessor" ref="stringToIntConverter" />
+  	</bean>
+  	
+  	<bean id="diabetcsAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 	<property name="propertyName" value="diabetcs"/>	 	
+  	</bean>
+  	
+  	<bean id="seriousProbAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 	<property name="propertyName" value="seriousProb"/>
+  	</bean>
+  	<bean id="totPregAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 	<property name="propertyName" value="totPreg"/>
+	 	<property name="mhealthDTODataProcessor" ref="stringToIntConverter" />
+  	</bean>
+  	
+  	<bean id="dthChildAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 	<property name="propertyName" value="dthChild"/>
+	 	<property name="mhealthDTODataProcessor" ref="stringToIntConverter" />
+  	</bean>
+  	
+  	<bean id="mrCountAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 	<property name="propertyName" value="mrCount"/>
+	 	<property name="mhealthDTODataProcessor" ref="stringToIntConverter" />
+  	</bean>
+  	
+  	<bean id="cesrCntAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 	<property name="propertyName" value="cesrCnt"/>
+	 	<property name="mhealthDTODataProcessor" ref="stringToIntConverter" />
+  	</bean>
+  	
+  	<bean id="apcoTomyAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 	<property name="propertyName" value="apcoTomy"/>
+	 	<property name="mhealthDTODataProcessor" ref="stringToIntConverter" />
+  	</bean>
+  	
+  	<bean id="dth7DayAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 	<property name="propertyName" value="dth7Day"/>
+	 	<property name="mhealthDTODataProcessor" ref="stringToIntConverter" />
+  	</bean>
+  	
+  	<bean id="dth5YearAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 	<property name="propertyName" value="dth5Year"/>
+	 	<property name="mhealthDTODataProcessor" ref="stringToIntConverter" />
+  	</bean>
+  	
+  	<bean id="dth1YearAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 	<property name="propertyName" value="dth1Year"/>
+	 	<property name="mhealthDTODataProcessor" ref="stringToIntConverter" />
+  	</bean>
+  	
+  	<bean id="dth5PlsAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 	<property name="propertyName" value="dth5Pls"/>
+	 	<property name="mhealthDTODataProcessor" ref="stringToIntConverter" />
+  	</bean>
+  		
+  	<bean id="childLiveAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 	<property name="propertyName" value="childLive"/>
+	 	<property name="mhealthDTODataProcessor" ref="stringToIntConverter" />
+  	</bean>
+  	
+  	<bean id="lChildLiveAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 	<property name="propertyName" value="lChildLive"/>
+	 	<property name="mhealthDTODataProcessor" ref="stringToIntConverter" />
+  	</bean>
+  	
+  	<bean id="titiTicaAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 	<property name="propertyName" value="titiTica"/>
+	 	<property name="mhealthDTODataProcessor" ref="stringToIntConverter" />
+  	</bean>
+  	
+  	<bean id="defectChildAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 	<property name="propertyName" value="defectChild"/>
+	 	<property name="mhealthDTODataProcessor" ref="stringToIntConverter" />
+  	</bean>
+  	
+  	
+  		<!-- Pregnancy Test and MotherBeneficiary -->
+  	
+  	<bean id="LMPAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 	<property name="propertyName" value="LMP"/>
+	 	<property name="mhealthDTODataProcessor" ref="LMPConverter" />
+  	</bean>
+  	
+  	
+  	<bean id="stripResultAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 	<property name="propertyName" value="stripResult"/>
+	 	<property name="mhealthDTODataProcessor" ref="stringToIntConverter" />
+  	</bean>
+  	
+  	
+  	<bean id="EDDAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 	<property name="propertyName" value="EDD"/>
+		 <property name="mhealthDTODataProcessor" ref="EDDConverter" />
+  	</bean>
+  	
+  	<bean id="birthControlKitAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 	<property name="propertyName" value="birthControlKit"/>
+  	</bean>
+  	
+	<bean id="ageAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 	<property name="propertyName" value="age"/>
+	 	<property name="mhealthDTODataProcessor" ref="stringToIntConverter" />
+  	</bean>
+	
+	<bean id="nationalIdAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 	<property name="propertyName" value="nationalId"/>
+  	</bean>
+  	
+  	<bean id="beneficiaryNameAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 	<property name="propertyName" value="beneficiaryName"/>
+  	</bean>
+  	<bean id="fatherNameAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 		<property name="propertyName" value="fatherName"/>
+	 		<property name="mhealthDTODataProcessor" ref="audioFilePersister" />
+  	</bean>
+  	   	
+  	<bean id="husbandNameAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 	<property name="propertyName" value="husbandName"/>
+	 	<property name="mhealthDTODataProcessor" ref="audioFilePersister" />
+  	</bean>
+  	<bean id="householdNameAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 	  	<property name="propertyName" value="householdName"/>
+	 	  	<property name="mhealthDTODataProcessor" ref="audioFilePersister" />
+  	</bean>
+  	<bean id="nameFileAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 	<property name="propertyName" value="nameFile"/>
+	 	<property name="mhealthDTODataProcessor" ref="audioFilePersister" />
+  	</bean>
+  	<bean id="pictureFileAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 	<property name="propertyName" value="pictureFile"/>
+	 	<property name="mhealthDTODataProcessor" ref="imageFilePersister" />
+  	</bean>
+  	<bean id="contactNoAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 	    <property name="propertyName" value="contactNo"/>
+  	</bean>
+  	
+  	<bean id="beneficiaryTypeAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 	<property name="propertyName" value="beneficiaryType"/>
+	    <property name="mhealthDTODataProcessor" ref="stringToIntConverter" />
+  	</bean>
+  	
+  	<bean id="updatedbyAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 	<property name="propertyName" value="updatedby"/>
+	    <property name="mhealthDTODataProcessor" ref="stringToLongConverter" />
+  	</bean>
+  	
+  	<bean id="regDateAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 	<property name="propertyName" value="regDate"/>
+	    <property name="mhealthDTODataProcessor" ref="stringToCalenderConverter" />
+  	</bean>  	  
+  	<bean id="visitByAccessor" class="com.swiftcorp.portal.common.service.PropertyAccessor">
+	 	  	<property name="propertyName" value="visitBy"/>
+  	</bean>
+  	<bean id="timeStampStringToCalConverter" class="com.swiftcorp.portal.common.parser.TimeStampStringToCalConverter" />
+	<bean id="stringToIntConverter" class="com.swiftcorp.portal.common.parser.StringToIntConverter" />
+	<bean id="stringToCalenderConverter" class="com.swiftcorp.portal.common.parser.StringToCalenderConverter" />
+	<bean id="stringToLongConverter" class="com.swiftcorp.portal.common.parser.StringToLongConverter" />
+	<bean id="EDDConverter" class="com.swiftcorp.portal.common.parser.EDDConverter" />
+	<bean id="LMPConverter" class="com.swiftcorp.portal.common.parser.LMPConverter" />
+		
+	<bean id="imageFilePersister" class="com.swiftcorp.portal.common.parser.FilePersister">
+		<property name="fileSaveDir" value="C:/Tomcat 6.0/webapps/mhealthr4/BeneficiaryMultimedia/image"/>
+		<property name="fileType" value="jpeg"/>
+		<property name="relativePathDir" value="./BeneficiaryMultimedia/image"/>
+		
+	</bean>
+	
+	<bean id="audioFilePersister" class="com.swiftcorp.portal.common.parser.FilePersister">
+		<property name="fileSaveDir" value="C:/Tomcat 6.0/webapps/mhealthr4/BeneficiaryMultimedia/audio"/>
+		<property name="relativePathDir" value="./BeneficiaryMultimedia/audio"/>
+		<property name="fileType" value="amr"/>
+	</bean>	  
+	
+</beans>	

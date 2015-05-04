@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+  
+ <hibernate-mapping>
+  <class name="com.swiftcorp.portal.algorithm.dto.AlgQuestionBranchDTO" table="algquestionbranch">
+	  <id name="componentId" column="componentId" type="long">
+	    <generator class="increment" /> 
+	  </id>
+	
+	 <list name="algAnswerList" cascade="all" lazy="false">
+			<key column="algBranchId"/>
+			<index column="answerOrder" />
+			<one-to-many class="com.swiftcorp.portal.algorithm.dto.AlgAnswerDTO" />
+	  </list>
+	 
+	 <many-to-one name="nextQuestion" class="com.swiftcorp.portal.algorithm.dto.AlgQuestionDTO" 
+	 			  column="nextAlgQuestionId" lazy="false" not-null="true" cascade="all" unique="true" />
+	  
+  </class>
+   
+ </hibernate-mapping>

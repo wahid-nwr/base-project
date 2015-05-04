@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+  
+ <hibernate-mapping>
+  <class name="com.swiftcorp.portal.contact.dto.ContactDTO" table="contact">
+	  <id name="componentId" column="componentId" type="long">
+	    <generator class="increment" /> 
+	  </id>
+
+	  <property name="contactName" type="string" column="contactName"  /> 
+	  <property name="phoneNumber" type="string" column="phoneNumber"  /> 
+	  <property name="email" type="string" column="email"  /> 
+	  <property name="yahooId" type="string" column="yahooId"  /> 
+	  <property name="skypeId" type="string" column="skypeId"  /> 
+	  <property name="msnId" type="string" column="msnId"  /> 
+       <property name="updatedDate" type="calendar" column="updateddate"  />
+       <property name="updatedBy" type="long" column="updatedby"  />	
+      <property name="status" type="int" column="status" /> 
+ 	  
+  </class>
+   
+ </hibernate-mapping>
