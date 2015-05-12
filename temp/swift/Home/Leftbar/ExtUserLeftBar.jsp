@@ -21,7 +21,7 @@ if(roleId == ApplicationConstants.ROLE_SYSTEM_ADMIN)
 
 Set<FunctionDTO> functionDTOList = (Set<FunctionDTO>)session.getAttribute(SESSION_KEYS.FUNCTIONDTO_SET);
 String result = "[{"
-	+"\"id\":\"root\","
+	+"\"id\":\"apidocs\","
 	+"\"iconCls\":\"icon-docs\","
 	+"\"text\":\"Demo Application Root\","
 	+"\"singleClickExpand\":true,"
@@ -39,6 +39,14 @@ if ( functionDTOList != null && functionDTOList.size() != 0 )
 		
 		if(functionId == ApplicationConstants.ROLE_FUNCTION_VIEW_ROLE_FUNCTION)
 		{
+			if(children!=null && !children.equals("null") && children.length()>0)
+			{
+				children += ",{\"text\":\"Role Functions\",\"id\":\"rolePanel\",\"isClass\":true,\"iconCls\":\"icon-static\",\"cls\":\"cls\",\"leaf\":true}";
+			}
+			else
+			{
+				children = "{\"text\":\"Role Functions\",\"id\":\"rolePanel\",\"isClass\":true,\"iconCls\":\"icon-static\",\"cls\":\"cls\",\"leaf\":true}";
+			}
 		}
 		else if(functionId == ApplicationConstants.ROLE_FUNCTION_VIEW_QUESTION)
 		{

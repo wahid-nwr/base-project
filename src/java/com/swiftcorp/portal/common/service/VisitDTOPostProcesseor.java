@@ -6,7 +6,7 @@ package com.swiftcorp.portal.common.service;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.swiftcorp.portal.beneficiary.dto.VisitDTO;
+//import com.swiftcorp.portal.beneficiary.dto.VisitDTO;
 import com.swiftcorp.portal.common.dto.GenericDTO;
 import com.swiftcorp.portal.common.util.CalendarUtils;
 import com.swiftcorp.portal.user.dto.UserDTO;
@@ -29,7 +29,7 @@ public class VisitDTOPostProcesseor extends DTOPostProcessor
 	@Override
 	public GenericDTO process ( GenericDTO genericDTO )
 	{
-		VisitDTO visitDTO = (VisitDTO) genericDTO;
+		/*VisitDTO visitDTO = (VisitDTO) genericDTO;
 		String userId = visitDTO.getUserId ();
 		UserDTO userDTO = null;
 		try
@@ -97,7 +97,8 @@ public class VisitDTOPostProcesseor extends DTOPostProcessor
 		// now process the visit dto
 		System.out.println ( "in visit dto post processor" );
 		// now return the dto
-		return visitDTO;
+		return visitDTO;*/
+		return null;
 	}
 	
 }

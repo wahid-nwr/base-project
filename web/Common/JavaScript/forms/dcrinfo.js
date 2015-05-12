@@ -5,7 +5,6 @@
  * 
  * http://extjs.com/license
  */
-
 function getDcrinfoAddForm(tabpanel,store)
 {
 	var extDateField = new Ext.form.DateField({

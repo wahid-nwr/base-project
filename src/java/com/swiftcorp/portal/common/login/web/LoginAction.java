@@ -45,7 +45,6 @@ import com.swiftcorp.portal.common.web.SESSION_KEYS;
 import com.swiftcorp.portal.geo.dto.GeoDTO;
 import com.swiftcorp.portal.geo.service.IGeoService;
 import com.swiftcorp.portal.group.service.IGroupService;
-import com.swiftcorp.portal.report.util.ReportUtils;
 import com.swiftcorp.portal.user.dto.UserDTO;
 import com.swiftcorp.portal.user.exception.InvalidPasswordException;
 import com.swiftcorp.portal.user.exception.UserNotFoundException;
@@ -264,10 +263,23 @@ public class LoginAction extends DispatchAction
 		
 		ActionForward actionForward = null;
 		HttpSession session = request.getSession ();
+		if(session == null)
+		{
+			response.sendRedirect(promptLoginRequestString);
+		}
 		LoginDetailInfoDTO loginInfo = (LoginDetailInfoDTO) session.getAttribute ( SESSION_KEYS.LOGIN_INFO );
 		if ( loginInfo == null )
 		{
 			response.sendRedirect ( promptLoginRequestString );
+		}
+		try
+		{
+			loginInfo.getUser ();
+		}
+		catch(Exception e)
+		{
+			return promptLogin(mapping, form, request, response);
+			//response.sendRedirect(promptLoginRequestString);
 		}
 		
 		session.setAttribute ( SESSION_KEYS.USER, loginInfo.getUser () );
@@ -278,10 +290,10 @@ public class LoginAction extends DispatchAction
 		
 		// since this month list and year list is needed to all other components
 		// that's why we need to add those into first long-in
-		List<ViewValueDTO> monthList = ReportUtils.getMonths ();
+		/*List<ViewValueDTO> monthList = ReportUtils.getMonths ();
 		List<ViewValueDTO> yearList = ReportUtils.getYears ();
 		request.getSession ().setAttribute ( SESSION_KEYS.MONTH_LIST, monthList );
-		request.getSession ().setAttribute ( SESSION_KEYS.YEAR_LIST, yearList );
+		request.getSession ().setAttribute ( SESSION_KEYS.YEAR_LIST, yearList );*/
 		
 		if ( actionForward != null )
 		{

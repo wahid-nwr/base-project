@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="swift" basedir=".">
+<project name="swiftportal" basedir=".">
 	
    <property file="build.properties"/>
    <property file="database.properties"/>	
@@ -22,7 +22,7 @@
 	=====================================================================================================	
 	-->
 	
-	<property name="war.name" value="swift"/>    
+	<property name="war.name" value="swiftportal"/>    
     <property name="hotswap.port" value="8787"/>
 	<property name="date-pattern" value="MM/dd/yyyy kk:mm:ss"/>
 		

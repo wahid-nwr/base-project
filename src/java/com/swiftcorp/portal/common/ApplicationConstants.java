@@ -3,8 +3,6 @@ package com.swiftcorp.portal.common;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.swiftcorp.portal.report.service.IReportService;
-
 public class ApplicationConstants
 {
 	
@@ -35,7 +33,7 @@ public class ApplicationConstants
 	public static String FILE_STORAGE_UPLOAD_DIR = FILE_STORAGE_DIR + "upload/";
 	public static String FILE_STORAGE_TEMPLATE_DIR = FILE_STORAGE_DIR + "templates/";
 	public static String FILE_STORAGE_REPORT_DIR = FILE_STORAGE_DIR + "reports/";
-	public static IReportService REPORT_SERVICE = null;
+	//public static IReportService REPORT_SERVICE = null;
 	
 	public static final String RECORD_SOURCE_STATUS_NOT_UPLOADED = "Not Uploaded";
 	public static final String RECORD_SOURCE_STATUS_UPLOADED = "Uploaded";
@@ -78,6 +76,8 @@ public class ApplicationConstants
 	public static int ROLE_FUNCTION_DCR_INFO = 35;
 	public static int ROLE_FUNCTION_DCR_REPORT = 36;
 	public static int ROLE_FUNCTION_IMPORT = 37;
+	public static int ROLE_FUNCTION_INFO = 44;
+	public static int ROLE_FUNCTION_AJAN = 45;
 	
 	public static long ROLE_SYSTEM_ADMIN = 1;
 	public static long ROLE_DOCTOR = 8;

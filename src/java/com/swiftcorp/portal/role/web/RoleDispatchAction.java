@@ -274,6 +274,19 @@ public class RoleDispatchAction extends DispatchAction
 		
 	}
 	
+	public ActionForward getRoleList ( ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response )
+	throws SystemException, BusinessRuleViolationException, Exception
+	{
+		log.info ( "getRoleList() : Enter" );
+		DynaValidatorActionForm roleForm = (DynaValidatorActionForm) form;
+		List<RoleDTO> roleDTOList = null;
+		
+		roleDTOList = roleService.getList();
+		request.setAttribute("roleList", roleDTOList);
+		log.info ( "getRoleList() : Exit" );
+		return mapping.findForward ( ForwardNames.GET_ROLE_LIST );			
+	}
+	
 	public ActionForward cancelRoleOperation ( ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response )
 			throws Exception
 	{

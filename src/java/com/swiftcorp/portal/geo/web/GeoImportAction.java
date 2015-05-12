@@ -32,10 +32,8 @@ import com.swiftcorp.portal.common.web.ForwardNames;
 import com.swiftcorp.portal.common.web.MessageKeys;
 import com.swiftcorp.portal.geo.StrutsUploadObject;
 import com.swiftcorp.portal.geo.dto.GeoImportHHRegDTO;
-import com.swiftcorp.portal.geo.dto.SkDataDTO;
 import com.swiftcorp.portal.geo.service.IGeoService;
 import com.swiftcorp.portal.group.service.IGroupService;
-import com.swiftcorp.portal.user.dto.SSDTO;
 
 public class GeoImportAction extends DispatchAction
 {
@@ -113,9 +111,9 @@ public class GeoImportAction extends DispatchAction
 		boolean exists = false;
 		List<GeoImportHHRegDTO> geoImportHHRegDTOList = new ArrayList<GeoImportHHRegDTO> ();
 		GeoImportHHRegDTO geoImportHHRegDTO = null;
-		List<SkDataDTO> skDataDTOList = null;
+		/*List<SkDataDTO> skDataDTOList = null;
 		SkDataDTO skDataDTO = null;
-		
+		*/
 		
 		String cityCorpId = "";
 		String prevCityCorpId = "";		
@@ -133,7 +131,7 @@ public class GeoImportAction extends DispatchAction
 				// Get the first sheet
 				Sheet sheet = w.getSheet ( k );
 				geoImportHHRegDTO = new GeoImportHHRegDTO ();
-				skDataDTOList = new ArrayList<SkDataDTO> ();
+				//skDataDTOList = new ArrayList<SkDataDTO> ();
 				// Loop over first 10 column and lines
 				// System.out.println("columns:::" + sheet.getColumns());
 				for ( int row = 0; row < sheet.getRows (); row++ )
@@ -162,8 +160,8 @@ public class GeoImportAction extends DispatchAction
 									skId = cell.getContents ();
 									if ( skId != null && !skId.equals ( "null" ) && skId.length ()>0 && !skId.equals ( prevSKId ) )
 									{		
-										skDataDTO = this.populateSkDataDTOList ( sheet, row );
-										skDataDTOList.add ( skDataDTO );
+										//skDataDTO = this.populateSkDataDTOList ( sheet, row );
+										//skDataDTOList.add ( skDataDTO );
 										prevSKId = skId;
 									}
 									break;
@@ -171,7 +169,7 @@ public class GeoImportAction extends DispatchAction
 									ssId = cell.getContents ();	
 									if ( ssId != null && !ssId.equals ( prevSSId ) )
 									{
-										skDataDTOList = this.populateSkDataDTO(skDataDTOList,skDataDTO,sheet,row);
+										//skDataDTOList = this.populateSkDataDTO(skDataDTOList,skDataDTO,sheet,row);
 										prevSSId = ssId;
 									}
 									break;
@@ -182,7 +180,7 @@ public class GeoImportAction extends DispatchAction
 								
 					}
 				}
-				geoImportHHRegDTO.setSkDataDTOList ( skDataDTOList );
+				//geoImportHHRegDTO.setSkDataDTOList ( skDataDTOList );
 				geoImportHHRegDTOList.add ( geoImportHHRegDTO );
 			}
 			//geoImportHHRegDTOList = new ArrayList<GeoImportHHRegDTO> ();
@@ -201,6 +199,7 @@ public class GeoImportAction extends DispatchAction
 			e.printStackTrace ();
 		}
 	}
+	/*
 	public SkDataDTO populateSkDataDTOList(Sheet sheet,int row)
 	{
 		String skId = "";
@@ -247,7 +246,7 @@ public class GeoImportAction extends DispatchAction
 		skDataDTOList.add ( skDataDTO );
 		return skDataDTOList;
 	}
-	
+	*/
 	public GeoImportHHRegDTO loadGeoInfo(Sheet sheet,GeoImportHHRegDTO geoImportHHRegDTO)
 	{
 		for ( int row = 0; row < sheet.getRows (); row++ )

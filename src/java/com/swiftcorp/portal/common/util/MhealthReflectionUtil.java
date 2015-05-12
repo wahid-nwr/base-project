@@ -20,7 +20,7 @@ import com.swiftcorp.portal.common.service.DTOPostProcessor;
 import com.swiftcorp.portal.common.service.MhealthDTOAccesor;
 import com.swiftcorp.portal.common.service.PropertyAccessor;
 import com.swiftcorp.portal.common.service.QuestionPropertyAccessorMap;
-import com.swiftcorp.portal.dto.request.QuestionAnswerMap;
+//import com.swiftcorp.portal.dto.request.QuestionAnswerMap;
 
 /**
  * @author asraful.haque
@@ -30,7 +30,7 @@ public class MhealthReflectionUtil
 {
 	// get the logger
 	private static final Log logger = LogFactory.getLog ( MhealthReflectionUtil.class );
-	
+	/*
 	public static void setValueToProperty ( Object entityObject, String propertyName, Object propertyValue )
 			throws Exception
 	{
@@ -65,9 +65,9 @@ public class MhealthReflectionUtil
 		
 	}
 	
-	/*
+	
 	 * 
-	 */
+	 
 	  public static boolean doesValueExistForQuestion ( Map< String, PropertyAccessor >qidPropertyAccessorMap ,Map<String, Object>  questionAnswerMap) 
 	  { 
 		  boolean doesExist = false;
@@ -261,5 +261,5 @@ public class MhealthReflectionUtil
 			}
 			
 		}
-	}
+	}*/
 }

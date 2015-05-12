@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.swiftcorp.portal.common.exception.SystemException;
-import com.swiftcorp.portal.household.dto.HouseholdDTO;
 import com.swiftcorp.portal.user.UserSuccessResult;
-import com.swiftcorp.portal.user.dto.SSDTO;
 import com.swiftcorp.portal.user.dto.UserDTO;
 
 public interface IUserDAO
@@ -34,13 +32,6 @@ public interface IUserDAO
 	public ArrayList<UserDTO> getList ( ) throws SystemException;
 	
 	public ArrayList<UserDTO> getList ( Long groupId, UserSortBy sortby )
-			throws SystemException;
-	
-	public UserSuccessResult addSS ( SSDTO ssDto ) throws SystemException;
-	
-	public SSDTO getSS ( Long componentId ) throws SystemException;
-	
-	public List<HouseholdDTO> getHouseholdListForSS ( String ssId, String skId )
 			throws SystemException;
 	
 }

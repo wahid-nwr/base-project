@@ -47,14 +47,20 @@ public class UserSearchUtils
 		}
 		
 		int offset = 0;
-		if ( pageNumber != -1 && pageNumber > 1 )
+		if( pageNumber != -1 && pageNumber > 1)
 		{
-			offset = (pageNumber - 1) * resultPerPage;
+			offset = (pageNumber - 1)*resultPerPage;
+	    }
+		String offSet = request.getParameter("start");
+		if(offSet!=null && !offSet.equals("null") && offSet.length()>0)
+		{
+			offset = Integer.parseInt(offSet);
 		}
+
 		
 		GroupDTO group = (GroupDTO) request.getSession ().getAttribute ( "group" );
 				
-		String sqlQuery = " SELECT a.componentId, a.uniqueCode, a.lastName, a.firstName  FROM users a";
+		String sqlQuery = " SELECT a.componentId, a.uniqueCode, a.lastName, a.firstName,a.password,a.roleId FROM users a";
 		if ( group != null )
 		{
 			sqlQuery += " WHERE a.groupId = " + group.getComponentId () + " AND";
@@ -80,7 +86,8 @@ public class UserSearchUtils
 		columnHeader.add ( "label.user.uniqueCode" );
 		columnHeader.add ( "label.user.lastName" );
 		columnHeader.add ( "label.user.firstName" );
-		// columnHeader.add("label.user.role");
+		columnHeader.add ( "label.user.password" );
+		columnHeader.add("label.user.role");
 		return columnHeader;
 	}
 	

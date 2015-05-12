@@ -154,7 +154,7 @@ Ext.extend(ApiPanel, Ext.tree.TreePanel, {
 					thePanel = loadClassManually(cls,tab,main);					
 				}
 				var parts = cls.split('.');
-				this.selectPath('/root/apidocs/pkg-Ext/pkg-air/'+parts.join('/'));
+				this.selectPath('/root/apidocs/'+parts.join('/'));
 				//main.remove('docs-'+cls);
 	        }
 	        else if (cls.indexOf('Panel') > -1) {

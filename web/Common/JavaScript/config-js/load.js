@@ -168,6 +168,255 @@ function loadClassManually(className,tab,main)
                 }
 			});
 		}	
+	}	
+	else if(className.indexOf('userPanel')>-1){
+		//alert("aaaa");
+		var div=document.getElementById('docs-userPanel');
+		if(div!=null)
+		{			
+			Ext.ux.ScriptMgr.load({
+                scripts : ['./Common/JavaScript/forms/User.js'],
+                callback : function() {
+                	//alert('loaded');
+                	p=getUserPanel();
+                	if(tab!=null)
+                	{
+                		//tab.remove('replace');
+	                	tab.add(p);
+						tab.doLayout();
+						if(main!=null)
+						{
+							main.setActiveTab(tab);
+						}
+						
+						Ext.Msg.hide();
+						tab.remove('header');
+						tab.remove('loading');
+						tab.remove('loading-mask');
+                	}
+                }
+			});
+		}	
+	}
+	else if(className.indexOf('helloPanel')>-1){
+		//alert("aaaa");
+		var div=document.getElementById('docs-helloPanel');
+		if(div!=null)
+		{
+			Ext.ux.ScriptMgr.load({
+                scripts : ['./Common/JavaScript/forms/Hello.js'],
+                callback : function() {
+                	//alert('loaded');
+                	p=getHelloPanel();
+                	if(tab!=null)
+                	{
+                		//tab.remove('replace');
+	                	tab.add(p);
+						tab.doLayout();
+						if(main!=null)
+						{
+							main.setActiveTab(tab);
+						}
+						
+						Ext.Msg.hide();
+						tab.remove('header');
+						tab.remove('loading');
+						tab.remove('loading-mask');
+                	}
+                }
+			});
+		}	
+	}
+	
+	else if(className.indexOf('beneficiaryPanel')>-1 && p==null)
+	{
+		var div=document.getElementById('docs-beneficiaryPanel');
+		if(div!=null)
+		{
+			Ext.ux.ScriptMgr.load({
+                scripts : ['./Common/JavaScript/forms/Beneficiary.js'],
+                callback : function() {
+                	p=getBeneficiaryPanel();
+                	if(tab!=null)
+                	{
+	                	tab.add(p);
+						tab.doLayout();
+						if(main!=null)
+						{
+							main.setActiveTab(tab);
+						}
+						
+						Ext.Msg.hide();
+						tab.remove('header');
+						tab.remove('loading');
+						tab.remove('loading-mask');
+                	}
+                }
+			});
+		}	
+	}
+	else if(className.indexOf('beneficiaryPanel')>-1 && p==null)
+	{
+		var div=document.getElementById('docs-beneficiaryPanel');
+		if(div!=null)
+		{
+			Ext.ux.ScriptMgr.load({
+                scripts : ['./Common/JavaScript/forms/Beneficiary.js'],
+                callback : function() {
+                	p=getBeneficiaryPanel();
+                	if(tab!=null)
+                	{
+	                	tab.add(p);
+						tab.doLayout();
+						if(main!=null)
+						{
+							main.setActiveTab(tab);
+						}
+						
+						Ext.Msg.hide();
+						tab.remove('header');
+						tab.remove('loading');
+						tab.remove('loading-mask');
+                	}
+                }
+			});
+		}	
+	}
+	else if(className.indexOf('homePanel')>-1 && p==null)
+	{
+		var div=document.getElementById('docs-homePanel');
+		if(div!=null)
+		{
+			Ext.ux.ScriptMgr.load({
+                scripts : ['./Common/JavaScript/forms/Home.js'],
+                callback : function() {
+                	p=getHomePanel();
+                	if(tab!=null)
+                	{
+	                	tab.add(p);
+						tab.doLayout();
+						if(main!=null)
+						{
+							main.setActiveTab(tab);
+						}
+						
+						Ext.Msg.hide();
+						tab.remove('header');
+						tab.remove('loading');
+						tab.remove('loading-mask');
+                	}
+                }
+			});
+		}	
+	}
+	else if(className.indexOf('rolePanel')>-1 && p==null)
+	{
+		var div=document.getElementById('docs-rolePanel');
+		if(div!=null)
+		{
+			Ext.ux.ScriptMgr.load({
+                scripts : ['./Common/JavaScript/forms/RoleFunction.js'],
+                callback : function() {
+                	p=getRolePanel();
+                	if(tab!=null)
+                	{
+	                	tab.add(p);
+						tab.doLayout();
+						if(main!=null)
+						{
+							main.setActiveTab(tab);
+						}
+						
+						Ext.Msg.hide();
+						tab.remove('header');
+						tab.remove('loading');
+						tab.remove('loading-mask');
+                	}
+                }
+			});
+		}	
+	}
+	else if(className.indexOf('infoPanel')>-1 && p==null)
+	{
+		var div=document.getElementById('docs-infoPanel');
+		if(div!=null)
+		{
+			Ext.ux.ScriptMgr.load({
+                scripts : ['./Common/JavaScript/forms/Info.js'],
+                callback : function() {
+                	p=getInfoPanel();
+                	if(tab!=null)
+                	{
+	                	tab.add(p);
+						tab.doLayout();
+						if(main!=null)
+						{
+							main.setActiveTab(tab);
+						}
+						
+						Ext.Msg.hide();
+						tab.remove('header');
+						tab.remove('loading');
+						tab.remove('loading-mask');
+                	}
+                }
+			});
+		}	
+	}
+	else if(className.indexOf('paitenprofilePanel')>-1 && p==null)
+	{
+		var div=document.getElementById('docs-paitenprofilePanel');
+		if(div!=null)
+		{
+			Ext.ux.ScriptMgr.load({
+                scripts : ['./Common/JavaScript/forms/Paitenprofile.js'],
+                callback : function() {
+                	p=getPaitenprofilePanel();
+                	if(tab!=null)
+                	{
+	                	tab.add(p);
+						tab.doLayout();
+						if(main!=null)
+						{
+							main.setActiveTab(tab);
+						}
+						
+						Ext.Msg.hide();
+						tab.remove('header');
+						tab.remove('loading');
+						tab.remove('loading-mask');
+                	}
+                }
+			});
+		}	
+	}
+	
+	else if(className.indexOf('ajanPanel')>-1 && p==null)
+	{
+		var div=document.getElementById('docs-ajanPanel');
+		if(div!=null)
+		{
+			Ext.ux.ScriptMgr.load({
+                scripts : ['./Common/JavaScript/forms/Ajan.js'],
+                callback : function() {
+                	p=getAjanPanel();
+                	if(tab!=null)
+                	{
+	                	tab.add(p);
+						tab.doLayout();
+						if(main!=null)
+						{
+							main.setActiveTab(tab);
+						}
+						
+						Ext.Msg.hide();
+						tab.remove('header');
+						tab.remove('loading');
+						tab.remove('loading-mask');
+                	}
+                }
+			});
+		}	
 	}
 	//add load script here
 	else if(className.indexOf('branchPanel')>-1){
@@ -180,4 +429,16 @@ function loadClassManually(className,tab,main)
 		p=getLoaneePanel();
 	}
 	return p;
+}
+function loadViewViaAjax(url) {
+    Ext.Ajax.request({
+        url: url,
+        success: function(objServerResponse) {
+            var responseText = objServerResponse.responseText;
+            var scripts, scriptsFinder=/<script[^>]*>([\s\S]+)<\/script>/gi;
+            while(scripts=scriptsFinder.exec(responseText)) {
+                eval.call(window,scripts[1]);
+            }
+        }
+    });
 }

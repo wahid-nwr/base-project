@@ -41,8 +41,7 @@ public interface IUserService extends IGenericService
 	
 	public GenericDTO get ( String userId )
 			throws SystemException, BusinessRuleViolationException;
-	public UserSuccessResult addSS ( GenericDTO genericDTO ) throws SystemException,UserAlreadyExistsException;
-	public BusinessOperationResult authenticate ( LoginDTO LoginDTO )
+		public BusinessOperationResult authenticate ( LoginDTO LoginDTO )
 			throws SystemException, UserNotFoundException,
 			InvalidPasswordException;
 	

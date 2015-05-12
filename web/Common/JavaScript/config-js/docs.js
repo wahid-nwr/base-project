@@ -6,11 +6,18 @@ Docs = {};
 var resultTpl = new Ext.XTemplate(
     '<tpl for=".">',
     '<div class="search-item">',
+        /*
         '<a class="member" ext:cls="{cls}" ext:member="{member}" href="output/{cls}.html">',
 		'<img src="./Common/JavaScript/resources/s.gif" class="item-icon icon-{type}"/>{member}',
 		'</a> ',
 		'<a class="cls" ext:cls="{cls}" href="output/{cls}.html">{cls}</a>',
         '<p>{doc}</p>',
+        */
+	    '<a class="member" ext:cls="{infoid}Panel" ext:member="{infoid}Panel" href="javascript:loadClassManually(\'{infoid}'+'Panel'+'\')">',
+		'<img src="./Common/JavaScript/resources/s.gif" class="item-icon icon-{infoid}"/>{infoid}',
+		'</a> ',
+		'<a class="cls" ext:cls="{infoid}Panel" href="javascript:loadClassManually(\'{infoid}'+'Panel'+'\')">{infoid}</a>',
+    	'<p>{infodetail}</p>',
     '</div></tpl>'
 );
 var areaComboTpl= new Ext.XTemplate(
@@ -151,10 +158,19 @@ Ext.extend(ApiPanel, Ext.tree.TreePanel, {
 				var form = Ext.get(detail+'AddForm');
 				if(ct==null && form==null)
 				{
-					thePanel = loadClassManually(cls,tab,main);					
+					//alert('ct::'+ct);
+					thePanel = loadClassManually(cls,tab,main);
+					//thePanel.id='docs-'+cls;
+					//tab.remove('header');
+					
+					
 				}
-				var parts = cls.split('.');
-				this.selectPath('/root/apidocs/'+parts.join('/'));
+				
+				 var parts = cls.split('.');
+				 //alert(parts);
+				 //this.selectPath('/root/apidocs/pkg-Ext/pkg-air/'+parts.join('/'));
+				 //alert(this.getNodeById(parts).getPath());
+				 this.selectPath('/root/apidocs/'+parts.join('/'));
 				//main.remove('docs-'+cls);
 	        }
 	        else if (cls.indexOf('Panel') > -1) {
@@ -258,13 +274,28 @@ MainPanel = function(){
 	
 	this.searchStore = new Ext.data.Store({
         proxy: new Ext.data.HttpProxy({
-            url: 'http://extjs.com/playpen/api.php'
+           // url: 'http://extjs.com/playpen/api.php'
+        	url: 'infoAction.csmp?method=promptExtInfoSearchSystemLevel'
         }),
+        /*
         reader: new Ext.data.JsonReader({
 	            root: 'data'
 	        }, 
 			['cls', 'member', 'type', 'doc']
 		),
+		*/
+        reader: new Ext.data.XmlReader({
+            // records will have an "Item" tag
+            record: 'Item',
+            id: 'componentId',
+            totalRecords: 'TotalResults'
+        }, [
+            // set up the fields mapping into the xml doc
+            // The first needs mapping, the others are very basic
+            {name: 'infoid', mapping: 'ItemAttributes > infoid'},
+            'infodetail',
+			   'componentId'
+        ]),
 		baseParams: {},
         listeners: {
             'beforeload' : function(){
@@ -367,6 +398,7 @@ var main=Ext.extend(MainPanel, Ext.TabPanel, {
             if(member){
 				Ext.Msg.progress('Wait', 'Reading file...');
                 tab.scrollToMember(member);
+                Ext.Msg.hide();
             }
         }else{
 			

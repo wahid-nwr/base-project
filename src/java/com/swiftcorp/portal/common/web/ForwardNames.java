@@ -39,6 +39,7 @@ public interface ForwardNames
 	/************************ USER ****************************/
 	
 	String USER_SEARCH_SYSTEM_LEVEL = "user_search_system_level";
+	String EXT_USER_SEARCH_SYSTEM_LEVEL = "ext_user_search_system_level";
 	String USER_SEARCH_GROUP_LEVEL = "user_search_group_level";
 	
 	String PROMPT_ADD_USER = "prompt_add_user";
@@ -60,7 +61,10 @@ public interface ForwardNames
 	
 	String PROMPT_ADD_ROLE = "prompt_add_role";
 	String PROMPT_MODIFY_ROLE = "prompt_modify_role";
+	String GET_ROLE_LIST = "get_role_list";
 	String SHOW_FUNCTIONS = "show_functions";
+	String GET_ROLE_FUNCTION_LIST = "get_role_function_list";
+	String GET_ROLE_FUNCTIONS_LIST = "get_role_functions_list";
 	
 	/************************ GROUP ****************************/
 	String GROUP_SEARCH_SYSTEM_LEVEL = "group_search_system_level";
@@ -243,5 +247,60 @@ public interface ForwardNames
 	
 	String PROMPT_ADD_PATIENT = "prompt_add_patient";	
 	String PROMPT_MODIFY_PATIENT = "prompt_modify_patient";	
+
+	/************************HELLO ****************************/
+	String HELLO_HOME = "hello_home"; 
+	String HELLO_HOME_FROM_GROUP_LEVEL = "hello_home_group_level"; 
+	String HELLO_HOME_SYSTEM_LEVEL = "hello_home_system_level";
+	String HELLO_SEARCH_SYSTEM_LEVEL = "hello_search_system_level";
+	String EXT_HELLO_SEARCH_SYSTEM_LEVEL = "ext_hello_search_system_level";
+	String HELLO_SEARCH_GROUP_LEVEL = "hello_search_group_level";
+	
+	String PROMPT_ADD_HELLO = "prompt_add_hello";	
+	String PROMPT_MODIFY_HELLO = "prompt_modify_hello";	
+
+	/************************HOME ****************************/
+	String HOME_HOME = "home_home"; 
+	String HOME_HOME_FROM_GROUP_LEVEL = "home_home_group_level"; 
+	String HOME_HOME_SYSTEM_LEVEL = "home_home_system_level";
+	String HOME_SEARCH_SYSTEM_LEVEL = "home_search_system_level";
+	String EXT_HOME_SEARCH_SYSTEM_LEVEL = "ext_home_search_system_level";
+	String HOME_SEARCH_GROUP_LEVEL = "home_search_group_level";
+	
+	String PROMPT_ADD_HOME = "prompt_add_home";	
+	String PROMPT_MODIFY_HOME = "prompt_modify_home";	
+
+	/************************INFO ****************************/
+	String INFO_HOME = "info_home"; 
+	String INFO_HOME_FROM_GROUP_LEVEL = "info_home_group_level"; 
+	String INFO_HOME_SYSTEM_LEVEL = "info_home_system_level";
+	String INFO_SEARCH_SYSTEM_LEVEL = "info_search_system_level";
+	String EXT_INFO_SEARCH_SYSTEM_LEVEL = "ext_info_search_system_level";
+	String INFO_SEARCH_GROUP_LEVEL = "info_search_group_level";
+	
+	String PROMPT_ADD_INFO = "prompt_add_info";	
+	String PROMPT_MODIFY_INFO = "prompt_modify_info";	
+
+	/************************PAITENPROFILE ****************************/
+	String PAITENPROFILE_HOME = "paitenprofile_home"; 
+	String PAITENPROFILE_HOME_FROM_GROUP_LEVEL = "paitenprofile_home_group_level"; 
+	String PAITENPROFILE_HOME_SYSTEM_LEVEL = "paitenprofile_home_system_level";
+	String PAITENPROFILE_SEARCH_SYSTEM_LEVEL = "paitenprofile_search_system_level";
+	String EXT_PAITENPROFILE_SEARCH_SYSTEM_LEVEL = "ext_paitenprofile_search_system_level";
+	String PAITENPROFILE_SEARCH_GROUP_LEVEL = "paitenprofile_search_group_level";
+	
+	String PROMPT_ADD_PAITENPROFILE = "prompt_add_paitenprofile";	
+	String PROMPT_MODIFY_PAITENPROFILE = "prompt_modify_paitenprofile";	
+
+	/************************AJAN ****************************/
+	String AJAN_HOME = "ajan_home"; 
+	String AJAN_HOME_FROM_GROUP_LEVEL = "ajan_home_group_level"; 
+	String AJAN_HOME_SYSTEM_LEVEL = "ajan_home_system_level";
+	String AJAN_SEARCH_SYSTEM_LEVEL = "ajan_search_system_level";
+	String EXT_AJAN_SEARCH_SYSTEM_LEVEL = "ext_ajan_search_system_level";
+	String AJAN_SEARCH_GROUP_LEVEL = "ajan_search_group_level";
+	
+	String PROMPT_ADD_AJAN = "prompt_add_ajan";	
+	String PROMPT_MODIFY_AJAN = "prompt_modify_ajan";	
 
  }

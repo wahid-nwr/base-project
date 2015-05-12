@@ -1,0 +1,23 @@
+temp.dir=temp
+dist.dir=dist
+src.dir=src/java
+lib.dir=lib
+compile.lib.dir=${lib.dir}/compile
+run.lib.dir=${lib.dir}/runtime
+
+test-src.dir=/src/test
+web.dir=web
+configuration.dir=src/conf
+tomcat.home=/opt/apache-tomcat-7.0.5
+deploy.dir=${tomcat.home}/webapps
+
+web.dir=web
+war.name=swift
+web-build.dir=${temp.dir}/${war.name}
+
+#build.classes.dir should always recide in ${web-build.dir}
+
+build.classes.dir=${web-build.dir}/WEB-INF/classes
+test-build.dir=${temp.dir}/test/classes
+buildhome=build
+

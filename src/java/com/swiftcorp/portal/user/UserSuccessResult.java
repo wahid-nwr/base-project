@@ -10,7 +10,6 @@
 package com.swiftcorp.portal.user;
 
 import com.swiftcorp.portal.common.BusinessOperationResult;
-import com.swiftcorp.portal.user.dto.SSDTO;
 import com.swiftcorp.portal.user.dto.UserDTO;
 
 /**
@@ -21,18 +20,7 @@ public class UserSuccessResult extends BusinessOperationResult
 {
 	private static final long serialVersionUID = 1L;
 	private UserDTO operationResult;
-	private SSDTO ssOperationResult;
 	
-	public void setSsOperationResult ( SSDTO ssOperationResult )
-	{
-		this.ssOperationResult = ssOperationResult;
-	}
-
-	public SSDTO getSsOperationResult ( )
-	{
-		return ssOperationResult;
-	}
-
 	public UserDTO getOperationResult ( )
 	{
 		return operationResult;

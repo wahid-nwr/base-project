@@ -115,8 +115,8 @@ public class JavascriptFileGenerator {
 			if(line.indexOf("fieldSet")>0)
 			{		
 				sampleFormFieldsJSFile.remove(i);
-				//System.out.println(line+line.length());
 				formFields.add("\n\t\t{ xtype: 'hidden',name:'componentId', fieldLabel: 'componentId' }");
+				//System.out.println(line+line.length());
 				for(FieldDTO fieldDTO:fieldNames)
 				{
 					formField = generateField(fieldDTO.getName(),fieldDTO.getType());
@@ -138,8 +138,7 @@ public class JavascriptFileGenerator {
 			if(line.indexOf("columns")>0)
 			{		
 				sampleGridColumnsJSFile.remove(i);
-				//System.out.println(line+line.length());
-				
+				//System.out.println(line+line.length());				
 				for(FieldDTO fieldDTO:fieldNames)
 				{
 					gridColumn = getGridColumn(fieldDTO.getName(),fieldDTO.getType());
@@ -339,19 +338,23 @@ public class JavascriptFileGenerator {
 	{
 		System.out.println("<<Starting the DTO code generator:>>");
 		List<FieldDTO> fieldNames = new ArrayList<FieldDTO>();
-		FieldDTO fieldDTO = new FieldDTO("name", "String" );
+		FieldDTO fieldDTO = new FieldDTO("lastName", "string" );
 		fieldNames.add(fieldDTO);
-		fieldDTO = new FieldDTO("parent", "String" );
+		fieldDTO = new FieldDTO("firstName", "string" );
 		fieldNames.add(fieldDTO);
-		fieldDTO = new FieldDTO("startdate", "Date" );
+		fieldDTO = new FieldDTO("password", "string" );
 		fieldNames.add(fieldDTO);
-		fieldDTO = new FieldDTO("description", "Textarea" );
+		fieldDTO = new FieldDTO("confirmPassword", "string" );
+		fieldNames.add(fieldDTO);
+		fieldDTO = new FieldDTO("groupId", "long" );
+		fieldDTO = new FieldDTO("email", "string" );
+		fieldDTO = new FieldDTO("uniqueCode", "string" );
 		fieldNames.add(fieldDTO);
 					
 		try 
 		{     
-			generateLoadScriptComponentLink(JSPFileGenerator.getReplaceDTO("test"));
-			//generate(fieldNames, "role", "scr-cg");
+			//generateLoadScriptComponentLink(JSPFileGenerator.getReplaceDTO("test"));
+			generate(fieldNames, "user", "/home/wahid/generated");
 		}
 		catch (Exception e)
 		{

@@ -10,8 +10,7 @@ public class GeoImportHHRegDTO
 	private String regionName;
 	private String branchId;
 	private String branchName;
-	List<SkDataDTO> skDataDTOList;
-	
+		
 	public String getCityCorpId ( )
 	{
 		return cityCorpId;
@@ -72,15 +71,7 @@ public class GeoImportHHRegDTO
 		this.branchName = branchName;
 	}
 	
-	public List<SkDataDTO> getSkDataDTOList ( )
-	{
-		return skDataDTOList;
-	}
 	
-	public void setSkDataDTOList ( List<SkDataDTO> skDataDTOList )
-	{
-		this.skDataDTOList = skDataDTOList;
-	}
 	@Override
 	public String toString()
 	{

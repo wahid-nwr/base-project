@@ -190,11 +190,12 @@ public class CustomFileUtils
          		updatedFileName = matcherUppercase.replaceAll(replaceDTO.getTargetAllUpperCase());
          		isFound = true ;
          	} 
-            
+         	System.out.println ("updatedFileName::"+updatedFileName);
          	if(!isFound)
          	{
          		updatedFileName = srcFiles[i].getName();
-         	}    
+         	}
+         	System.out.println ("updatedFileName::"+updatedFileName);
      
             File copiedFile = new File(destDir, updatedFileName);
             if (exclusionList == null || !exclusionList.contains(srcFiles[i].getCanonicalPath())) 

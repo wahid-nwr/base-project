@@ -60,10 +60,13 @@ public class SamplecomSearchUtils
 		}
 		
 		int offset = 0;
-		if( pageNumber != -1 && pageNumber > 1)
+				
+		String offSet = request.getParameter("start");
+		if(offSet!=null && !offSet.equals("null") && offSet.length()>0)
 		{
-			offset = (pageNumber - 1)*resultPerPage;
-	    }
+			offset = Integer.parseInt(offSet);
+		}
+
 		
 		String projectSqlQuery = " SELECT a.componentId, a.uniqueCode, a.description  FROM samplecom a";
 		projectSqlQuery += " WHERE a.uniqueCode like '%" + searchQueryInput + "%'";

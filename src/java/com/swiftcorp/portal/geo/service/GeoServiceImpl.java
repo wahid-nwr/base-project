@@ -28,11 +28,9 @@ import com.swiftcorp.portal.geo.dao.IGeoDAO;
 import com.swiftcorp.portal.geo.dao.IGeoDAO.GeoSortBy;
 import com.swiftcorp.portal.geo.dto.GeoDTO;
 import com.swiftcorp.portal.geo.dto.GeoImportHHRegDTO;
-import com.swiftcorp.portal.geo.dto.SkDataDTO;
 import com.swiftcorp.portal.geo.exception.GeoNotFoundException;
 import com.swiftcorp.portal.role.dto.RoleDTO;
 import com.swiftcorp.portal.role.service.IRoleService;
-import com.swiftcorp.portal.user.dto.SSDTO;
 import com.swiftcorp.portal.user.dto.UserDTO;
 import com.swiftcorp.portal.user.service.IUserService;
 /**
@@ -300,7 +298,7 @@ public class GeoServiceImpl implements IGeoService
 			UserDTO ssUserDTO;
 			System.out.println("in geo import");
 			
-			List<SkDataDTO> skDataDTOList = geoImportHHRegDTO.getSkDataDTOList ();
+			/*List<SkDataDTO> skDataDTOList = geoImportHHRegDTO.getSkDataDTOList ();
 			for(SkDataDTO skDataDTO : skDataDTOList)
 			{				
 				RoleDTO role = new RoleDTO();
@@ -340,7 +338,7 @@ public class GeoServiceImpl implements IGeoService
 						e.printStackTrace();
 					}
 				}				
-			}
+			}*/
 		}
 		return null;
 	}

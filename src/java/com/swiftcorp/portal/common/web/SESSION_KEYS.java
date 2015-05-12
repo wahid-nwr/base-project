@@ -173,4 +173,29 @@ public interface SESSION_KEYS
 	String PATIENT_LIST = "patient_list";
 	String PATIENT_SEARCH_RESULT = "patient_search_result";
 
+	/************************HELLO ****************************/
+	String HELLO = "hello";
+	String HELLO_LIST = "hello_list";
+	String HELLO_SEARCH_RESULT = "hello_search_result";
+
+	/************************HOME ****************************/
+	String HOME = "home";
+	String HOME_LIST = "home_list";
+	String HOME_SEARCH_RESULT = "home_search_result";
+
+	/************************INFO ****************************/
+	String INFO = "info";
+	String INFO_LIST = "info_list";
+	String INFO_SEARCH_RESULT = "info_search_result";
+
+	/************************PAITENPROFILE ****************************/
+	String PAITENPROFILE = "paitenprofile";
+	String PAITENPROFILE_LIST = "paitenprofile_list";
+	String PAITENPROFILE_SEARCH_RESULT = "paitenprofile_search_result";
+
+	/************************AJAN ****************************/
+	String AJAN = "ajan";
+	String AJAN_LIST = "ajan_list";
+	String AJAN_SEARCH_RESULT = "ajan_search_result";
+
  }

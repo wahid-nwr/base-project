@@ -48,85 +48,37 @@ if ( functionDTOList != null && functionDTOList.size() != 0 )
 				children = "{\"text\":\"Role Functions\",\"id\":\"rolePanel\",\"isClass\":true,\"iconCls\":\"icon-static\",\"cls\":\"cls\",\"leaf\":true}";
 			}
 		}
-		else if(functionId == ApplicationConstants.ROLE_FUNCTION_VIEW_QUESTION)
-		{
-		}
-		else if(functionId == ApplicationConstants.ROLE_FUNCTION_VIEW_QUESTIONNAIRE)
-		{
-		}
-		else if(functionId == ApplicationConstants.ROLE_FUNCTION_VIEW_BENEFICIARY)
-		{
-		}
-		else if(functionId == ApplicationConstants.ROLE_FUNCTION_VIEW_ALERTS)
-		{
-		}	
-		else if(functionId == ApplicationConstants.ROLE_FUNCTION_VIEW_WORK_SCHEDULE)
-		{
-		}	
-		else if(functionId == ApplicationConstants.ROLE_FUNCTION_VIEW_HOUSEHOLD)
-		{
-		}	
-		else if(functionId == ApplicationConstants.ROLE_FUNCTION_REPORT_MOTHER)
-		{
-		}
-		else if(functionId == ApplicationConstants.ROLE_FUNCTION_REPORT_CHILD)
-		{
-		}	
-		else if(functionId == ApplicationConstants.ROLE_FUNCTION_REPORT_MPR)
-		{
-		}
-		else if(functionId == ApplicationConstants.ROLE_FUNCTION_ALGORITHM)
-		{
-		}
-		else if(functionId == ApplicationConstants.ROLE_FUNCTION_GEOGRAPHICAL_INFO)
-		{
-		}
-		else if(functionId == ApplicationConstants.ROLE_FUNCTION_GEOGRAPHICAL_INFO_VIEW)
-		{
-		}
-		else if(functionId == ApplicationConstants.ROLE_FUNCTION_DCR_INFO)
+		else if(functionId == ApplicationConstants.ROLE_FUNCTION_VIEW_USERS)
 		{
 			if(children!=null && !children.equals("null") && children.length()>0)
 			{
-				children += ",{\"text\":\"DCR Info\",\"id\":\"dcrinfoPanel\",\"isClass\":true,\"iconCls\":\"icon-static\",\"cls\":\"cls\",\"leaf\":true}";
+				children += ",{\"text\":\"User\",\"id\":\"userPanel\",\"isClass\":true,\"iconCls\":\"icon-static\",\"cls\":\"cls\",\"leaf\":true}";
 			}
 			else
 			{
-				children = "{\"text\":\"DCR Info\",\"id\":\"dcrinfoPanel\",\"isClass\":true,\"iconCls\":\"icon-static\",\"cls\":\"cls\",\"leaf\":true}";
+				children = "{\"text\":\"User\",\"id\":\"userPanel\",\"isClass\":true,\"iconCls\":\"icon-static\",\"cls\":\"cls\",\"leaf\":true}";
 			}
 		}
-		else if(functionId == ApplicationConstants.ROLE_FUNCTION_DCR_REPORT)
+		if(functionId == ApplicationConstants.ROLE_FUNCTION_INFO)
 		{
 			if(children!=null && !children.equals("null") && children.length()>0)
 			{
-				children += ",{\"text\":\"DCR Report\",\"id\":\"dcrReportPanel\",\"isClass\":true,\"iconCls\":\"icon-static\",\"cls\":\"cls\",\"leaf\":true}";
+				children += ",{\"text\":\"Info\",\"id\":\"infoPanel\",\"isClass\":true,\"iconCls\":\"icon-static\",\"cls\":\"cls\",\"leaf\":true}";
 			}
 			else
 			{
-				children = "{\"text\":\"DCR Report\",\"id\":\"dcrReportPanel\",\"isClass\":true,\"iconCls\":\"icon-static\",\"cls\":\"cls\",\"leaf\":true}";
+				children = "{\"text\":\"Info\",\"id\":\"infoPanel\",\"isClass\":true,\"iconCls\":\"icon-static\",\"cls\":\"cls\",\"leaf\":true}";
 			}
-		}		
-		
-		if(functionId == ApplicationConstants.ROLE_FUNCTION_DCR_REPORT)
+		}
+		if(functionId == ApplicationConstants.ROLE_FUNCTION_AJAN)
 		{
 			if(children!=null && !children.equals("null") && children.length()>0)
 			{
-				children += ",{\"text\":\"Account\",\"id\":\"accountPanel\",\"isClass\":true,\"iconCls\":\"icon-static\",\"cls\":\"cls\",\"leaf\":true}";
+				children += ",{\"text\":\"Ajan\",\"id\":\"ajanPanel\",\"isClass\":true,\"iconCls\":\"icon-static\",\"cls\":\"cls\",\"leaf\":true}";
 			}
 			else
 			{
-				children = "{\"text\":\"Account\",\"id\":\"accountPanel\",\"isClass\":true,\"iconCls\":\"icon-static\",\"cls\":\"cls\",\"leaf\":true}";
-			}
-		}		
-		if(functionId == ApplicationConstants.ROLE_FUNCTION_DCR_REPORT)
-		{
-			if(children!=null && !children.equals("null") && children.length()>0)
-			{
-				children += ",{\"text\":\"Patient\",\"id\":\"patientPanel\",\"isClass\":true,\"iconCls\":\"icon-static\",\"cls\":\"cls\",\"leaf\":true}";
-			}
-			else
-			{
-				children = "{\"text\":\"Patient\",\"id\":\"patientPanel\",\"isClass\":true,\"iconCls\":\"icon-static\",\"cls\":\"cls\",\"leaf\":true}";
+				children = "{\"text\":\"Ajan\",\"id\":\"ajanPanel\",\"isClass\":true,\"iconCls\":\"icon-static\",\"cls\":\"cls\",\"leaf\":true}";
 			}
 		}
 		//add new functions here

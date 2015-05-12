@@ -28,7 +28,6 @@ import com.swiftcorp.portal.common.search.exception.InvalidSQLSyntaxException;
 import com.swiftcorp.portal.user.UserSuccessResult;
 import com.swiftcorp.portal.user.dao.IUserDAO;
 import com.swiftcorp.portal.user.dao.IUserDAO.UserSortBy;
-import com.swiftcorp.portal.user.dto.SSDTO;
 import com.swiftcorp.portal.user.dto.UserDTO;
 import com.swiftcorp.portal.user.exception.InvalidPasswordException;
 import com.swiftcorp.portal.user.exception.UserAlreadyExistsException;
@@ -139,62 +138,6 @@ public class UserServiceImpl implements IUserService
 		return successResult;
 	}
 	
-	public UserSuccessResult addSS ( GenericDTO genericDTO )throws SystemException, UserAlreadyExistsException
-	{
-		logger.info ( "add(UserDTO) : Enter" );
-		SSDTO ssdto = null;
-		
-		UserSuccessResult successResult;
-		if ( genericDTO == null )
-		{
-			throw new RuntimeException ( "Dto must not null" );
-		}
-		
-		if ( genericDTO instanceof SSDTO )
-		{
-			ssdto = (SSDTO) genericDTO;
-		}
-		else
-		{
-			throw new RuntimeException ( "operation.failure" );
-		}
-		
-		// check duplicacy
-		boolean isExist = checkSSUniqueCodeDuplicacy ( ssdto );
-		logger.info ( "add(UserDTO) : isExist = " + isExist );
-		if ( isExist )
-		{
-			throw new UserAlreadyExistsException ( "exception.UserAlreadyExistException" );
-		}
-		
-		logger.info ( "add(UserDTO) : componentId = " + ssdto.getComponentId () );
-		
-		// check the group ID.if NO group is selected, then add in orphan group
-		// (system default group)
-		/*
-		 * Long groupId = userDTO.getGroupId() ; if(groupId != null) {
-		 * userDTO.setGroupId(groupId); } else { userDTO.setGroupId(new
-		 * Long(GlobalConstants.GROUPID_OF_ORPHAN_USERS)); }
-		 */
-		
-		try
-		{
-			// encrypting the password
-			// Since it is newly add that's here treating as plain password. So
-			// need to encrypted first
-			//String encryptedPass = EncryptionUtil.encryptToHexValue ( ssdto.getPassword () );
-			//ssdto.setPassword ( encryptedPass );
-			
-			successResult = userDAO.addSS ( ssdto );
-		}
-		catch (Exception e)
-		{
-			logger.info ( "add(UserDTO) :", e );
-			throw new SystemException ( "operation.failure" );
-		}
-		logger.info ( "add(UserDTO) : Exit" );
-		return successResult;
-	}
 	
 	public BusinessOperationResult modify ( GenericDTO genericDTO )
 			throws SystemException, BusinessRuleViolationException
@@ -392,24 +335,6 @@ public class UserServiceImpl implements IUserService
 		{
 			userDTO = userDAO.get ( userDTO.getUniqueCode () );
 			if ( userDTO != null )
-			{
-				isExist = true;
-			}
-		}
-		catch (SystemException e)
-		{
-			throw e;
-		}
-		return isExist;
-	}
-	private boolean checkSSUniqueCodeDuplicacy ( SSDTO ssdto )
-	throws SystemException
-	{
-		boolean isExist = false;
-		try
-		{
-			UserDTO ssUserdto = userDAO.get ( ssdto.getUniqueCode () );
-			if ( ssUserdto != null )
 			{
 				isExist = true;
 			}

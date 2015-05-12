@@ -9,6 +9,7 @@
  */
 package com.swiftcorp.portal.role.web;
 
+import java.util.Enumeration;
 import java.util.List;
 import java.util.Set;
 
@@ -126,13 +127,55 @@ public class RoleFunctionDispatchAction extends DispatchAction
 		 */
 	}
 	
+	public ActionForward getExtFunctions ( ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response )
+	throws SystemException, BusinessRuleViolationException, Exception
+	{
+		log.info ( "getFunctions() : enter" );
+		
+		@SuppressWarnings("unused")
+		HttpSession session = request.getSession ();
+		
+		// Add this for role DTO
+		List<RoleDTO> roleList = roleService.getList ();
+		session.setAttribute ( SESSION_KEYS.ROLE_LIST, roleList );
+		
+		// get the function list
+		List<FunctionDTO> functionDTOList = functionService.getList ();
+		session.setAttribute ( SESSION_KEYS.FUNCTIONDTO_LIST, functionDTOList );
+		session.setAttribute ( SESSION_KEYS.OPERATION_TYPE, GlobalConstants.ADD_OPERATION );
+		log.info ( "getFunctions(): Generate the functionlist and put it to the request" );
+		return mapping.findForward ( ForwardNames.GET_ROLE_FUNCTION_LIST );		
+	}
+	
+	public ActionForward getRoleFunctions ( ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response )
+	throws SystemException, BusinessRuleViolationException, Exception
+	{
+		log.info ( "addRoleFunctions() : enter" );
+		
+		@SuppressWarnings("unused")
+		
+		HttpSession session = request.getSession ();
+		System.out.println("in role function");
+		DynaValidatorActionForm roleFunctionForm = (DynaValidatorActionForm) form;
+		long componentId = Long.parseLong ( (String) request.getParameter ( "role" ) );
+		log.info ( "Role from Ui" + roleFunctionForm.get ( "role" ) );
+		
+		// now get the role dto from the database
+		RoleDTO roleDTO = (RoleDTO) roleService.get ( componentId );// (RoleDTO)roleFunctionForm.get
+		Set<FunctionDTO> functionSet = roleDTO.getFunctions();
+		request.setAttribute("functionsSet", functionSet);
+		return mapping.findForward ( ForwardNames.GET_ROLE_FUNCTIONS_LIST );
+	}
+	
 	public ActionForward addRoleFunctions ( ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response )
 			throws SystemException, BusinessRuleViolationException, Exception
 	{
 		log.info ( "addRoleFunctions() : enter" );
 		
 		@SuppressWarnings("unused")
+		
 		HttpSession session = request.getSession ();
+		System.out.println("in role function");
 		DynaValidatorActionForm roleFunctionForm = (DynaValidatorActionForm) form;
 		long componentId = Long.parseLong ( (String) roleFunctionForm.get ( "role" ) );
 		log.info ( "Role from Ui" + roleFunctionForm.get ( "role" ) );
@@ -187,6 +230,82 @@ public class RoleFunctionDispatchAction extends DispatchAction
 		
 	}
 	
+	public ActionForward modifyRoleFunctions ( ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response )
+	throws SystemException, BusinessRuleViolationException, Exception
+	{
+		log.info ( "addRoleFunctions() : enter" );
+		
+		@SuppressWarnings("unused")
+		
+		HttpSession session = request.getSession ();
+		System.out.println("in role function");
+		
+		long componentId = Long.parseLong ( (String) request.getParameter ( "role" ) );
+		
+		
+		// now get the role dto from the database
+		RoleDTO roleDTO = (RoleDTO) roleService.get ( componentId );// (RoleDTO)roleFunctionForm.get
+																	// ( "role"
+																	// );
+		Enumeration<String> en = request.getParameterNames();
+		
+		List<FunctionDTO> functionDTOList = (List<FunctionDTO>) session.getAttribute ( SESSION_KEYS.FUNCTIONDTO_LIST );
+		// get the function from the role dto
+		Set<FunctionDTO> functionSet = null;
+		if ( roleDTO != null )
+		{
+			functionSet = roleDTO.getFunctions ();
+			// remove existing functions from the list
+			functionSet.removeAll ( functionSet );
+		}
+		String key = "";
+		String value = "";
+		while(en.hasMoreElements())
+		{
+			key = en.nextElement();
+			if(key.startsWith("cb-"))
+			{
+				int index = -1;
+				value = key.substring(3,key.length());
+				index = Integer.parseInt ( value );
+				log.debug ( "functionIndex are " + value );
+				FunctionDTO functionDTOFromList = null;
+				for(FunctionDTO dto:functionDTOList)
+				{
+					if((""+dto.getComponentId()).equals(""+(value)))
+					{
+						functionDTOFromList = dto;
+						break;
+					}
+				}
+				if(functionDTOFromList!=null)
+				{
+					functionDTOFromList.getRoles ().add ( functionDTOFromList );
+					functionSet.add ( functionDTOFromList );
+				}
+				
+			}
+		}
+		
+		FunctionDTO functionDTO = new FunctionDTO ();
+		String[][] messageArgValues =
+		{
+			{
+				roleDTO.getDescription ()
+			}
+		};
+		roleDTO.setFunctions ( functionSet );
+		// now save the role dto
+		roleService.modify ( roleDTO );
+		// get modified role list
+		List<RoleDTO> roleList = roleService.getList ();
+		// put role list to session
+		session.setAttribute ( SESSION_KEYS.ROLE_LIST, roleList );
+		log.info ( "Save the role and Functions" );
+		WebUtils.setSuccessMessages ( request, MessageKeys.ASSIGN_SUCCESS_MESSAGE_KEYS, messageArgValues );
+		return mapping.findForward ( ForwardNames.EXT_FORM_ADD_SUCCESS );
+		
+	}
 	@Deprecated
 	public ActionForward searchRoleFromSystemLevel ( ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response )
 			throws SystemException, BusinessRuleViolationException

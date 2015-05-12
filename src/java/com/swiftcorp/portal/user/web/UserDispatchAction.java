@@ -28,6 +28,7 @@ import com.swiftcorp.portal.common.exception.SystemException;
 import com.swiftcorp.portal.common.login.service.ILoginService;
 import com.swiftcorp.portal.common.search.SearchOperationResult;
 import com.swiftcorp.portal.common.search.SearchUtil;
+import com.swiftcorp.portal.common.util.DTOObjectReflectionUtil;
 import com.swiftcorp.portal.common.util.WebUtils;
 import com.swiftcorp.portal.common.web.ForwardNames;
 import com.swiftcorp.portal.common.web.ForwardUtil;
@@ -56,6 +57,7 @@ public class UserDispatchAction extends DispatchAction
 	private IUserService userService;
 	private IGroupService groupService;
 	private ILoginService loginService;
+	private IGeoService geoService;
 	private long endUserRoleId;
 	private IRoleService roleService;
 	
@@ -134,6 +136,33 @@ public class UserDispatchAction extends DispatchAction
 		}
 		// show the user search page
 		return mapping.findForward ( ForwardNames.USER_SEARCH_SYSTEM_LEVEL );
+	}
+	
+	public ActionForward promptExtUserSearchSystemLevel ( ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response )
+	throws Exception
+	{
+		log.info ( "promptUserSearchSystemLevel() : enter" );
+		try
+		{
+			UserSearchUtils.prepareSearchPage ( request );
+			// here we want to load the user
+			String searchSqlQuery = UserSearchUtils.prepareSqlQuery ( request );
+			log.info ( "searchUserFromSystemLevel():: searchSqlQuery = " + searchSqlQuery );
+			SearchUtil.prepareRequest ( request );
+			
+			SearchOperationResult searchOperationResult = userService.search ( searchSqlQuery );
+			log.info ( "searchUserFromSystemLevel():: searchOperationResult> size = " + searchOperationResult.getTotalRowCount () );
+			request.setAttribute ( SESSION_KEYS.USER_SEARCH_RESULT, searchOperationResult );
+			request.setAttribute ( SESSION_KEYS.IS_SEARCH_RESULT_SHOW, true );
+			UserSearchUtils.prepareSearchPage ( request );
+		}
+		catch (Exception e)
+		{
+			log.info ( "promptUserSearchSystemLevel() :", e );
+			throw e;
+		}
+		// show the user search page
+		return mapping.findForward ( ForwardNames.EXT_USER_SEARCH_SYSTEM_LEVEL );
 	}
 	
 	public ActionForward promptUserSearchGroupLevel ( ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response )
@@ -271,10 +300,17 @@ public class UserDispatchAction extends DispatchAction
 	{
 		log.info ( "addUser() : enter" );
 		DynaValidatorActionForm userForm = (DynaValidatorActionForm) form;
-		UserDTO userDTO = (UserDTO) userForm.get ( "user" );
+		UserDTO userDTO = new UserDTO();
+		DTOObjectReflectionUtil.populateDTOFromRequest(request, userDTO);
 		
 		// get the role from the form
-		long roleId = (Long) userForm.get ( "role" );
+		String role = request.getParameter("role");
+		long roleId = 0;
+		if(role!=null && !role.equals("null") && role.length()>0)
+		{
+			roleId = Long.parseLong(role);
+		}
+		
 		
 		// now get the role dto from the database
 		RoleDTO roleDTO = (RoleDTO) roleService.get ( roleId );
@@ -327,9 +363,15 @@ public class UserDispatchAction extends DispatchAction
 	{
 		log.info ( "modifyUser() : Enter" );
 		DynaValidatorActionForm userForm = (DynaValidatorActionForm) form;
-		UserDTO userDTO = (UserDTO) userForm.get ( "user" );
-		
-		long roleId = (Long) userForm.get ( "role" );
+		Long componentId = WebUtils.getComponentId ( request );
+		log.info ( "promptModifyUser() : componentId = " + componentId );
+		UserDTO userDTO = (UserDTO) userService.get ( componentId );
+		String role = request.getParameter("role");
+		long roleId = 0;
+		if(role!=null && !role.equals("null") && role.length()>0)
+		{
+			roleId = Long.parseLong(role);
+		}
 		
 		// now get the role dto from the database
 		RoleDTO roleDTO = (RoleDTO) roleService.get ( roleId );

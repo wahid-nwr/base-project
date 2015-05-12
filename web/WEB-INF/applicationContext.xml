@@ -1,687 +1,325 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- 
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
-
+ -->
 <!--
  - Application context definition 
  -->
-<beans default-lazy-init="false" default-autowire="no" default-dependency-check="none">
-  <!-- ========================= RESOURCE DEFINITIONS ========================= -->
-  <!-- Creating a data source connection pool-->
-  <bean id="settingConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="location">
-      <!--<value>./src/conf/Settings.properties</value>-->
-      <value>/WEB-INF/classes/Settings.properties</value>
-    </property>
-  </bean>
-  <!-- ========================= RESOURCE DEFINITIONS ========================= -->
-  <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="driverClassName">
-      <value>${configuration.jdbcdriver}</value>
-    </property>
-    <property name="url">
-      <value>jdbc:mysql://${configuration.database.host}:${configuration.database.port}/${configuration.database.name}</value>
-    </property>
-    <property name="username">
-      <value>${configuration.database.userid}</value>
-    </property>
-    <property name="password">
-      <value>${configuration.database.password}</value>
-    </property>
-  </bean>
-  <!-- Hibernate SessionFactory -->
-  <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="dataSource">
-      <ref bean="dataSource"/>
-    </property>
-    <property name="mappingResources">
-      <list>
-        <value>com/swiftcorp/portal/user/dto/UserDTO.hbm.xml</value>
-        <value>com/swiftcorp/portal/contact/dto/ContactDTO.hbm.xml</value>
-        <value>com/swiftcorp/portal/address/dto/AddressDTO.hbm.xml</value>
-        <value>com/swiftcorp/portal/role/dto/RoleDTO.hbm.xml</value>
-        <value>com/swiftcorp/portal/group/dto/GroupDTO.hbm.xml</value>
-        <value>com/swiftcorp/portal/common/dto/FunctionDTO.hbm.xml</value>
-        <value>com/swiftcorp/portal/common/dto/FunctionTypeDTO.hbm.xml</value>
-        <value>com/swiftcorp/portal/question/dto/AnswerTypeDTO.hbm.xml</value>
-        <value>com/swiftcorp/portal/question/dto/CategoryTypeDTO.hbm.xml</value>
-        <value>com/swiftcorp/portal/question/dto/MCQOptionDTO.hbm.xml</value>
-        <value>com/swiftcorp/portal/question/dto/QuestionnaireStatusDTO.hbm.xml</value>
-        <!-- <value>com/swiftcorp/portal/beneficiary/dto/MotherBeneficiaryDTO.hbm.xml</value> -->
-        <!-- Beneficiary DTO -->
-        <value>com/swiftcorp/portal/beneficiary/dto/BeneficiaryDTO.hbm.xml</value>
-        <value>com/swiftcorp/portal/beneficiary/dto/BeneficiaryExamDTO.hbm.xml</value>
-        <value>com/swiftcorp/portal/beneficiary/dto/BeneficiaryHistoryDTO.hbm.xml</value>
-        <value>com/swiftcorp/portal/beneficiary/dto/VisitDTO.hbm.xml</value>
-        <value>com/swiftcorp/portal/question/dto/QDTO.hbm.xml</value>
-        <value>com/swiftcorp/portal/algorithm/dto/AlgorithmDTO.hbm.xml</value>
-        <value>com/swiftcorp/portal/algorithm/dto/AlgQuestionDTO.hbm.xml</value>
-        <value>com/swiftcorp/portal/algorithm/dto/AlgQuestionBranchDTO.hbm.xml</value>
-        <value>com/swiftcorp/portal/algorithm/dto/AlgAnswerDTO.hbm.xml</value>
-        <value>com/swiftcorp/portal/algorithm/dto/SubAlgorithmDTO.hbm.xml</value>
-        <value>com/swiftcorp/portal/alert/dto/AlertDTO.hbm.xml</value>
-        <value>com/swiftcorp/portal/schedule/dto/ScheduleDTO.hbm.xml</value>
-        <value>com/swiftcorp/portal/household/dto/HouseholdDTO.hbm.xml</value>
-        <value>com/swiftcorp/portal/household/dto/HouseholdMemberDTO.hbm.xml</value>
-        <value>com/swiftcorp/portal/household/dto/HouseholdMemberVisitDTO.hbm.xml</value>
-        <value>com/swiftcorp/portal/geo/dto/GeoDTO.hbm.xml</value>
-        <value>com/swiftcorp/portal/user/dto/SSDTO.hbm.xml</value>
-        <value>com/swiftcorp/portal/question/dto/ValidationDTO.hbm.xml</value>
-        <value>com/swiftcorp/portal/dcrinfo/dto/DcrinfoDTO.hbm.xml</value>
-        <value>com/swiftcorp/portal/dcrreport/dto/DcrReportDTO.hbm.xml</value>
-        <value>com/swiftcorp/portal/account/dto/AccountDTO.hbm.xml</value>
-        <value>com/swiftcorp/portal/patient/dto/PatientDTO.hbm.xml</value>
-      </list>
-    </property>
-    <property name="hibernateProperties">
-      <props>
-        <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-        <prop key="hibernate.show_sql">true</prop>
+<beans default-lazy-init="false" default-autowire="no" default-dependency-check="none"> 
+  <!-- ========================= RESOURCE DEFINITIONS ========================= -->  
+  <!-- Creating a data source connection pool-->  
+  <bean id="settingConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" lazy-init="default" autowire="default" dependency-check="default"> 
+    <property name="location"> 
+      <!--<value>./src/conf/Settings.properties</value>-->  
+      <value>/WEB-INF/classes/Settings.properties</value> 
+    </property> 
+  </bean>  
+  <!-- ========================= RESOURCE DEFINITIONS ========================= -->  
+  <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" lazy-init="default" autowire="default" dependency-check="default"> 
+    <property name="driverClassName"> 
+      <value>${configuration.jdbcdriver}</value> 
+    </property>  
+    <property name="url"> 
+      <value>jdbc:mysql://${configuration.database.host}:${configuration.database.port}/${configuration.database.name}</value> 
+    </property>  
+    <property name="username"> 
+      <value>${configuration.database.userid}</value> 
+    </property>  
+    <property name="password"> 
+      <value>${configuration.database.password}</value> 
+    </property> 
+  </bean>  
+  <!-- Hibernate SessionFactory -->  
+  <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" lazy-init="default" autowire="default" dependency-check="default"> 
+    <property name="dataSource"> 
+      <ref bean="dataSource"/> 
+    </property>  
+    <property name="mappingResources"> 
+      <list> 
+        <value>com/swiftcorp/portal/user/dto/UserDTO.hbm.xml</value>  
+        <value>com/swiftcorp/portal/role/dto/RoleDTO.hbm.xml</value>  
+        <value>com/swiftcorp/portal/group/dto/GroupDTO.hbm.xml</value>  
+        <value>com/swiftcorp/portal/common/dto/FunctionDTO.hbm.xml</value>  
+        <value>com/swiftcorp/portal/common/dto/FunctionTypeDTO.hbm.xml</value>  
+        <value>com/swiftcorp/portal/geo/dto/GeoDTO.hbm.xml</value>  
+        <value>com/swiftcorp/portal/info/dto/InfoDTO.hbm.xml</value>  
+        <value>com/swiftcorp/portal/ajan/dto/AjanDTO.hbm.xml</value>
+      </list> 
+    </property>  
+    <property name="hibernateProperties"> 
+      <props> 
+        <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>  
+        <prop key="hibernate.show_sql">true</prop>  
         <!--   <prop key="hibernate.connection.useUnicode">true</prop>
-        <prop key="hibernate.connection.characterEncoding">UTF-8</prop>-->
-      </props>
-    </property>
-  </bean>
-  <!-- with transaction -->
-  <bean id="transactionFactory" class="org.springframework.transaction.jta.JotmFactoryBean" lazy-init="default" autowire="default" dependency-check="default"/>
-  <!-- with transaction -->
-  <bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="sessionFactory">
-      <ref bean="sessionFactory"/>
-    </property>
-  </bean>
-  <bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="userTransaction">
-      <ref bean="transactionFactory"/>
-    </property>
-  </bean>
-  <bean id="transactionAttributes" class="org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="properties">
-       <value>
+        <prop key="hibernate.connection.characterEncoding">UTF-8</prop>--> 
+      </props> 
+    </property> 
+  </bean>  
+  <!-- with transaction -->  
+  <bean id="transactionFactory" class="org.springframework.transaction.jta.JotmFactoryBean" lazy-init="default" autowire="default" dependency-check="default"/>  
+  <!-- with transaction -->  
+  <bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate" lazy-init="default" autowire="default" dependency-check="default"> 
+    <property name="sessionFactory"> 
+      <ref bean="sessionFactory"/> 
+    </property> 
+  </bean>  
+  <bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager" lazy-init="default" autowire="default" dependency-check="default"> 
+    <property name="userTransaction"> 
+      <ref bean="transactionFactory"/> 
+    </property> 
+  </bean>  
+  <bean id="transactionAttributes" class="org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource" lazy-init="default" autowire="default" dependency-check="default"> 
+    <property name="properties"> 
+      <value>
       add=PROPAGATION_REQUIRED,-Throwable 
-      modify=PROPAGATION_REQUIRED,-Throwable
+      modify=PROPAGATION_REQUIRED,-Throwable 
       remove=PROPAGATION_REQUIRED,-Throwable 
       find=PROPAGATION_REQUIRED,readOnly 
-      get*=PROPAGATION_REQUIRED,readOnly 
+      get*=PROPAGATION_REQUIRED,readOnly
       *Tx=PROPAGATION_REQUIRED,-Throwable
-      </value>
-    </property>
-  </bean>
-  <bean id="transactionInterceptor" class="org.springframework.transaction.interceptor.TransactionInterceptor" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="transactionManager" ref="transactionManager"/>
-    <property name="transactionAttributeSource" ref="transactionAttributes"/>
-  </bean>
-  <!-- One BeanNameAutoProxyCreator handles all beans where we want all methods to use PROPAGATION_REQUIRED -->
-  <bean id="autoProxyCreator" class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="interceptorNames">
-      <list>
-        <idref local="transactionInterceptor"/>
-      </list>
-    </property>
-    <property name="beanNames">
-      <list>
-        <value>*Service</value>
-      </list>
-    </property>
-  </bean>
-  <!-- ========================= web service definition ========================= -->
-  <!-- ========================= BUSINESS OBJECT DEFINITIONS ========================= -->
+      </value>  
+    </property> 
+  </bean>  
+  <bean id="transactionInterceptor" class="org.springframework.transaction.interceptor.TransactionInterceptor" lazy-init="default" autowire="default" dependency-check="default"> 
+    <property name="transactionManager" ref="transactionManager"/>  
+    <property name="transactionAttributeSource" ref="transactionAttributes"/> 
+  </bean>  
+  <!-- One BeanNameAutoProxyCreator handles all beans where we want all methods to use PROPAGATION_REQUIRED -->  
+  <bean id="autoProxyCreator" class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator" lazy-init="default" autowire="default" dependency-check="default"> 
+    <property name="interceptorNames"> 
+      <list> 
+        <idref local="transactionInterceptor"/> 
+      </list> 
+    </property>  
+    <property name="beanNames"> 
+      <list> 
+        <value>*Service</value> 
+      </list> 
+    </property> 
+  </bean>  
+  <!-- ========================= web service definition ========================= -->  
+  <!-- ========================= BUSINESS OBJECT DEFINITIONS ========================= -->  
   <!-- 
 	=====================================================================================================
 										GENERIC SEARCH
 	=====================================================================================================
-	 -->
-  <bean id="GenericSearcher" class="com.swiftcorp.portal.common.search.GenericHibernateSearcher" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="hibernateTemplate">
-      <ref bean="hibernateTemplate"/>
-    </property>
-  </bean>
+	 -->  
+  <bean id="GenericSearcher" class="com.swiftcorp.portal.common.search.GenericHibernateSearcher" lazy-init="default" autowire="default" dependency-check="default"> 
+    <property name="hibernateTemplate"> 
+      <ref bean="hibernateTemplate"/> 
+    </property> 
+  </bean>  
   <!-- 
 	=====================================================================================================
 										LOGIN
 	=====================================================================================================
-  -->
-  <bean name="/loginAction" class="com.swiftcorp.portal.common.login.web.LoginAction" singleton="false" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="loginService">
-      <ref bean="LoginService"/>
-    </property>
+  -->  
+  <bean name="/loginAction" class="com.swiftcorp.portal.common.login.web.LoginAction" singleton="false" lazy-init="default" autowire="default" dependency-check="default"> 
+    <property name="loginService"> 
+      <ref bean="LoginService"/> 
+    </property>  
     <!-- 
     <property name="geoService">
       <ref bean="GeoService"/>
     </property>
-     -->
-    <property name="functionService">
-      <ref bean="FunctionService"/>
-    </property>
-  </bean>
-  <bean id="LoginService" class="com.swiftcorp.portal.common.login.service.LoginServiceImpl" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="userService">
-      <ref bean="UserService"/>
-    </property>
-  </bean>
-  <bean id="FunctionService" class="com.swiftcorp.portal.common.service.FunctionServiceImpl" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="functionDAO">
-      <ref bean="FunctionDAOImpl"/>
-    </property>
-  </bean>
-  <!--
-	=============================================================================
-                        Report
-	=============================================================================
-   -->
-  <bean id="ReportDAO" class="com.swiftcorp.portal.report.dao.MPRDAOImpl" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="dataSource">
-      <ref bean="dataSource"/>
-    </property>
-    <property name="hibernateTemplate">
-      <ref bean="hibernateTemplate"/>
-    </property>
-  </bean>
-  <bean id="ReportSQLDAO" class="com.swiftcorp.portal.report.dao.ReportSQLDAOImpl" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="sqlDataSource">
-      <ref bean="dataSource"/>
-    </property>
-  </bean>
-  <bean id="ReportService" class="com.swiftcorp.portal.report.service.ReportServiceImpl" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="reportTemplateDir" value="D:/temp/reportTemplate"/>
-    <property name="reportDir" value="D:/temp/report"/>
-  </bean>
-  <bean id="DeathReportHibernateDAOImpl" class="com.swiftcorp.portal.report.dao.DeathReportHibernateDAOImpl" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="hibernateTemplate">
-      <ref bean="hibernateTemplate"/>
-    </property>
-  </bean>
-  <bean name="/reportAction" class="com.swiftcorp.portal.report.web.ReportDispatchAction" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="reportService">
-      <ref bean="ReportService"/>
-    </property>
-  </bean>
-  <bean name="/reportDownloadAction" class="com.swiftcorp.portal.report.web.ReportDownload" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="reportService" ref="ReportService"/>
-  </bean>
-  <bean name="/reportActionWithValidation" class="com.swiftcorp.portal.report.web.ReportDispatchAction" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="reportService">
-      <ref bean="ReportService"/>
-    </property>
-  </bean>
+     -->  
+    <property name="functionService"> 
+      <ref bean="FunctionService"/> 
+    </property> 
+  </bean>  
+  <bean id="LoginService" class="com.swiftcorp.portal.common.login.service.LoginServiceImpl" lazy-init="default" autowire="default" dependency-check="default"> 
+    <property name="userService"> 
+      <ref bean="UserService"/> 
+    </property> 
+  </bean>  
+  <bean id="FunctionService" class="com.swiftcorp.portal.common.service.FunctionServiceImpl" lazy-init="default" autowire="default" dependency-check="default"> 
+    <property name="functionDAO"> 
+      <ref bean="FunctionDAOImpl"/> 
+    </property> 
+  </bean>  
   <!--
 	=====================================================================================================
 										USER
 	=====================================================================================================
-	 -->
-  <bean name="/userAction" class="com.swiftcorp.portal.user.web.UserDispatchAction" singleton="false" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="userService">
-      <ref bean="UserService"/>
-    </property>
-    <property name="groupService">
-      <ref bean="GroupService"/>
-    </property>
-    <property name="roleService">
-      <ref bean="RoleService"/>
-    </property>
-    <property name="geoService">
-      <ref bean="GeoService"/>
-    </property>
-  </bean>
-  <bean name="/userActionWithValidation" class="com.swiftcorp.portal.user.web.UserDispatchAction" singleton="false" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="userService">
-      <ref bean="UserService"/>
-    </property>
-    <property name="groupService">
-      <ref bean="GroupService"/>
-    </property>
-    <property name="roleService">
-      <ref bean="RoleService"/>
-    </property>
-    <property name="geoService">
-      <ref bean="GeoService"/>
-    </property>
-  </bean>
-  <bean id="UserService" class="com.swiftcorp.portal.user.service.UserServiceImpl" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="userDAO">
-      <ref bean="UserDAOImpl"/>
-    </property>
-    <property name="searcher">
-      <ref bean="GenericSearcher"/>
-    </property>
-  </bean>
-  <bean id="UserDAOImpl" class="com.swiftcorp.portal.user.dao.UserHibernateDAOImpl" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="hibernateTemplate">
-      <ref bean="hibernateTemplate"/>
-    </property>
-  </bean>
-  <!-- 
-	=====================================================================================================
-										GROUP
-	=====================================================================================================
-	 -->
-  <bean name="/groupAction" class="com.swiftcorp.portal.group.web.GroupDispatchAction" singleton="false" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="groupService">
-      <ref bean="GroupService"/>
-    </property>
-  </bean>
-  <bean name="/groupActionWithValidation" class="com.swiftcorp.portal.group.web.GroupDispatchAction" singleton="false" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="groupService">
-      <ref bean="GroupService"/>
-    </property>
-  </bean>
-  <bean id="GroupService" class="com.swiftcorp.portal.group.service.GroupServiceImpl" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="groupDAO">
-      <ref bean="GroupDAO"/>
-    </property>
-    <property name="searcher">
-      <ref bean="GenericSearcher"/>
-    </property>
-  </bean>
-  <bean id="GroupDAO" class="com.swiftcorp.portal.group.dao.GroupHibernateDAOImpl" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="hibernateTemplate">
-      <ref bean="hibernateTemplate"/>
-    </property>
-  </bean>
-  <!--
-	=============================================================================
-                        ROLE
-	=============================================================================
-	-->
-  <bean id="RoleDAOImpl" class="com.swiftcorp.portal.role.dao.RoleHibernateDAOImpl" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="hibernateTemplate">
-      <ref bean="hibernateTemplate"/>
-    </property>
-  </bean>
-  <bean id="RoleService" class="com.swiftcorp.portal.role.service.RoleServiceImpl" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="roleDAO">
-      <ref bean="RoleDAOImpl"/>
-    </property>
-    <property name="searcher">
-      <ref bean="GenericSearcher"/>
-    </property>
-  </bean>
-  <bean name="/roleAction" class="com.swiftcorp.portal.role.web.RoleDispatchAction" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="roleService">
-      <ref bean="RoleService"/>
-    </property>
-  </bean>
-  <bean name="/roleFunctionAction" class="com.swiftcorp.portal.role.web.RoleFunctionDispatchAction" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="roleService">
-      <ref bean="RoleService"/>
-    </property>
-    <property name="functionService">
-      <ref bean="FunctionService"/>
-    </property>
-  </bean>
-  <bean name="/roleActionWithValidation" class="com.swiftcorp.portal.role.web.RoleDispatchAction" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="roleService">
-      <ref bean="RoleService"/>
-    </property>
-  </bean>
-  <!--
-	=============================================================================
-                        ROLE Function
-	=============================================================================
-	-->
-  <bean id="FunctionDAOImpl" class="com.swiftcorp.portal.common.dao.FunctionHibernateDAOImpl" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="hibernateTemplate">
-      <ref bean="hibernateTemplate"/>
-    </property>
-  </bean>
-  <bean id="FunctionAuthenticationUtil" class="com.swiftcorp.portal.common.util.FunctionAuthenticationUtil" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="roleService">
-      <ref bean="RoleService"/>
-    </property>
-  </bean>
-  <!--
-	=============================================================================
-                        QUESTION
-	=============================================================================
-	-->
-  <bean id="QuestionDAOImpl" class="com.swiftcorp.portal.question.dao.QuestionHibernateDAOImpl" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="hibernateTemplate">
-      <ref bean="hibernateTemplate"/>
-    </property>
-  </bean>
-  <bean id="QuestionService" class="com.swiftcorp.portal.question.service.QuestionServiceImpl" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="questionDAO">
-      <ref bean="QuestionDAOImpl"/>
-    </property>
-    <property name="searcher">
-      <ref bean="GenericSearcher"/>
-    </property>
-  </bean>
-  <bean name="/questionAction" class="com.swiftcorp.portal.question.web.QuestionDispatchAction" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="questionService">
-      <ref bean="QuestionService"/>
-    </property>
-  </bean>
-  <bean name="/questionnaireAction" class="com.swiftcorp.portal.question.web.QuestionDispatchAction" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="questionService">
-      <ref bean="QuestionService"/>
-    </property>
-  </bean>
-  <bean name="/questionActionWithValidation" class="com.swiftcorp.portal.question.web.QuestionDispatchAction" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="questionService">
-      <ref bean="QuestionService"/>
-    </property>
-  </bean>
-  <bean name="/questionnaireActionWithValidation" class="com.swiftcorp.portal.question.web.QuestionDispatchAction" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="questionService">
-      <ref bean="QuestionService"/>
-    </property>
-  </bean>
-  <!--
-	=============================================================================
-                        BENEFICIARY
-	=============================================================================
-	-->
-  <bean id="BeneficiaryDAOImpl" class="com.swiftcorp.portal.beneficiary.dao.BeneficiaryHibernateDAOImpl" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="hibernateTemplate">
-      <ref bean="hibernateTemplate"/>
-    </property>
-  </bean>
-  <bean id="BeneficiaryService" class="com.swiftcorp.portal.beneficiary.service.BeneficiaryServiceImpl" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="beneficiaryDAO">
-      <ref bean="BeneficiaryDAOImpl"/>
-    </property>
-    <property name="searcher">
-      <ref bean="GenericSearcher"/>
-    </property>
-  </bean>
-  <!-- 
-  <bean name="/beneficiaryAction" class="com.swiftcorp.portal.beneficiary.web.BeneficiaryDispatchAction" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="beneficiaryService">
-      <ref bean="BeneficiaryService"/>
-    </property>
-    <property name="householdService">
-      <ref bean="HouseholdService"/>
-    </property>
-    <property name="riskService">
-      <ref bean="RiskService"/>
-    </property>
-  </bean>
-  <bean name="/medicalAdviceAction" class="com.swiftcorp.portal.beneficiary.web.MedicalAdviceDispatchAction" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="medicalAdviceService" ref="MedicalAdviceServiceImpl"/>
-    <property name="userService" ref="UserService"/>
-  </bean>
-  <bean name="/beneficiaryActionWithValidation" class="com.swiftcorp.portal.beneficiary.web.BeneficiaryDispatchAction" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="beneficiaryService">
-      <ref bean="BeneficiaryService"/>
-    </property>
-    <property name="riskService">
-      <ref bean="RiskService"/>
-    </property>
-  </bean>
-   -->
-  <!--
-	=============================================================================
-                        ALGORITHM
-	=============================================================================
-	-->
-  <bean id="AlgorithmDAOImpl" class="com.swiftcorp.portal.algorithm.dao.AlgorithmHibernateDAOImpl" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="hibernateTemplate">
-      <ref bean="hibernateTemplate"/>
-    </property>
-  </bean>
-  <bean id="AlgorithmService" class="com.swiftcorp.portal.algorithm.service.AlgorithmServiceImpl" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="algorithmDAO">
-      <ref bean="AlgorithmDAOImpl"/>
-    </property>
-    <property name="searcher">
-      <ref bean="GenericSearcher"/>
-    </property>
-  </bean>
-  <bean name="/algorithmAction" class="com.swiftcorp.portal.algorithm.web.AlgorithmDispatchAction" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="algorithmService">
-      <ref bean="AlgorithmService"/>
-    </property>
-  </bean>
-  <bean name="/algorithmActionWithValidation" class="com.swiftcorp.portal.algorithm.web.AlgorithmDispatchAction" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="algorithmService">
-      <ref bean="AlgorithmService"/>
-    </property>
-  </bean>
-  <bean id="commonDAOUtil" class="com.swiftcorp.portal.common.dao.CommonDAOUtil" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="hibernateTemplate">
-      <ref bean="hibernateTemplate"/>
-    </property>
-  </bean>
-  <!--
-	=============================================================================
-                        ALERT
-	=============================================================================
-	-->
-  <bean id="AlertDAOImpl" class="com.swiftcorp.portal.alert.dao.AlertHibernateDAOImpl" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="hibernateTemplate">
-      <ref bean="hibernateTemplate"/>
-    </property>
-  </bean>
-  <bean id="AlertService" class="com.swiftcorp.portal.alert.service.AlertServiceImpl" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="alertDAO">
-      <ref bean="AlertDAOImpl"/>
-    </property>
-    <property name="searcher">
-      <ref bean="GenericSearcher"/>
-    </property>
-    <property name="userService">
-      <ref bean="UserService"/>
-    </property>
-  </bean>
-  <bean name="/alertAction" class="com.swiftcorp.portal.alert.web.AlertDispatchAction" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="alertService">
-      <ref bean="AlertService"/>
-    </property>
-  </bean>
-  <bean name="/alertActionWithValidation" class="com.swiftcorp.portal.alert.web.AlertDispatchAction" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="alertService">
-      <ref bean="AlertService"/>
-    </property>
-  </bean>
-  <!--
-	=============================================================================
-                        SCHEDULE
-	=============================================================================
-	-->
-  <bean id="ScheduleDAOImpl" class="com.swiftcorp.portal.schedule.dao.ScheduleHibernateDAOImpl" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="hibernateTemplate">
-      <ref bean="hibernateTemplate"/>
-    </property>
-  </bean>
-  <bean id="ScheduleService" class="com.swiftcorp.portal.schedule.service.ScheduleServiceImpl" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="scheduleDAO">
-      <ref bean="ScheduleDAOImpl"/>
-    </property>
-    <property name="searcher">
-      <ref bean="GenericSearcher"/>
-    </property>
-  </bean>
-  <bean name="/scheduleAction" class="com.swiftcorp.portal.schedule.web.ScheduleDispatchAction" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="scheduleService">
-      <ref bean="ScheduleService"/>
-    </property>
-  </bean>
-  <bean name="/scheduleActionWithValidation" class="com.swiftcorp.portal.schedule.web.ScheduleDispatchAction" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="scheduleService">
-      <ref bean="ScheduleService"/>
-    </property>
-  </bean>
-  <!--
-	=============================================================================
-                        HOUSEHOLD
-	=============================================================================
-	-->
-  <bean id="HouseholdDAOImpl" class="com.swiftcorp.portal.household.dao.HouseholdHibernateDAOImpl" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="hibernateTemplate">
-      <ref bean="hibernateTemplate"/>
-    </property>
-  </bean>
-  <bean id="HouseholdService" class="com.swiftcorp.portal.household.service.HouseholdServiceImpl" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="householdDAO">
-      <ref bean="HouseholdDAOImpl"/>
-    </property>
-    <property name="searcher">
-      <ref bean="GenericSearcher"/>
-    </property>
-  </bean>
-  <bean name="/householdAction" class="com.swiftcorp.portal.household.web.HouseholdDispatchAction" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="householdService">
-      <ref bean="HouseholdService"/>
-    </property>
-  </bean>
-  <bean name="/householdActionWithValidation" class="com.swiftcorp.portal.household.web.HouseholdDispatchAction" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="householdService">
-      <ref bean="HouseholdService"/>
-    </property>
-  </bean>
-  <!--
-	=============================================================================
-                        DCRINFO
-	=============================================================================
-	-->
-  <bean id="DcrInfoService" class="com.swiftcorp.portal.dcrinfo.service.DcrinfoServiceImpl" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="dcrinfoDAO">
-      <ref bean="DcrInfoDAOImpl"/>
-    </property>
-  </bean>
-  <bean id="DcrInfoDAOImpl" class="com.swiftcorp.portal.dcrinfo.dao.DcrinfoHibernateDAOImpl" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="hibernateTemplate">
-      <ref bean="hibernateTemplate"/>
-    </property>
-  </bean>
-  <!--
-	=============================================================================
-                        DCRINFO
-	=============================================================================
-	-->
-  <bean id="DcrinfoDAOImpl" class="com.swiftcorp.portal.dcrinfo.dao.DcrinfoHibernateDAOImpl" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="hibernateTemplate">
-      <ref bean="hibernateTemplate"/>
-    </property>
-  </bean>
-  <bean id="DcrinfoService" class="com.swiftcorp.portal.dcrinfo.service.DcrinfoServiceImpl" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="dcrinfoDAO">
-      <ref bean="DcrinfoDAOImpl"/>
-    </property>
-    <property name="searcher">
-      <ref bean="GenericSearcher"/>
-    </property>
-  </bean>
-  <bean name="/dcrinfoAction" class="com.swiftcorp.portal.dcrinfo.web.DcrinfoDispatchAction" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="dcrinfoService">
-      <ref bean="DcrinfoService"/>
-    </property>
-  </bean>
-  <bean name="/dcrinfoActionWithValidation" class="com.swiftcorp.portal.dcrinfo.web.DcrinfoDispatchAction" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="dcrinfoService">
-      <ref bean="DcrinfoService"/>
-    </property>
-  </bean>
-  <!--
-	=============================================================================
-                        DCRREPORT
-	=============================================================================
-	-->
-  <bean id="DcrreportDAOImpl" class="com.swiftcorp.portal.dcrreport.dao.DcrReportHibernateDAOImpl" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="hibernateTemplate">
-      <ref bean="hibernateTemplate"/>
-    </property>
-  </bean>
-  <bean id="DcrreportService" class="com.swiftcorp.portal.dcrreport.service.DcrReportServiceImpl" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="dcrreportDAO">
-      <ref bean="DcrreportDAOImpl"/>
-    </property>
-    <property name="searcher">
-      <ref bean="GenericSearcher"/>
-    </property>
-  </bean>
-  <bean name="/dcrreportAction" class="com.swiftcorp.portal.dcrreport.web.DcrreportDispatchAction" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="dcrreportService">
-      <ref bean="DcrreportService"/>
-    </property>
-  </bean>
-  <bean name="/dcrreportActionWithValidation" class="com.swiftcorp.portal.dcrreport.web.DcrreportDispatchAction" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="dcrreportService">
-      <ref bean="DcrreportService"/>
-    </property>
-  </bean>
-  <!--
-	=============================================================================
-                        DCRREPORT
-	=============================================================================
-	-->
-  <bean id="DcrReportService" class="com.swiftcorp.portal.dcrreport.service.DcrReportServiceImpl" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="dcrreportDAO">
-      <ref bean="DcrReportDAOImpl"/>
-    </property>
-  </bean>
-  <bean id="DcrReportDAOImpl" class="com.swiftcorp.portal.dcrreport.dao.DcrReportHibernateDAOImpl" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="hibernateTemplate">
-      <ref bean="hibernateTemplate"/>
-    </property>
-  </bean>
-  <bean id="dcrInfoAddService" class="com.swiftcorp.portal.dcrinfo.service.DcrInfoAddService" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="dcrinfoService" ref="dcrInfoServiceImpl"/>
-  </bean>
-  <bean id="dcrReportService" class="com.swiftcorp.portal.dcrreport.service.DcrReportService" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="dcrReportService" ref="dcrReportServiceImpl"/>
-  </bean>
-  <bean name="/importAction" class="com.swiftcorp.portal.dcrinfo.web.GeoImportAction" lazy-init="default" autowire="default" dependency-check="default">
+	 -->  
+  <bean name="/userAction" class="com.swiftcorp.portal.user.web.UserDispatchAction" singleton="false" lazy-init="default" autowire="default" dependency-check="default"> 
+    <property name="userService"> 
+      <ref bean="UserService"/> 
+    </property>  
+    <property name="groupService"> 
+      <ref bean="GroupService"/> 
+    </property>  
+    <property name="roleService"> 
+      <ref bean="RoleService"/> 
+    </property>  
     <!-- 
     <property name="geoService">
       <ref bean="GeoService"/>
     </property>
-    -->
-  </bean>
+     --> 
+  </bean>  
+  <bean name="/userActionWithValidation" class="com.swiftcorp.portal.user.web.UserDispatchAction" singleton="false" lazy-init="default" autowire="default" dependency-check="default"> 
+    <property name="userService"> 
+      <ref bean="UserService"/> 
+    </property>  
+    <property name="groupService"> 
+      <ref bean="GroupService"/> 
+    </property>  
+    <property name="roleService"> 
+      <ref bean="RoleService"/> 
+    </property>  
+    <!-- 
+    <property name="geoService">
+      <ref bean="GeoService"/>
+    </property>
+     --> 
+  </bean>  
+  <bean id="UserService" class="com.swiftcorp.portal.user.service.UserServiceImpl" lazy-init="default" autowire="default" dependency-check="default"> 
+    <property name="userDAO"> 
+      <ref bean="UserDAOImpl"/> 
+    </property>  
+    <property name="searcher"> 
+      <ref bean="GenericSearcher"/> 
+    </property> 
+  </bean>  
+  <bean id="UserDAOImpl" class="com.swiftcorp.portal.user.dao.UserHibernateDAOImpl" lazy-init="default" autowire="default" dependency-check="default"> 
+    <property name="hibernateTemplate"> 
+      <ref bean="hibernateTemplate"/> 
+    </property> 
+  </bean>  
+  <!-- 
+	=====================================================================================================
+										GROUP
+	=====================================================================================================
+	 -->  
+  <bean name="/groupAction" class="com.swiftcorp.portal.group.web.GroupDispatchAction" singleton="false" lazy-init="default" autowire="default" dependency-check="default"> 
+    <property name="groupService"> 
+      <ref bean="GroupService"/> 
+    </property> 
+  </bean>  
+  <bean name="/groupActionWithValidation" class="com.swiftcorp.portal.group.web.GroupDispatchAction" singleton="false" lazy-init="default" autowire="default" dependency-check="default"> 
+    <property name="groupService"> 
+      <ref bean="GroupService"/> 
+    </property> 
+  </bean>  
+  <bean id="GroupService" class="com.swiftcorp.portal.group.service.GroupServiceImpl" lazy-init="default" autowire="default" dependency-check="default"> 
+    <property name="groupDAO"> 
+      <ref bean="GroupDAO"/> 
+    </property>  
+    <property name="searcher"> 
+      <ref bean="GenericSearcher"/> 
+    </property> 
+  </bean>  
+  <bean id="GroupDAO" class="com.swiftcorp.portal.group.dao.GroupHibernateDAOImpl" lazy-init="default" autowire="default" dependency-check="default"> 
+    <property name="hibernateTemplate"> 
+      <ref bean="hibernateTemplate"/> 
+    </property> 
+  </bean>  
   <!--
 	=============================================================================
-                        ACCOUNT
+                        ROLE
+	=============================================================================
+	-->  
+  <bean id="RoleDAOImpl" class="com.swiftcorp.portal.role.dao.RoleHibernateDAOImpl" lazy-init="default" autowire="default" dependency-check="default"> 
+    <property name="hibernateTemplate"> 
+      <ref bean="hibernateTemplate"/> 
+    </property> 
+  </bean>  
+  <bean id="RoleService" class="com.swiftcorp.portal.role.service.RoleServiceImpl" lazy-init="default" autowire="default" dependency-check="default"> 
+    <property name="roleDAO"> 
+      <ref bean="RoleDAOImpl"/> 
+    </property>  
+    <property name="searcher"> 
+      <ref bean="GenericSearcher"/> 
+    </property> 
+  </bean>  
+  <bean name="/roleAction" class="com.swiftcorp.portal.role.web.RoleDispatchAction" lazy-init="default" autowire="default" dependency-check="default"> 
+    <property name="roleService"> 
+      <ref bean="RoleService"/> 
+    </property> 
+  </bean>  
+  <bean name="/roleFunctionAction" class="com.swiftcorp.portal.role.web.RoleFunctionDispatchAction" lazy-init="default" autowire="default" dependency-check="default"> 
+    <property name="roleService"> 
+      <ref bean="RoleService"/> 
+    </property>  
+    <property name="functionService"> 
+      <ref bean="FunctionService"/> 
+    </property> 
+  </bean>  
+  <bean name="/roleActionWithValidation" class="com.swiftcorp.portal.role.web.RoleDispatchAction" lazy-init="default" autowire="default" dependency-check="default"> 
+    <property name="roleService"> 
+      <ref bean="RoleService"/> 
+    </property> 
+  </bean>  
+  <!--
+	=============================================================================
+                        ROLE Function
+	=============================================================================
+	-->  
+  <bean id="FunctionDAOImpl" class="com.swiftcorp.portal.common.dao.FunctionHibernateDAOImpl" lazy-init="default" autowire="default" dependency-check="default"> 
+    <property name="hibernateTemplate"> 
+      <ref bean="hibernateTemplate"/> 
+    </property> 
+  </bean>  
+  <bean id="FunctionAuthenticationUtil" class="com.swiftcorp.portal.common.util.FunctionAuthenticationUtil" lazy-init="default" autowire="default" dependency-check="default"> 
+    <property name="roleService"> 
+      <ref bean="RoleService"/> 
+    </property> 
+  </bean>  
+  <!--
+	=============================================================================
+                        INFO
+	=============================================================================
+	-->  
+  <bean id="InfoDAOImpl" class="com.swiftcorp.portal.info.dao.InfoHibernateDAOImpl"> 
+    <property name="hibernateTemplate"> 
+      <ref bean="hibernateTemplate"/> 
+    </property> 
+  </bean>  
+  <bean id="InfoService" class="com.swiftcorp.portal.info.service.InfoServiceImpl"> 
+    <property name="infoDAO"> 
+      <ref bean="InfoDAOImpl"/> 
+    </property>  
+    <property name="searcher"> 
+      <ref bean="GenericSearcher"/> 
+    </property> 
+  </bean>  
+  <bean name="/infoAction" class="com.swiftcorp.portal.info.web.InfoDispatchAction"> 
+    <property name="infoService"> 
+      <ref bean="InfoService"/> 
+    </property> 
+  </bean>  
+  <bean name="/infoActionWithValidation" class="com.swiftcorp.portal.info.web.InfoDispatchAction"> 
+    <property name="infoService"> 
+      <ref bean="InfoService"/> 
+    </property> 
+  </bean>  
+  <!--
+	=============================================================================
+                        AJAN
 	=============================================================================
 	-->
-  <bean id="AccountDAOImpl" class="com.swiftcorp.portal.account.dao.AccountHibernateDAOImpl" lazy-init="default" autowire="default" dependency-check="default">
+  <bean id="AjanDAOImpl" class="com.swiftcorp.portal.ajan.dao.AjanHibernateDAOImpl">
     <property name="hibernateTemplate">
       <ref bean="hibernateTemplate"/>
     </property>
   </bean>
-  <bean id="AccountService" class="com.swiftcorp.portal.account.service.AccountServiceImpl" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="accountDAO">
-      <ref bean="AccountDAOImpl"/>
+  <bean id="AjanService" class="com.swiftcorp.portal.ajan.service.AjanServiceImpl">
+    <property name="ajanDAO">
+      <ref bean="AjanDAOImpl"/>
     </property>
     <property name="searcher">
       <ref bean="GenericSearcher"/>
     </property>
   </bean>
-  <bean name="/accountAction" class="com.swiftcorp.portal.account.web.AccountDispatchAction" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="accountService">
-      <ref bean="AccountService"/>
+  <bean name="/ajanAction" class="com.swiftcorp.portal.ajan.web.AjanDispatchAction">
+    <property name="ajanService">
+      <ref bean="AjanService"/>
     </property>
   </bean>
-  <bean name="/accountActionWithValidation" class="com.swiftcorp.portal.account.web.AccountDispatchAction" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="accountService">
-      <ref bean="AccountService"/>
-    </property>
-  </bean>
-  <!--
-	=============================================================================
-                        PATIENT
-	=============================================================================
-	-->
-  <bean id="PatientDAOImpl" class="com.swiftcorp.portal.patient.dao.PatientHibernateDAOImpl" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="hibernateTemplate">
-      <ref bean="hibernateTemplate"/>
-    </property>
-  </bean>
-  <bean id="PatientService" class="com.swiftcorp.portal.patient.service.PatientServiceImpl" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="patientDAO">
-      <ref bean="PatientDAOImpl"/>
-    </property>
-    <property name="searcher">
-      <ref bean="GenericSearcher"/>
-    </property>
-  </bean>
-  <bean name="/patientAction" class="com.swiftcorp.portal.patient.web.PatientDispatchAction" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="patientService">
-      <ref bean="PatientService"/>
-    </property>
-  </bean>
-  <bean name="/patientActionWithValidation" class="com.swiftcorp.portal.patient.web.PatientDispatchAction" lazy-init="default" autowire="default" dependency-check="default">
-    <property name="patientService">
-      <ref bean="PatientService"/>
+  <bean name="/ajanActionWithValidation" class="com.swiftcorp.portal.ajan.web.AjanDispatchAction">
+    <property name="ajanService">
+      <ref bean="AjanService"/>
     </property>
   </bean>
 </beans>
