@@ -14,20 +14,17 @@ import com.swiftcorp.portal.common.exception.BusinessRuleViolationException;
 import com.swiftcorp.portal.common.exception.SystemException;
 import com.swiftcorp.portal.common.search.SearchOperationResult;
 import com.swiftcorp.portal.common.service.IGenericService;
-import com.swiftcorp.portal.geo.GeoImportSuccess;
 import com.swiftcorp.portal.geo.dao.IGeoDAO.GeoSortBy;
 import com.swiftcorp.portal.geo.dto.GeoDTO;
-import com.swiftcorp.portal.geo.dto.GeoImportHHRegDTO;
 /**
- * @author mosa
- * @since Sep 8, 2008
+ * @author swift
+ * @since mar 3, 2011
  */
 public interface IGeoService extends IGenericService
 {
 	public SearchOperationResult search(String searchQuery) throws SystemException, BusinessRuleViolationException;
 	public List<GeoDTO> getList(Long groupId, GeoSortBy sortby)throws SystemException; 
 	public List<GeoDTO> getList()throws SystemException;	
-	public GeoImportSuccess importData(List<GeoImportHHRegDTO> geoImportHHRegDTOList)throws SystemException;
 	public List<GeoDTO> getCCList()throws SystemException;
 	public List<GeoDTO> getBranchList() throws SystemException;
 	public List<GeoDTO> getRegionList() throws SystemException;

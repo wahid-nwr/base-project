@@ -40,9 +40,9 @@ import com.swiftcorp.portal.role.dto.RoleDTO;
 import com.swiftcorp.portal.role.service.IRoleService;
 import com.swiftcorp.portal.user.dto.UserDTO;
 
-/**
- * @author soma
- * @since Sep 22, 2008
+/*
+ * @author swift corporation
+ * @since mar 3, 2011
  */
 
 public class RoleDispatchAction extends DispatchAction

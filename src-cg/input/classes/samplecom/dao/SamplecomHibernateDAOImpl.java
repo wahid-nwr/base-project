@@ -19,7 +19,10 @@ import com.swiftcorp.portal.common.exception.SystemException;
 import com.swiftcorp.portal.samplecom.dao.ISamplecomDAO.SamplecomSortBy;
 import com.swiftcorp.portal.samplecom.dao.ISamplecomDAO;
 
-
+/*
+ * @author swift corporation
+ * @since mar 3, 2011
+ */
 public class SamplecomHibernateDAOImpl extends HibernateDaoSupport implements ISamplecomDAO
 {
 	protected static final Log log = LogFactory.getLog(SamplecomHibernateDAOImpl.class);

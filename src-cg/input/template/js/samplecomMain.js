@@ -23,19 +23,18 @@ function getSamplecomPanel(){
 		],
 		tbar: [
 	            'Search: ', ' ',
-	            getSamplecomSearchField(store)
+	            getSearchField(store)
 	        ],
-		bbar: new Ext.PagingToolbar({
+		 dockedItems: [{
+			xtype: 'pagingtoolbar',
+			dock: 'bottom',
             store: store,
-            pageSize: 20,
-            displayInfo: true,
-            displayMsg: 'Items {0} - {1} of {2}',
-            emptyMsg: "No topics to display"
-        }),
+           displayInfo: true
+        }],
         buttons:[{
 			text:"ADD",
 				handler:function() {
-					var tabpanel = Ext.getCmp('doc-body').findById('docs-samplecomPanel');
+					var tabpanel = Ext.get('docs-samplecomPanel');
 					var samplecomAddForm = getSamplecomAddForm(tabpanel,store);
 					//tabpanel.remove(0);
 					//tabpanel.add(samplecomAddForm);
@@ -44,14 +43,14 @@ function getSamplecomPanel(){
 	  	},{
 			text:"Cancel",
 			handler:function(){
-				var tabpanel = Ext.getCmp('doc-body').findById('docs-samplecomPanel');				
+				var tabpanel = Ext.get('docs-samplecomPanel');				
 				tabpanel.ownerCt.remove(tabpanel);
 				tabpanel.destroy();
 			}
 		}]
 	});
 	
-	var tabpanel = Ext.getCmp('doc-body').findById('docs-samplecomPanel');
+	var tabpanel = Ext.get('docs-samplecomPanel');
 	tabpanel.on('resize',function(){
 		samplecomGrid.setSize(tabpanel.getSize());
 		samplecomGrid.doLayout();

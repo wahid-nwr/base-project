@@ -1,0 +1,47 @@
+<html>
+<head>
+     <title>Crystal Reports Java Web View</title>
+	 <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>  
+	<div id="mainContainer">
+		<div id="sampleDescriptionDiv">
+			<h1 id="sampleTitle">Crystal Reports Java Web View</h1>
+			<p id="sampleDescription">Demonstrates how to display a Crystal Report over the web using Crystal Reports Java SDK.</p> 
+		</div>
+		<!-- Form to capture information necessary to run the sample
+		****************************************************** -->
+		<form id="sampleForm" method="post" action="java_crj12_web_view.jsp">
+			<table class="infoTbl">
+				<th colspan="2" class="tableHeader">Display Report</th>
+                <tr>
+                	<td>Select Report: </td>
+                	<td>
+                	     <select name="report_path" size="1" class="formField">
+                	          <option value="/Interactive-Parameters.rpt">Interactive Parameters</option>
+                	     </select>
+                	</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td><input id="submitBtn" type="submit" class="btn" value="Submit"/></td>
+                </tr>
+			</table>
+		</form>
+		
+		<div class="infoDiv">
+			<table class="infoTbl">
+				<th colspan="1" class="tableHeader">Notes:</th>
+				<tr>
+					<td>
+						<p>You can view the <a href="readme.txt" target="_blank">Read Me</a> file for instructions on how to install this sample.</p>
+                        <p>Disclaimers and more info <a href="more_info.html">here</a>.</p>
+                    </td>
+				</tr>			
+			</table>		
+		</div>
+		
+		<div id="copyright">&copy; SAP Business Objects Technical Support</div>	
+	</div>
+</BODY>
+</HTML>

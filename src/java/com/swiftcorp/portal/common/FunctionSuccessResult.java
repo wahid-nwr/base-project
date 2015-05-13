@@ -13,8 +13,8 @@ package com.swiftcorp.portal.common;
 import com.swiftcorp.portal.common.dto.FunctionDTO;
 
 /**
- * @author mosa
- * @since Sep 8, 2008
+ * @author swift
+ * @since mar 3, 2011
  */
 public class FunctionSuccessResult extends BusinessOperationResult
 {

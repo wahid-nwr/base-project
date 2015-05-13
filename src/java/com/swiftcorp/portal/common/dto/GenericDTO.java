@@ -12,8 +12,8 @@ package com.swiftcorp.portal.common.dto;
 import java.io.Serializable;
 
 /**
- * @author mosa
- * @since Sep 4, 2008
+ * @author swift
+ * @since mar 3, 2011
  */
 public class GenericDTO implements Serializable
 {

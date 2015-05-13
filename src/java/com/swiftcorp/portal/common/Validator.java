@@ -20,8 +20,8 @@ import com.swiftcorp.portal.common.exception.SystemException;
 import com.swiftcorp.portal.common.util.CalendarUtils;
 
 /**
- * @author mosa
- * @since Sep 15, 2008
+ * @author swift
+ * @since mar 3, 2011
  */
 public class Validator
 {

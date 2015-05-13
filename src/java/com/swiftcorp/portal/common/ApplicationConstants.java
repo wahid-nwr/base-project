@@ -3,6 +3,8 @@ package com.swiftcorp.portal.common;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.swiftcorp.portal.report.service.IReportService;
+
 public class ApplicationConstants
 {
 	
@@ -33,7 +35,7 @@ public class ApplicationConstants
 	public static String FILE_STORAGE_UPLOAD_DIR = FILE_STORAGE_DIR + "upload/";
 	public static String FILE_STORAGE_TEMPLATE_DIR = FILE_STORAGE_DIR + "templates/";
 	public static String FILE_STORAGE_REPORT_DIR = FILE_STORAGE_DIR + "reports/";
-	//public static IReportService REPORT_SERVICE = null;
+	public static IReportService REPORT_SERVICE = null;
 	
 	public static final String RECORD_SOURCE_STATUS_NOT_UPLOADED = "Not Uploaded";
 	public static final String RECORD_SOURCE_STATUS_UPLOADED = "Uploaded";
@@ -76,8 +78,92 @@ public class ApplicationConstants
 	public static int ROLE_FUNCTION_DCR_INFO = 35;
 	public static int ROLE_FUNCTION_DCR_REPORT = 36;
 	public static int ROLE_FUNCTION_IMPORT = 37;
-	public static int ROLE_FUNCTION_INFO = 44;
-	public static int ROLE_FUNCTION_AJAN = 45;
+	public static int ROLE_FUNCTION_TRAVEL_SCHEDULE = 38;
+	public static int ROLE_FUNCTION_TRAVEL_VEHICLE = 39;
+	public static int ROLE_FUNCTION_TRAVEL_ROUTE = 40;
+	public static int ROLE_FUNCTION_TRAVEL_BUYER = 41;
+	public static int ROLE_FUNCTION_TRAVEL_TRIP = 42;
+	public static int ROLE_FUNCTION_TRAVEL_RESERVATION = 43;
+	public static int ROLE_FUNCTION_ACCOUNT = 44;
+	public static int ROLE_FUNCTION_TRANSACTION = 45;
+	public static int ROLE_FUNCTION_STATION = 46;
+	public static int ROLE_FUNCTION_BATCH = 48;
+	public static int ROLE_FUNCTION_ITEM = 47;
+	public static int ROLE_FUNCTION_STORE = 49;
+	public static int ROLE_FUNCTION_COVERING = 50;
+	public static int ROLE_FUNCTION_TRANSPORT = 51;
+	public static int ROLE_FUNCTION_PAYMENT = 52;
+	public static int ROLE_FUNCTION_CREDITTERM = 53;
+	public static int ROLE_FUNCTION_UNIT = 54;
+	public static int ROLE_FUNCTION_PRODSTEP = 55;
+	public static int ROLE_FUNCTION_CURRENCY = 56;
+	public static int ROLE_FUNCTION_BANK = 57;
+	public static int ROLE_FUNCTION_CITY = 58;
+	public static int ROLE_FUNCTION_COUNTRY = 59;
+	public static int ROLE_FUNCTION_MODULE = 60;
+	public static int ROLE_FUNCTION_HSCODE = 61;
+	public static int ROLE_FUNCTION_MATERIALTYPE = 62;
+	public static int ROLE_FUNCTION_MATERIALCATEGORY = 63;
+	public static int ROLE_FUNCTION_WAREHOUSE = 64;
+	public static int ROLE_FUNCTION_PRODUCTIONSECTION = 65;
+	public static int ROLE_FUNCTION_INKTYPE = 66;
+	public static int ROLE_FUNCTION_MACHINE = 67;
+	public static int ROLE_FUNCTION_MACHINETYPE = 68;
+	public static int ROLE_FUNCTION_BRAND = 69;
+	public static int ROLE_FUNCTION_LEAVEMGNT = 70;
+	public static int ROLE_FUNCTION_SALARY = 71;
+	public static int ROLE_FUNCTION_ATTENDENCE = 72;
+	public static int ROLE_FUNCTION_DEPARTMENT = 73;
+	public static int ROLE_FUNCTION_DESIGNATION = 74;
+	public static int ROLE_FUNCTION_LEAVEPACKAGE = 75;
+	public static int ROLE_FUNCTION_HOLIDAY = 76;
+	public static int ROLE_FUNCTION_EMPLOYEE = 77;
+	public static int ROLE_FUNCTION_EMPLOYEEINFO = 78;
+	public static int ROLE_FUNCTION_ACADEMICINFO = 79;
+	public static int ROLE_FUNCTION_CAREERHISTORY = 80;
+	public static int ROLE_FUNCTION_SUPPLIER = 81;
+	public static int ROLE_FUNCTION_SUPPLIERBANKINFO = 82;
+	public static int ROLE_FUNCTION_INVENTORYIN = 83;
+	public static int ROLE_FUNCTION_INVENTORYOUT = 84;
+	public static int ROLE_FUNCTION_MAILBOX = 85;
+	public static int ROLE_FUNCTION_CUSTOMERINFO = 86;
+	public static int ROLE_FUNCTION_EMAIL = 8005;
+	public static int ROLE_FUNCTION_EMAILDTL = 8005;
+	public static int ROLE_FUNCTION_EMAILGROUP = 8005;
+	public static int ROLE_FUNCTION_EMAILREF = 8005;
+	public static int ROLE_FUNCTION_EMAILRECIPIENT = 8005;
+	public static int ROLE_FUNCTION_EMAILRECV = 8005;
+	public static int ROLE_FUNCTION_SHIPPINGINFO = 8005;
+	public static int ROLE_FUNCTION_BANKINFO = 8005;
+	public static int ROLE_FUNCTION_INQUIRY = 87;
+	public static int ROLE_FUNCTION_ITEMMASTER = 88;
+	public static int ROLE_FUNCTION_MATERIALS = 8005;
+	public static int ROLE_FUNCTION_PRICING = 8005;
+	public static int ROLE_FUNCTION_PAYMENT_COLL = 89;
+	public static int ROLE_FUNCTION_EMP_REPORT = 90;
+	public static int ROLE_FUNCTION_SALE_REPORT = 91;
+	public static int ROLE_FUNCTION_CUSTOMER_ORDER_REPORT = 92;
+	public static int ROLE_FUNCTION_GENERAL_PROFILE = 93;
+	public static int ROLE_FUNCTION_RESPONDENT_DETAILS = 94;
+	public static int ROLE_FUNCTION_RESPONDENT_OTHER_INFO = 95;
+	public static int ROLE_FUNCTION_UPAZILLA = 96;
+	public static int ROLE_FUNCTION_CROP_DETAIL = 100;
+	public static int ROLE_FUNCTION_MOST_IMP_VEG = 97;
+	public static int ROLE_FUNCTION_VEGETABLE_RATING = 98;
+	public static int ROLE_FUNCTION_VEGETABLE_SITUATION = 99;
+	public static int ROLE_FUNCTION_TARGET_VEGETABLES = 101;
+	public static int ROLE_FUNCTION_POST_HARVEST_STAGES = 102;
+	public static int ROLE_FUNCTION_TRANSPORT_TO_MAIN_BUYER = 103;
+	public static int ROLE_FUNCTION_COORDINATING_ORGANIZATION = 104;
+	public static int ROLE_FUNCTION_EXPECTATION_OF_SUPPLY_CHAIN_ACTOR = 105;
+	public static int ROLE_FUNCTION_EXPECTATION_OTHER_QUESTION = 106;
+	public static int ROLE_FUNCTION_POST_HARVEST_CONSTRAINTS = 107;
+	public static int ROLE_FUNCTION_RATING_OF_POST_HARVEST_PROBLEMS = 108;
+	public static int ROLE_FUNCTION_PRICE_IN_TAKA_PER_KG = 109;
+	public static int ROLE_FUNCTION_QUANTATIVE_LOSSES_IN_PH_SYSTEM = 110;
+	public static int ROLE_FUNCTION_COMMONLY_GROWN_VEGETABLE = 111;
+	public static int ROLE_FUNCTION_GENERAL_SETUP_REPORT = 112;
+	//add rolefunction here
 	
 	public static long ROLE_SYSTEM_ADMIN = 1;
 	public static long ROLE_DOCTOR = 8;
@@ -156,6 +242,16 @@ public class ApplicationConstants
 	
 	
 	public final static int DEFAULT_GEO_LOCATION = 1;
+	public final static long COMPANY_ACCOUNT_INCOME = 1;
+	public final static long COMPANY_ACCOUNT_EXPENSE = 2;
+	public final static long COMPANY_ACCOUNT_ASSET = 3;
+	public final static long COMPANY_ACCOUNT_LIABILITY = 4;
 	
+	public final static long COMPANY_AREA_DEFAULT = 1;
+	public final static long COMPANY_ITEM_TICKET = 1;
+	public final static long COMPANY_ADMIN_ID = 1;
+	
+	public final static int COMPANY_TRANSACTION_DEBIT = -1;
+	public final static int COMPANY_TRANSACTION_CREDIT = 1;
 }
 

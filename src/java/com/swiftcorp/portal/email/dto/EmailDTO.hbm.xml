@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+  
+ <hibernate-mapping>
+  <class name="com.swiftcorp.portal.email.dto.EmailDTO" table="email">
+	  <id name="componentId" column="componentId" type="long">
+	    <generator class="increment" /> 
+	  </id>
+	  <!--
+	  <property name="uniqueCode" type="string" column="uniquecode" length="50"  />
+	  --> 
+	<property name="sender" type="string" column="sender" /> 
+	<property name="sendDate" type="calendar" column="senddate" /> 
+	<property name="subject" type="string" column="subject" /> 
+	<property name="type" type="string" column="type" /> 
+	<property name="eChecked" type="string" column="echecked" /> 
+	<property name="senderType" type="string" column="sendertype" /> 
+	<property name="others" type="string" column="others" /> 
+	<property name="ossBy" type="string" column="ossby" /> 
+	<property name="refId" type="long" column="refid" /> 
+	<property name="allRecipients" type="long" column="allrecipients" /> 
+	<property name="cc" type="long" column="cc" /> 
+	<property name="recepient" type="string" column="recepient" /> 
+	<property name="internalUserId" type="long" column="internaluserid" /> 
+	<property name="ossStatus" type="string" column="ossstatus" /> 
+	<property name="priority" type="int" column="priority" /> 
+	<property name="emailGroupId" type="long" column="emailgroupid" /> 
+	<property name="comId" type="long" column="comid" /> 
+	 <!--
+	 <property name="description" type="string" column="description"  /> 
+	 <property name="status" type="int" column="status"  /> 
+     <property name="updatedDate" type="calendar" column="updateddate"  />	
+	 <property name="updatedBy" type="long" column="updatedby"  />
+	 -->
+  </class>
+   
+ </hibernate-mapping>

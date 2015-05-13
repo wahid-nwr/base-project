@@ -9,6 +9,9 @@ package com.swiftcorp.portal.common.dto;
  */
 public class DTOConstants
 {
+	public static final int USER_TYPE_SYSTEM = 1;
+	public static final int USER_TYPE_BUYER = 2;
+	public static final int USER_TYPE_SUPPLIER = 3;
 	// QUESTION type
 	public static final int QUESTION_TYPE = 110;
 	

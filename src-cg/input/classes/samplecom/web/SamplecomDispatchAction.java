@@ -41,9 +41,9 @@ import com.swiftcorp.portal.samplecom.web.SamplecomSearchUtils;
 import com.swiftcorp.portal.common.util.DTOObjectReflectionUtil;
 
 
-/**
- * @author soma
- * @since Sep 22, 2008
+/*
+ * @author swift corporation
+ * @since mar 3, 2011
  */
 
 public class SamplecomDispatchAction extends DispatchAction

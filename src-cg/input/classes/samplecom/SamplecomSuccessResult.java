@@ -13,8 +13,8 @@ import com.swiftcorp.portal.samplecom.dto.SamplecomDTO;
 import com.swiftcorp.portal.common.BusinessOperationResult;
 
 /**
- * @author mosa
- * @since Sep 8, 2008
+ * @author swift corporation
+ * @since mar 3, 2011
  */
 public class SamplecomSuccessResult extends BusinessOperationResult
 {

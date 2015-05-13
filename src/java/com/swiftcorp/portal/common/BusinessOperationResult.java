@@ -12,8 +12,8 @@ package com.swiftcorp.portal.common;
 import java.io.Serializable;
 
 /**
- * @author mosa
- * @since Sep 8, 2008
+ * @author swift
+ * @since mar 3, 2011
  */
 public class BusinessOperationResult implements Serializable
 {

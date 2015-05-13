@@ -10,6 +10,7 @@
 	  <property name="uniqueCode" type="string" column="uniqueCode" length="50"  /> 
 	  <property name="functionName" type="string" column="functionName" length="50"  /> 
 	  <property name="functionId" type="int" column="functionId" length="50"  />   
+	  <many-to-one name="moduleId" class="com.swiftcorp.portal.module.dto.ModuleDTO"  lazy="false" column="moduleId"/>
 	  <many-to-one name="typeId" class="com.swiftcorp.portal.common.dto.FunctionTypeDTO"  lazy="false" column="typeId"/>
 	  <property name="displayName" type="string" column="displayName"  /> 
 	  

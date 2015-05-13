@@ -18,8 +18,8 @@ import com.swiftcorp.portal.common.service.IGenericService;
 import com.swiftcorp.portal.group.dto.GroupDTO;
 
 /**
- * @author mosa
- * @since Sep 9, 2008
+ * @author swift
+ * @since mar 3, 2011
  */
 public interface IGroupService extends IGenericService
 {

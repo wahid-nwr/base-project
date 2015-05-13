@@ -14,8 +14,8 @@ import com.swiftcorp.portal.common.dto.GenericDTO;
 import com.swiftcorp.portal.user.dto.UserDTO;
 
 /**
- * @author mosa
- * @since Sep 8, 2008
+ * @author swift
+ * @since mar 3, 2011
  */
 
 public class LoginSuccessResult extends BusinessOperationResult

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+  
+<hibernate-mapping>
+
+    <class name="com.swiftcorp.portal.common.file.dto.File" table="file">
+
+    	 <id name="componentId" column="componentId" type="long">
+		    <generator class="increment" /> 
+		  </id>
+
+    	<property name="creationTimeStamp" type="java.util.Date" column="crte_ts" />
+    	<property name="name" type="java.lang.String" column="file_nm" />
+    	<property name="type" type="java.lang.String" column="file_typ_desc" />
+    	<property name="description" type="java.lang.String" column="file_desc" />
+    	<property name="length" type="java.lang.Long" column="file_lgth" />
+    	<property name="contentBlob" type="blob" column="file_cntnt" />
+
+    </class>
+
+</hibernate-mapping>

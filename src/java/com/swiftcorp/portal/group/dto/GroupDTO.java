@@ -25,8 +25,8 @@ import com.swiftcorp.portal.common.util.StringMaker;
  */
 
 /**
- * @author mosa
- * @since Sep 4, 2008
+ * @author swift
+ * @since mar 3, 2011
  */
 
 public class GroupDTO extends PersistentCapableDTO

@@ -25,8 +25,8 @@ import com.swiftcorp.portal.samplecom.dto.SamplecomDTO;
 
 
 /**
- * @author mosa
- * @since Sep 8, 2008
+ * @author swift corporation
+ * @since mar 3, 2011
  */
 public interface ISamplecomService extends IGenericService
 {

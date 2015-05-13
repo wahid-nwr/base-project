@@ -26,8 +26,8 @@ import com.swiftcorp.portal.user.exception.UserAlreadyExistsException;
 import com.swiftcorp.portal.user.exception.UserNotFoundException;
 
 /**
- * @author mosa
- * @since Sep 8, 2008
+ * @author swift
+ * @since mar 3, 2011
  */
 public interface IUserService extends IGenericService
 {
@@ -41,7 +41,7 @@ public interface IUserService extends IGenericService
 	
 	public GenericDTO get ( String userId )
 			throws SystemException, BusinessRuleViolationException;
-		public BusinessOperationResult authenticate ( LoginDTO LoginDTO )
+	public BusinessOperationResult authenticate ( LoginDTO LoginDTO )
 			throws SystemException, UserNotFoundException,
 			InvalidPasswordException;
 	

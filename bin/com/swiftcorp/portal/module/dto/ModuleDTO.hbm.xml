@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+  
+ <hibernate-mapping>
+  <class name="com.swiftcorp.portal.module.dto.ModuleDTO" table="module">
+	  <id name="componentId" column="componentId" type="long">
+	    <generator class="increment" /> 
+	  </id>
+	  <!--
+	  <property name="uniqueCode" type="string" column="uniquecode" length="50"  />
+	  --> 
+	<property name="moduleCode" type="string" column="modulecode" /> 
+	<property name="moduleName" type="string" column="modulename" /> 
+	 <!--
+	 <property name="description" type="string" column="description"  /> 
+	 <property name="status" type="int" column="status"  /> 
+     <property name="updatedDate" type="calendar" column="updateddate"  />	
+	 <property name="updatedBy" type="long" column="updatedby"  />
+	 -->
+  </class>
+   
+ </hibernate-mapping>

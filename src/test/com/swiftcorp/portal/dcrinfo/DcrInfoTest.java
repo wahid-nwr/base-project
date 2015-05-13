@@ -7,12 +7,12 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 import com.swiftcorp.portal.common.exception.BusinessRuleViolationException;
 import com.swiftcorp.portal.common.exception.SystemException;
-import com.swiftcorp.portal.dcrinfo.dto.DcrProductInfoDTO;
+/*import com.swiftcorp.portal.dcrinfo.dto.DcrProductInfoDTO;
 import com.swiftcorp.portal.dcrinfo.dto.DcrinfoDTO;
-import com.swiftcorp.portal.dcrinfo.service.IDcrinfoService;
+import com.swiftcorp.portal.dcrinfo.service.IDcrinfoService;*/
 
 public class DcrInfoTest {
-
+	/*
 	private IDcrinfoService dcrinfoService;
 	
 	public void init(){
@@ -79,5 +79,5 @@ public class DcrInfoTest {
 		DcrInfoTest dcrInfoTest = new DcrInfoTest();
 		dcrInfoTest.init();
 		dcrInfoTest.testAdd();
-	}
+	}*/
 }

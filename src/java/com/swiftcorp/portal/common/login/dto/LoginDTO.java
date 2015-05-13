@@ -12,8 +12,8 @@ package com.swiftcorp.portal.common.login.dto;
 import com.swiftcorp.portal.common.dto.GenericDTO;
 
 /**
- * @author mosa
- * @since Sep 8, 2008
+ * @author swift
+ * @since mar 3, 2011
  */
 public class LoginDTO extends GenericDTO
 {

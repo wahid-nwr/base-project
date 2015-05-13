@@ -39,9 +39,9 @@ import com.swiftcorp.portal.geo.service.IGeoService;
 import com.swiftcorp.portal.group.service.IGroupService;
 import com.swiftcorp.portal.user.dto.UserDTO;
 
-/**
- * @author soma
- * @since Sep 22, 2008
+/*
+ * @author swift corporation
+ * @since mar 3, 2011
  */
 public class GeoDispatchAction extends DispatchAction {
 	protected static final Log log = LogFactory.getLog(GeoDispatchAction.class);

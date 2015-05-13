@@ -12,8 +12,8 @@ package com.swiftcorp.portal.common.login.dto;
 import com.swiftcorp.portal.user.dto.UserDTO;
 
 /**
- * @author mosa
- * @since Oct 15, 2008
+ * @author swift
+ * @since mar 3, 2011
  */
 public class LoginDetailInfoDTO
 {

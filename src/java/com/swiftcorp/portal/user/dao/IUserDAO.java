@@ -1,8 +1,6 @@
 package com.swiftcorp.portal.user.dao;
 
 import java.util.ArrayList;
-import java.util.List;
-
 import com.swiftcorp.portal.common.exception.SystemException;
 import com.swiftcorp.portal.user.UserSuccessResult;
 import com.swiftcorp.portal.user.dto.UserDTO;
@@ -33,5 +31,4 @@ public interface IUserDAO
 	
 	public ArrayList<UserDTO> getList ( Long groupId, UserSortBy sortby )
 			throws SystemException;
-	
 }

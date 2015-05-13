@@ -103,7 +103,7 @@ public class CodeGeneratorMain
 			// generate new followings of a component		
 			// All the files are genetated in OUTPUT directory 	
 						
-			CustomFileUtils.generateNewComponent(replace,location);
+			CustomFileUtils.generateNewComponent(fieldList,componentName,replace,location);
 			System.out.println("[Task Completion]:: new component generation is complete");
 			
 			DTOFileGenerator.generate(fieldList, replace,location);
@@ -117,7 +117,7 @@ public class CodeGeneratorMain
 			
 			JavascriptFileGenerator.generate(fieldList, componentName, location);
 			System.out.println("[Task Completion]:: Javascript file generation is complete");
-
+			
 //			// ----------- The file is genetated in web/WEB-INF directory -----------------
 			AplicationConfigGenerator appConfigGenerator = new AplicationConfigGenerator(); 
 			appConfigGenerator.generate(replace,location);

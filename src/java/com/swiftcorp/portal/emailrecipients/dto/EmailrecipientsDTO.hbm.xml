@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+  
+ <hibernate-mapping>
+  <class name="com.swiftcorp.portal.emailrecipients.dto.EmailrecipientsDTO" table="emailrecipients">
+	  <id name="componentId" column="componentId" type="long">
+	    <generator class="increment" /> 
+	  </id>
+	  <!--
+	  <property name="uniqueCode" type="string" column="uniquecode" length="50"  />
+	  --> 
+	<property name="companyEmailAddress" type="string" column="companyemailaddress" /> 
+	<property name="messageId" type="string" column="messageid" /> 
+	<property name="contactId" type="long" column="contactid" /> 
+	<property name="recipientsType" type="string" column="recipientstype" /> 
+	<property name="emailStatus" type="string" column="emailstatus" /> 
+	<property name="emailRecvId" type="long" column="emailrecvid" /> 
+	<property name="messageType" type="string" column="messagetype" /> 
+	 <!--
+	 <property name="description" type="string" column="description"  /> 
+	 <property name="status" type="int" column="status"  /> 
+     <property name="updatedDate" type="calendar" column="updateddate"  />	
+	 <property name="updatedBy" type="long" column="updatedby"  />
+	 -->
+  </class>
+   
+ </hibernate-mapping>

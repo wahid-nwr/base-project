@@ -43,8 +43,8 @@ import com.swiftcorp.portal.samplecom.service.ISamplecomService;
 
 
 /**
- * @author mosa
- * @since Sep 8, 2008
+ * @author swift corporation
+ * @since mar 3, 2011
  */
 public class SamplecomServiceImpl implements ISamplecomService 
 {

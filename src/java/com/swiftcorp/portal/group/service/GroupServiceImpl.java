@@ -22,8 +22,8 @@ import com.swiftcorp.portal.group.dao.IGroupDAO;
 import com.swiftcorp.portal.group.dto.GroupDTO;
 
 /**
- * @author mosa
- * @since Sep 9, 2008
+ * @author swift
+ * @since mar 3, 2011
  */
 public class GroupServiceImpl implements IGroupService
 {

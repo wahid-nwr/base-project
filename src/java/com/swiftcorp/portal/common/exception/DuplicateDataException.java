@@ -22,8 +22,8 @@ package com.swiftcorp.portal.common.exception;
  */
 
 /**
- * @author mosa
- * @since Sep 4, 2008
+ * @author swift
+ * @since mar 3, 2011
  */
 public class DuplicateDataException extends BusinessRuleViolationException
 {

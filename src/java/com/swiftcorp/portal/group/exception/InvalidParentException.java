@@ -12,8 +12,8 @@ package com.swiftcorp.portal.group.exception;
 import com.swiftcorp.portal.common.exception.BusinessRuleViolationException;
 
 /**
- * @author mosa
- * @since Sep 4, 2008
+ * @author swift
+ * @since mar 3, 2011
  */
 public class InvalidParentException extends BusinessRuleViolationException
 {

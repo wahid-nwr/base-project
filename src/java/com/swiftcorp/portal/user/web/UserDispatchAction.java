@@ -43,9 +43,9 @@ import com.swiftcorp.portal.role.service.IRoleService;
 import com.swiftcorp.portal.user.dto.UserDTO;
 import com.swiftcorp.portal.user.service.IUserService;
 
-/**
- * @author soma
- * @since Sep 22, 2008
+/*
+ * @author swift corporation
+ * @since mar 3, 2011
  */
 
 public class UserDispatchAction extends DispatchAction
@@ -155,6 +155,33 @@ public class UserDispatchAction extends DispatchAction
 			request.setAttribute ( SESSION_KEYS.USER_SEARCH_RESULT, searchOperationResult );
 			request.setAttribute ( SESSION_KEYS.IS_SEARCH_RESULT_SHOW, true );
 			UserSearchUtils.prepareSearchPage ( request );
+		}
+		catch (Exception e)
+		{
+			log.info ( "promptUserSearchSystemLevel() :", e );
+			throw e;
+		}
+		// show the user search page
+		return mapping.findForward ( ForwardNames.EXT_USER_SEARCH_SYSTEM_LEVEL );
+	}
+	
+	public ActionForward promptExtMailUserSearchSystemLevel ( ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response )
+	throws Exception
+	{
+		log.info ( "promptUserSearchSystemLevel() : enter" );
+		try
+		{
+			UserSearchUtils.prepareSearchPage ( request );
+			// here we want to load the user
+			String searchSqlQuery = UserSearchUtils.prepareEmailSqlQuery(request);
+			log.info ( "searchUserFromSystemLevel():: searchSqlQuery = " + searchSqlQuery );
+			SearchUtil.prepareRequest ( request );
+			
+			SearchOperationResult searchOperationResult = userService.search ( searchSqlQuery );
+			log.info ( "searchUserFromSystemLevel():: searchOperationResult> size = " + searchOperationResult.getTotalRowCount () );
+			request.setAttribute ( SESSION_KEYS.USER_SEARCH_RESULT, searchOperationResult );
+			request.setAttribute ( SESSION_KEYS.IS_SEARCH_RESULT_SHOW, true );
+			UserSearchUtils.prepareMailSearchPage ( request );
 		}
 		catch (Exception e)
 		{
@@ -304,7 +331,7 @@ public class UserDispatchAction extends DispatchAction
 		DTOObjectReflectionUtil.populateDTOFromRequest(request, userDTO);
 		
 		// get the role from the form
-		String role = request.getParameter("role");
+		String role = request.getParameter("rolename");
 		long roleId = 0;
 		if(role!=null && !role.equals("null") && role.length()>0)
 		{
@@ -319,7 +346,12 @@ public class UserDispatchAction extends DispatchAction
 		{
 			throw new SystemException ( "Role is found null" );
 		}
-		
+		System.out.println("userDTO.getUniqueCode ()::"+userDTO.getUniqueCode ());
+		String uniqueCode = request.getParameter("uniqueCode");
+		if(uniqueCode!=null && !uniqueCode.equals("null") && uniqueCode.length()>0)
+		{
+			userDTO.setUniqueCode(uniqueCode);
+		}
 		String[][] messageArgValues =
 		{
 			{

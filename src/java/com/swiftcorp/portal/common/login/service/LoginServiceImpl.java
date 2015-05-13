@@ -22,8 +22,8 @@ import com.swiftcorp.portal.user.exception.UserNotFoundException;
 import com.swiftcorp.portal.user.service.IUserService;
 
 /**
- * @author mosa
- * @since Sep 8, 2008
+ * @author swift
+ * @since mar 3, 2011
  */
 public class LoginServiceImpl implements ILoginService
 {

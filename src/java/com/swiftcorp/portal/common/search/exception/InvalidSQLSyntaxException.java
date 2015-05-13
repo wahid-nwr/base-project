@@ -12,8 +12,8 @@ package com.swiftcorp.portal.common.search.exception;
 import com.swiftcorp.portal.common.exception.BusinessRuleViolationException;
 
 /**
- * @author mosa
- * @since Sep 21, 2008
+ * @author swift
+ * @since mar 3, 2011
  */
 public class InvalidSQLSyntaxException extends BusinessRuleViolationException
 {

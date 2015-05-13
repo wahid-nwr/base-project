@@ -35,9 +35,9 @@ import com.swiftcorp.portal.info.InfoSuccessResult;
 import com.swiftcorp.portal.info.service.IInfoService;
 import com.swiftcorp.portal.info.web.InfoSearchUtils;
 import com.swiftcorp.portal.common.util.DTOObjectReflectionUtil;
-/**
- * @author soma
- * @since Sep 22, 2008
+/*
+ * @author swift corporation
+ * @since mar 3, 2011
  */
 public class InfoDispatchAction extends DispatchAction
 {

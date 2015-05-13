@@ -36,8 +36,8 @@ import com.swiftcorp.portal.common.login.service.ILoginService;
 import com.swiftcorp.portal.info.dao.IInfoDAO.InfoSortBy;
 import com.swiftcorp.portal.info.service.IInfoService;
 /**
- * @author mosa
- * @since Sep 8, 2008
+ * @author swift
+ * @since mar 3, 2011
  */
 public class InfoServiceImpl implements IInfoService 
 {

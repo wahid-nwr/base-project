@@ -19,8 +19,8 @@ import com.swiftcorp.portal.role.dao.IRoleDAO.RoleSortBy;
 import com.swiftcorp.portal.role.dto.RoleDTO;
 
 /**
- * @author mosa
- * @since Sep 8, 2008
+ * @author swift
+ * @since mar 3, 2011
  */
 public interface IRoleService extends IGenericService
 {

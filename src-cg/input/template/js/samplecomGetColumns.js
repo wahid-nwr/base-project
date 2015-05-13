@@ -1,4 +1,4 @@
-function getSamplecomColumns(itemDeleter)
+function getSamplecomColumns()
 {
 	var columns = [];
 	/* sample columns

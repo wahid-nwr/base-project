@@ -11,8 +11,8 @@ package com.swiftcorp.portal.info;
 import com.swiftcorp.portal.info.dto.InfoDTO;
 import com.swiftcorp.portal.common.BusinessOperationResult;
 /**
- * @author mosa
- * @since Sep 8, 2008
+ * @author swift
+ * @since mar 3, 2011
  */
 public class InfoSuccessResult extends BusinessOperationResult
 {

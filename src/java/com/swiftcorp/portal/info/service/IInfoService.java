@@ -21,8 +21,8 @@ import com.swiftcorp.portal.common.dto.GenericDTO;
 import com.swiftcorp.portal.info.dao.IInfoDAO.InfoSortBy;
 import com.swiftcorp.portal.info.dto.InfoDTO;
 /**
- * @author mosa
- * @since Sep 8, 2008
+ * @author swift
+ * @since mar 3, 2011
  */
 public interface IInfoService extends IGenericService
 {

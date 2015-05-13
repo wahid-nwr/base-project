@@ -9,6 +9,10 @@ import com.swiftcorp.portal.samplecom.dto.SamplecomDTO;
 import com.swiftcorp.portal.samplecom.exception.SamplecomNotFoundException;
 import com.swiftcorp.portal.samplecom.dao.ISamplecomDAO.SamplecomSortBy;
 
+/*
+ * @author swift corporation
+ * @since mar 3, 2011
+ */
 
 public interface ISamplecomDAO 
 {

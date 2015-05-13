@@ -22,20 +22,18 @@ import com.swiftcorp.portal.common.exception.SystemException;
 import com.swiftcorp.portal.common.search.ISearcher;
 import com.swiftcorp.portal.common.search.SearchOperationResult;
 import com.swiftcorp.portal.common.search.exception.InvalidSQLSyntaxException;
-import com.swiftcorp.portal.geo.GeoImportSuccess;
 import com.swiftcorp.portal.geo.GeoSuccessResult;
 import com.swiftcorp.portal.geo.dao.IGeoDAO;
 import com.swiftcorp.portal.geo.dao.IGeoDAO.GeoSortBy;
 import com.swiftcorp.portal.geo.dto.GeoDTO;
-import com.swiftcorp.portal.geo.dto.GeoImportHHRegDTO;
 import com.swiftcorp.portal.geo.exception.GeoNotFoundException;
 import com.swiftcorp.portal.role.dto.RoleDTO;
 import com.swiftcorp.portal.role.service.IRoleService;
 import com.swiftcorp.portal.user.dto.UserDTO;
 import com.swiftcorp.portal.user.service.IUserService;
 /**
- * @author mosa
- * @since Sep 8, 2008
+ * @author swift
+ * @since mar 3, 2011
  */
 public class GeoServiceImpl implements IGeoService 
 {
@@ -284,116 +282,8 @@ public class GeoServiceImpl implements IGeoService
 		}
 		return isExist ;		
 	}
-	@Override
-	public GeoImportSuccess importData(List<GeoImportHHRegDTO> geoImportHHRegDTOList)
-	throws SystemException 
-	{
-		Enumeration en = null;
-		for(GeoImportHHRegDTO geoImportHHRegDTO:geoImportHHRegDTOList)
-		{		
-			String ssName = "";	
-			String skName = "";
-			GeoDTO branchDTO = this.saveGeoInfo ( geoImportHHRegDTO );
-			UserDTO skUserDTO = null;
-			UserDTO ssUserDTO;
-			System.out.println("in geo import");
-			
-			/*List<SkDataDTO> skDataDTOList = geoImportHHRegDTO.getSkDataDTOList ();
-			for(SkDataDTO skDataDTO : skDataDTOList)
-			{				
-				RoleDTO role = new RoleDTO();
-				try {
-					role = (RoleDTO)roleService.get("SK");
-				} catch (BusinessRuleViolationException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				
-				skUserDTO = new UserDTO();
-				skUserDTO.setFirstName(skDataDTO.getSkName ());
-				skUserDTO.setLastName("");
-				skUserDTO.setUniqueCode(skDataDTO.getSkId ());
-				skUserDTO.setPassword(skDataDTO.getSkId ());
-				skUserDTO.setConfirmPassword(skDataDTO.getSkId ());
-				skUserDTO.setAreaType(DTOConstants.GEO_TYPE_BRANCH);
-				skUserDTO.setUserArea(branchDTO);
-				skUserDTO.setRole(role);
-				System.out.println("uniquecode:::"+skUserDTO.getUniqueCode());
-				
-				try {
-					userService.add(skUserDTO);
-				} catch (BusinessRuleViolationException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				List<SSDTO> ssIdList = skDataDTO.getSsDTOList ();
-				for(int i=0;ssIdList!=null && i<ssIdList.size ();i++)
-				{
-					SSDTO ssDTO = ssIdList.get ( i );
-					ssDTO.setBranch ( branchDTO );
-					try {
-						userService.addSS(ssDTO);
-					} catch (BusinessRuleViolationException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}				
-			}*/
-		}
-		return null;
-	}
-	public GeoDTO saveGeoInfo(GeoImportHHRegDTO geoImportHHRegDTO)
-	{
-		GeoDTO cityCorpDTO = null;
-		GeoDTO regionDTO = null;
-		GeoDTO branchDTO = null;
-		System.out.println (" city::"+geoImportHHRegDTO.getCityCorpId ()+" "+geoImportHHRegDTO.getCityCorpName ());
-		System.out.println (" region::"+geoImportHHRegDTO.getRegionId ()+" "+geoImportHHRegDTO.getRegionName ());
-		System.out.println (" branch::"+geoImportHHRegDTO.getBranchId ()+" "+geoImportHHRegDTO.getBranchName ());		
-		try
-		{
-			cityCorpDTO = geoDAO.get ( geoImportHHRegDTO.getCityCorpId () );
-			if(cityCorpDTO == null)
-			{
-				cityCorpDTO = new GeoDTO ();
-				cityCorpDTO.setCode ( geoImportHHRegDTO.getCityCorpId () );
-				cityCorpDTO.setName ( geoImportHHRegDTO.getCityCorpName () );
-				cityCorpDTO.setGeoType ( DTOConstants.GEO_TYPE_CITY_CORPORATION );
-				System.out.println ("in city add 1");
-				geoDAO.add(cityCorpDTO);
-				System.out.println ("in city add 2");
-			}
-			regionDTO = geoDAO.get ( geoImportHHRegDTO.getRegionId () );
-			if(regionDTO == null)
-			{
-				regionDTO = new GeoDTO ();
-				regionDTO.setCode ( geoImportHHRegDTO.getRegionId () );
-				regionDTO.setName ( geoImportHHRegDTO.getRegionName () );
-				regionDTO.setParentArea ( cityCorpDTO );
-				regionDTO.setGeoType ( DTOConstants.GEO_TYPE_REGION );
-				System.out.println ("in re add 1");
-				geoDAO.add(regionDTO);
-				System.out.println ("in re add 2");
-			}
-			branchDTO = geoDAO.get ( geoImportHHRegDTO.getBranchId () );
-			if(branchDTO == null)
-			{
-				branchDTO = new GeoDTO ();
-				branchDTO.setCode ( geoImportHHRegDTO.getBranchId () );
-				branchDTO.setName ( geoImportHHRegDTO.getBranchName () );
-				branchDTO.setParentArea ( regionDTO );
-				branchDTO.setGeoType ( DTOConstants.GEO_TYPE_BRANCH );
-				System.out.println ("in br add 1");
-				geoDAO.add(branchDTO);
-				System.out.println ("in br add 2");
-			}			
-		}
-		catch (Exception e)
-		{
-			// TODO: handle exception
-		}
-		return branchDTO;
-	}
+	
+	
 	public void setUserService(IUserService userService) {
 		this.userService = userService;
 	}

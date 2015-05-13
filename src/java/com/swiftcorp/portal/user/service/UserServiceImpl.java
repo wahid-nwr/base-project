@@ -34,8 +34,8 @@ import com.swiftcorp.portal.user.exception.UserAlreadyExistsException;
 import com.swiftcorp.portal.user.exception.UserNotFoundException;
 
 /**
- * @author mosa
- * @since Sep 8, 2008
+ * @author swift
+ * @since mar 3, 2011
  */
 public class UserServiceImpl implements IUserService
 {
@@ -137,7 +137,6 @@ public class UserServiceImpl implements IUserService
 		logger.info ( "add(UserDTO) : Exit" );
 		return successResult;
 	}
-	
 	
 	public BusinessOperationResult modify ( GenericDTO genericDTO )
 			throws SystemException, BusinessRuleViolationException
@@ -345,6 +344,7 @@ public class UserServiceImpl implements IUserService
 		}
 		return isExist;
 	}
+	
 	public BusinessOperationResult authenticate ( LoginDTO LoginDTO )
 			throws SystemException, UserNotFoundException,
 			InvalidPasswordException

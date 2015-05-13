@@ -13,8 +13,8 @@ import com.swiftcorp.portal.common.BusinessOperationResult;
 import com.swiftcorp.portal.user.dto.UserDTO;
 
 /**
- * @author mosa
- * @since Sep 8, 2008
+ * @author swift
+ * @since mar 3, 2011
  */
 public class UserSuccessResult extends BusinessOperationResult
 {

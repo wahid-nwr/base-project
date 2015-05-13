@@ -108,6 +108,7 @@ public class JavascriptFileGenerator {
 		List<String> formFields = new ArrayList<String>();
 		List<String> gridColumns = new ArrayList<String>();
 		List<String> formLoadColumns = new ArrayList<String>();
+		List<String> storeItems = new ArrayList<String>();
 		String formField = "";
 		for(int i=0;sampleFormFieldsJSFile!=null && i<sampleFormFieldsJSFile.size();i++)
 		{
@@ -148,7 +149,7 @@ public class JavascriptFileGenerator {
 					}
 					gridColumns.add(gridColumn);
 				}
-				gridColumns.add("\n\t\t\t"+"itemDeleter");
+				//gridColumns.add("\n\t\t\t"+"itemDeleter");
 				line = line.substring(0, line.indexOf("["))+gridColumns.toString()+line.substring(line.indexOf("]")+1,line.length());
 				sampleGridColumnsJSFile.add(i, line);
 				break;
@@ -171,6 +172,30 @@ public class JavascriptFileGenerator {
 				}
 				//line = line.substring(0, line.indexOf("["))+formLoadColumns.toString()+line.substring(line.indexOf("]")+1,line.length());
 				sampleFormLoadColumnsJSFile.addAll(i+1, formLoadColumns);
+				break;
+			}
+		}
+		
+		String storeLines= "";
+		for(int i=0;sampleStoreJSFile!=null && i<sampleStoreJSFile.size();i++)
+		{
+			String line = sampleStoreJSFile.get(i);
+			if(line.indexOf("fields: ['componentId']")>-1)
+			{		
+				//sampleGridColumnsJSFile.remove(i);
+				//System.out.println(line+line.length());
+				sampleStoreJSFile.remove(i);
+				line = line.replace("]", "");
+				storeItems.add(line);
+				for(FieldDTO fieldDTO:fieldNames)
+				{
+					formLoadColumn = fieldDTO.getName().toLowerCase();
+					formLoadColumn = ",'"+formLoadColumn+"'";					
+					storeItems.add(formLoadColumn);
+				}
+				storeItems.add("]");
+				//line = line.substring(0, line.indexOf("["))+formLoadColumns.toString()+line.substring(line.indexOf("]")+1,line.length());
+				sampleStoreJSFile.addAll(i, storeItems);
 				break;
 			}
 		}

@@ -34,8 +34,8 @@ import com.swiftcorp.portal.group.dto.GroupDTO;
 import com.swiftcorp.portal.group.service.IGroupService;
 
 /**
- * @author mosa
- * @since Sep 21, 2008
+ * @author swift
+ * @since mar 3, 2011
  */
 public class GroupDispatchAction extends GenericDispatchAction
 {

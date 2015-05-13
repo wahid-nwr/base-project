@@ -1,4 +1,5 @@
 // Search Field for DCR Info
+/*
 function getSamplecomSearchField(store)
 {
 	Ext.app.SearchField = Ext.extend(Ext.form.TwinTriggerField, {
@@ -63,4 +64,5 @@ function getSamplecomSearchField(store)
         width:320
     })
 	return SearchField;
-}	
+}
+*/	

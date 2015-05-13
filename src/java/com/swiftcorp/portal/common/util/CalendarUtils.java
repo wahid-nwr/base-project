@@ -28,7 +28,7 @@ public class CalendarUtils
 	protected static final Log log = LogFactory.getLog ( CalendarUtils.class );
 	private static String MyCompany_DATE_FORMAT = "yyyyMMdd";
 	private static String MYSQL_DATE_FORMAT = "yyyy-MM-dd";
-	private static String MYSQL_DATETIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
+	public static String MYSQL_DATETIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
 	private static String MHEALTH_DATETIME_FORMAT = "dd-MM-yyyy";
 	private static String DATE_TIME_MILLIS_FORMAT = "yyyyMMddHHmmss";
 	

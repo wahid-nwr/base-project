@@ -172,5 +172,6 @@ public class UserHibernateDAOImpl extends HibernateDaoSupport implements IUserDA
 		}
 		return resultStr;
 		
-	}	
+	}
+	
 }

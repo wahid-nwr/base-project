@@ -31,8 +31,8 @@ import com.swiftcorp.portal.role.exception.RoleAlreadyExistsException;
 import com.swiftcorp.portal.role.exception.RoleNotFoundException;
 
 /**
- * @author mosa
- * @since Sep 8, 2008
+ * @author swift
+ * @since mar 3, 2011
  */
 public class RoleServiceImpl implements IRoleService
 {

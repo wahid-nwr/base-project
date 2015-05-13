@@ -14,8 +14,8 @@ import com.swiftcorp.portal.common.exception.BusinessRuleViolationException;
 
 
 /**
- * @author mosa
- * @since Sep 4, 2008
+ * @author swift corporation
+ * @since mar 3, 2011
  */
 public class SamplecomAlreadyExistsException extends BusinessRuleViolationException
 {

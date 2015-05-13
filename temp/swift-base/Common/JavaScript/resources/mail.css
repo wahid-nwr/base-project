@@ -1,0 +1,429 @@
+    html, body {
+        font:normal 12px verdana;
+        margin:0;
+        padding:0;
+        border:0 none;
+        overflow:hidden;
+        height:100%;
+    }
+    p {
+        margin:5px;
+    }
+    .settings {
+        background-image:url(../../../images/mail/images/folder_wrench.png);
+    }
+    .nav {
+        background-image:url(../../../images/mail/images/folder_go.png);
+    }
+
+	/*
+	SUB MENU - START
+	*/
+	
+	#sub_menu UL {
+		PADDING-RIGHT: 0px; 
+		PADDING-LEFT: 0px; 
+		PADDING-BOTTOM: 0px; 
+		MARGIN: 0px; 
+		WIDTH: 99%; 
+		PADDING-TOP: 0px; 
+		LIST-STYLE-TYPE: none;
+	}
+	#sub_menu UL A {
+		font:bold 10px verdana;	
+		PADDING-RIGHT: 5px; 
+		DISPLAY: block; 
+		PADDING-LEFT: 20px;
+		background-color:#d9e7f8;
+		border-top:1px solid #e6eef7;
+		border-bottom:1px solid #99bbe8;
+		PADDING-BOTTOM: 3px; 
+		MARGIN: 0px; 
+		WIDTH: 100%; 
+		COLOR: #333333; 
+		PADDING-TOP: 3px; 
+		HEIGHT: 17px;
+		TEXT-DECORATION: none; 
+		TARGET:_blank;
+	}
+	#sub_menu UL UL A {
+		font:bold 10px verdana;	
+		PADDING-RIGHT: 5px; 
+		DISPLAY: block; 
+		PADDING-LEFT: 40px;
+		background-color:#e7f2ff;
+		border-top:1px solid #e6eef7;
+		border-bottom:1px solid #99bbe8;
+		PADDING-BOTTOM: 3px; 
+		MARGIN: 0px; 
+		WIDTH: 100%; 
+		COLOR: #333333; 
+		PADDING-TOP: 3px; 
+		HEIGHT: 17px;
+		TEXT-DECORATION: none; 
+	}
+	#sub_menu UL UL A:hover {
+		font:bold 10px verdana;	
+		background-color:#d9e7f8;
+		border-top:1px solid #d9e7f8;
+		border-bottom:1px solid #d9e7f8;
+		TEXT-DECORATION: none; 
+		WIDTH: 100%; 
+	}
+	#sub_menu A:hover {
+		text-decoration:none;
+		border-bottom: 1px solid #0D7F5E;
+		border-top: 1px solid #0D7F5E;
+		color: #FFFFFF; 
+		BACKGROUND-COLOR: #6f8fba;
+		WIDTH: 100%; 
+	}
+	
+	/* 
+	SUB MENU - END 
+	*/
+	
+	#nav_menu{
+		font:bold 10px verdana;	
+	}
+	#nav_menu a{
+		font:bold 10px verdana;	
+		PADDING-RIGHT: 5px;
+		PADDING-TOP: 10px;  
+		PADDING-LEFT:50px;
+		PADDING-BOTTOM: 3px;
+		DISPLAY: block;  
+		MARGIN: 0px; 
+		WIDTH: 100%; 
+		COLOR: #333333;
+		HEIGHT: 20px;
+		TEXT-DECORATION: none;
+	}
+	
+	#nav_menu A:hover {
+		text-decoration:none;
+		border-bottom: 1px solid #0D7F5E;
+		border-top: 1px solid #0D7F5E;
+		color: #FFFFFF;
+		WIDTH: 100%;  
+		BACKGROUND-COLOR: #6f8fba;
+	}
+	#nav_menu span{
+		font:bold 10px verdana;	
+		PADDING-RIGHT: 5px;
+		PADDING-TOP: 10px;  
+		PADDING-LEFT:50px;
+		PADDING-BOTTOM: 3px;
+		DISPLAY: block;  
+		MARGIN: 0px; 
+		WIDTH: 100%; 
+		COLOR: #333333;
+		HEIGHT: 20px;
+		TEXT-DECORATION: none;
+	}
+	
+	#nav_menu2 a{
+		font:bold 10px verdana;	
+		PADDING-RIGHT: 5px;
+		PADDING-TOP: 5px;  
+		PADDING-LEFT:60px;
+		PADDING-BOTTOM: 3px;
+		DISPLAY: block;  
+		MARGIN: 0px; 
+		WIDTH: 100%; 
+		COLOR: #333333;
+		HEIGHT: 15px;
+		TEXT-DECORATION: none;
+	}	
+	#nav_menu2 A:hover {
+		text-decoration:none;
+		border-bottom: 1px solid #0D7F5E;
+		border-top: 1px solid #0D7F5E;
+		background-color:#EFEFEF;
+		border-color:#DDDDDD;
+		WIDTH: 100%; 		
+	}
+	.items-icon {
+		vertical-align:top;
+		width:16px;
+		height:16px;
+		margin-right:6px;
+	}
+	.inbox a{
+		background-image:url(../../../images/mail/images/mailbox-icon_b.png);
+		background-repeat:no-repeat;
+		background-position:5% 50%;
+	}
+
+	.inbox_group a{
+		background-image:url(../../../images/mail/images/plusbottom.gif);
+		background-repeat:no-repeat;
+		background-position:15% 50%;
+	}
+	.compose a{
+		background-image:url(../../../images/mail/images/Compose-icon_b.png);
+		background-repeat:no-repeat;
+		background-position:5% 50%;
+	}
+	.sent a{
+		background-image:url(../../../images/mail/images/SentMail_b.png);
+		background-repeat:no-repeat;
+		background-position:5% 50%;
+	}	
+	.draft a{
+		background-image:url(../../../images/mail/images/Contacts-icon_b.png);
+		background-repeat:no-repeat;
+		background-position:5% 50%;
+	}
+	.share a{
+		background-image:url(../../../images/mail/images/send-icon_b.png);
+		background-repeat:no-repeat;
+		background-position:5% 50%;
+	}
+	.check a{
+		background-image:url(./images/mail/images/refresh-icon.png);
+		background-repeat:no-repeat;
+		background-position:5% 50%;
+	}
+	.acc_settings a{
+		background-image:url(../../../images/mail/images/E-mail-icon.png);
+		background-repeat:no-repeat;
+		background-position:5% 50%;
+	}
+	
+	/*
+	Menu Ends
+	*/
+	.m_t1 a{
+		font:10px Verdana;
+		color:#333333;
+		text-decoration:none;
+		padding-left:20px;
+		background-image:url(../../../images/mail/images/arrow_right.gif);
+		background-repeat:no-repeat;
+		background-position:5% 50%;
+		}
+	.m_t2{
+		font:10px Verdana;
+		color:#333333;
+		padding:3px;
+		padding-left:20px;
+		overflow:hidden;
+		}
+	.m_t2 a{
+		font:10px Verdana;
+		color:#333333;
+		padding:3px;
+		padding-left:25px;
+		overflow:hidden;
+		text-decoration:none;
+		background-image:url(../../../images/mail/images/plusbottom.gif);
+		background-repeat:no-repeat;
+		background-position:5;
+		}
+			
+	.t1{
+		font:11px Verdana;
+		color:#333333;
+		}
+	.t1 a{
+		font:11px Verdana;
+		color:#333333;
+		text-decoration:none;	
+		}
+	.t1_1{
+		font:11px Verdana;
+		color:#336699;
+		padding:2px;
+		}
+	.t1_1 a{
+		font:11px Verdana;
+		color:#336699;
+		text-decoration:none;
+		cursor:pointer;
+		padding:2px;	
+		}	
+	.th1{
+		font:bold 12px Verdana;
+		color:#333333;
+		}
+	.th2{
+		font:bold 12px Verdana;
+		color: #333333;
+		padding:5px;
+		}
+	.th3{
+		font:bold 12px Verdana;
+		color:#336699;
+		padding:5px;
+		}
+	.th4{
+		font:bold 11px Verdana;
+		color:#336699;
+		padding:5px;
+		}
+	.th4 a{
+		font:bold 11px Verdana;
+		color:#336699;
+		padding:5px;
+		}							
+	.separator{
+		height:2px;
+		margin-bottom:5px;
+		border-bottom:1px solid #CCCCCC;
+		}
+	.hidden{
+		display:none;
+		}
+	.show{
+		display:block;
+		visibility:visible;
+		}
+	.ref{
+		border:1px dashed #FFFF66;
+		background-color:#FFFFCC;
+		padding:3px;
+		font:10px verdana;
+		color:#666666;
+		}
+	.ref_sel{
+		padding:3px;
+		height:20px;
+		width:200px;
+		font:10px verdana;
+		color:#333333;
+		border:1px dashed #FFFF66;
+		}
+	.ref_in{
+		padding:3px;
+		width:200px;
+		height:20px;
+		font:10px verdana;
+		color:#333333;
+		border:1px dashed #FFFF66;
+		}
+	.ref_btn{
+		padding:3px;
+		font:bold 10px verdana;
+		color:#333333;
+		padding:3px;
+		width:75px;
+		}
+	.search_in{
+		font: 10px verdana;
+		padding:3px;
+		height:20px;
+		width:150px;
+		color:#99bbe8;
+		border-bottom:1px solid #99bbe8;
+		border-top:1px solid #99bbe8;
+		border-left:1px solid #99bbe8;
+		background-color:#FFFFFF;
+		}
+	.search_btn{
+		font:bold 10px verdana;
+		padding:3px;
+		width:50px;
+		height:20px;
+		cursor:pointer;
+		background-color:#d9e7f8;
+		border:1px solid #99bbe8;
+		}
+	.messBox{
+		background-color:#e7f2ff;
+		border-top:1px solid #e6eef7;
+		border-bottom:1px solid #99bbe8;
+		width:99%;
+		padding:5px;
+		}
+	.mainCommentBox{
+		padding:5px;
+		font:10px  Verdana, Geneva, sans-serif;
+		min-height:15px; 
+		}
+	.childCommentBox{
+		background-color:#edeff4;
+		border-bottom:1px solid #e5eaf1;
+		width:99%;
+		padding:5px;
+		color:#333333;
+		margin:2px;
+		min-height:15px;
+		font:10px  Verdana, Geneva, sans-serif;
+		}
+	 .comm_hr{
+		 padding:3px;
+		 border-bottom:1px solid #e5eaf1;
+		 }
+	 .comm_in{
+		 padding:3px;
+		 width:100%;
+		 border:1px solid #bdc7d8;
+		 font:10px Verdana, Geneva, sans-serif;
+		 color:#333;
+		 }
+	  .comm_sub{
+		 padding:4px;
+		 width:100px;
+		 border:1px #29447e;
+		 border-style:double;
+		 background-color:#637bad;
+		 font:bold 10px Verdana, Geneva, sans-serif;
+		 color:#FFF;
+		 cursor:pointer;
+		 } 	 	 
+	  .mainConName{
+		font:11px Verdana;
+		color:#336699;
+		}
+	  .mainConTime{
+		font:9px Verdana;
+		color:#999;
+		}		 	
+		/*
+		BG - edeff4
+		BDR - e5eaf1
+		BDR2- bdc7d8 
+		*/		
+	.readMail{
+		background-color: #F7F7F7;		
+		}
+	.unReadMail{
+		font-weight:bold;
+		background-color:#FFFFF;				
+		}
+		.checkMailDiv{
+		border:1px dashed #FFFF66;
+		background-color:#FFFFCC;
+		PADDING-RIGHT: 10px; 
+		PADDING-LEFT: 10px; 
+		PADDING-BOTTOM: 2px; 
+		MARGIN: 0px; 
+		WIDTH: 100%; 
+		PADDING-TOP: 70px; 
+		text-align: center;
+		font:10px verdana;
+		color:#666666;
+		}	
+		
+		[class*='close-'] {
+    color: #777;
+    font: 14px/100% arial, sans-serif;
+    position: absolute;
+    right: 5px;
+    text-decoration: none;
+    text-shadow: 0 1px 0 #fff;
+    top: 5px;
+  }
+ 
+  .close-classic:after {
+    content: 'X'; /* ANSI X letter */
+  }
+ 
+  .close-thin:after {
+    content: '×'; /* UTF-8 symbol */
+  }
+ 
+  .close-thik:after {
+    content: '✖'; /* UTF-8 symbol */
+  }																		

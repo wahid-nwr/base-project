@@ -9,6 +9,7 @@
  */
 package com.swiftcorp.portal.user.dto;
 
+import com.swiftcorp.portal.common.dto.DTOConstants;
 import com.swiftcorp.portal.common.dto.PersistentCapableDTO;
 import com.swiftcorp.portal.common.util.StringMaker;
 import com.swiftcorp.portal.geo.dto.GeoDTO;
@@ -23,11 +24,15 @@ import com.swiftcorp.portal.role.dto.RoleDTO;
  */
 
 /**
- * @author mosa
- * @since Sep 7, 2008
+ * @author swift
+ * @since mar 3, 2011
  */
-public class UserDTO extends PersistentCapableDTO
+public class UserDTO extends UserInfo
 {
+	public UserDTO ( )
+	{
+		super ( DTOConstants.USER_TYPE_SYSTEM );
+	}
 	private static final long serialVersionUID = 1L;
 	
 	private String lastName;

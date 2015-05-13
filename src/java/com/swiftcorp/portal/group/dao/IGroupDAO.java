@@ -23,8 +23,8 @@ import com.swiftcorp.portal.group.exception.GroupWithSameCodeAlreadyExistsExcept
 import com.swiftcorp.portal.group.exception.InvalidParentException;
 
 /**
- * @author mosa
- * @since Sep 9, 2008
+ * @author swift
+ * @since mar 3, 2011
  */
 public interface IGroupDAO
 {

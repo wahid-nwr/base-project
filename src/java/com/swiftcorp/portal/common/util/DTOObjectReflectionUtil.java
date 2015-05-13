@@ -59,7 +59,18 @@ public class DTOObjectReflectionUtil
 		}
 		else if(type.toString().equals("class java.util.Calendar"))
 		{
-			propertyValue = CalendarUtils.stringToCalendar(""+propertyValue);
+			String mysql_datetime_format = "yyyy-MM-dd";
+			String mysql_time_format = "HH:mm:ss";
+			String format = "";
+			if((""+propertyValue).contains ( " " ))
+			{
+				format = mysql_datetime_format;
+			}
+			else
+			{
+				format = mysql_time_format;
+			}
+			propertyValue = CalendarUtils.stringToCalendarFormatterFormat(""+propertyValue,format);
 		}
 		System.out.println("type.toString():::::::::::::::::::::::::::"+type.toString());
 		// now set the value to the entity object

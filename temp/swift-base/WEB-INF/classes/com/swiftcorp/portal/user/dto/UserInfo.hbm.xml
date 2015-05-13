@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+  
+ <hibernate-mapping>
+ <class name="com.swiftcorp.portal.user.dto.UserInfo" table="userinfo" >
+	  <id name="componentId" column="componentId" type="long">
+	    <generator class="increment" /> 
+	  </id>
+	 
+	  <joined-subclass name="com.swiftcorp.portal.user.dto.UserDTO" table="users">
+	  <key column="componentId"/>
+		  <property name="userType" type="int" column="userType"  />
+		  <property name="uniqueCode" type="string" column="uniqueCode" length="50"  />
+		  <property name="firstName" type="string" column="firstName" length="50"  /> 
+		  <property name="lastName" type="string" column="lastName" length="50"  /> 
+		  <property name="password" type="string" column="password" /> 
+		  <property name="email" type="string" column="email"  /> 
+		  <many-to-one name="role" class="com.swiftcorp.portal.role.dto.RoleDTO"  lazy="false" column="roleId"/>
+		  <property name="updatedDate" type="calendar" column="updateddate"  /> 
+		  <property name="groupId" type="long" column="groupId"/>  
+		
+		  <property name="updatedBy" type="long" column="updatedby"  /> 
+		  <property name="areaType" type="int" column="areaType"/>
+		  <many-to-one name="userArea" class="com.swiftcorp.portal.geo.dto.GeoDTO" column="userArea" lazy="false" cascade="all"/>
+	 
+      </joined-subclass>
+      
+  	<!--
+  	<joined-subclass name="com.swiftcorp.portal.buyer.dto.BuyerDTO" table="buyer">
+	  	<key column="componentId"/>
+	  	<property name="userType" type="int" column="userType"  />
+		<property name="name" type="string" column="name" /> 
+		<property name="phoneNo" type="string" column="phoneno" /> 
+		<property name="email" type="string" column="email" /> 
+		<property name="nationalId" type="string" column="nationalid" /> 
+	 </joined-subclass> 
+     -->
+   </class>
+   
+ </hibernate-mapping>

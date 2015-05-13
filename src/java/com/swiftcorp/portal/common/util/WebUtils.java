@@ -25,8 +25,8 @@ import com.swiftcorp.portal.role.dto.RoleDTO;
 import com.swiftcorp.portal.user.dto.UserDTO;
 
 /**
- * @author mosa
- * @since Sep 22, 2008
+ * @author swift
+ * @since mar 3, 2011
  */
 
 public class WebUtils

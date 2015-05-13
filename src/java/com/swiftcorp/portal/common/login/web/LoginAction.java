@@ -45,13 +45,16 @@ import com.swiftcorp.portal.common.web.SESSION_KEYS;
 import com.swiftcorp.portal.geo.dto.GeoDTO;
 import com.swiftcorp.portal.geo.service.IGeoService;
 import com.swiftcorp.portal.group.service.IGroupService;
+import com.swiftcorp.portal.module.dto.ModuleDTO;
+import com.swiftcorp.portal.module.service.IModuleService;
+import com.swiftcorp.portal.report.util.ReportUtils;
 import com.swiftcorp.portal.user.dto.UserDTO;
 import com.swiftcorp.portal.user.exception.InvalidPasswordException;
 import com.swiftcorp.portal.user.exception.UserNotFoundException;
 
 /**
- * @author mosa
- * @since Sep 8, 2008
+ * @author swift
+ * @since mar 3, 2011
  */
 public class LoginAction extends DispatchAction
 {
@@ -60,11 +63,16 @@ public class LoginAction extends DispatchAction
 	private IGroupService groupService;
 	private IFunctionService functionService;
 	private IGeoService geoService;
+	private IModuleService moduleService;
 	
 	private static String loginUserHomeRequestString = "loginAction.csmp?method=loginSuccess";
 	@SuppressWarnings("unused")
 	private static String promptLoginRequestString = "loginAction.csmp?method=promptLogin";
 	
+	public void setModuleService(IModuleService moduleService) {
+		this.moduleService = moduleService;
+	}
+
 	public void setGroupService ( IGroupService groupService )
 	{
 		this.groupService = groupService;
@@ -186,9 +194,15 @@ public class LoginAction extends DispatchAction
 			session.setAttribute ( SESSION_KEYS.LOGIN_USER_CHILD_AREA, childAreaList );
 			
 			*/
+			List<ModuleDTO> moduleList = (List<ModuleDTO>)moduleService.getList();
+			for(int i=0;moduleList!=null && i<moduleList.size();i++)
+			{
+				System.out.println("module::"+moduleList.get(i).getModuleName());
+			}
+			session.setAttribute ( SESSION_KEYS.MODULEDTO_LIST, moduleList );
 			session.setAttribute ( SESSION_KEYS.FUNCTIONDTO_SET, functionDTOSet );
 			session.setAttribute ( SESSION_KEYS.LOGIN_INFO, loginInfo );
-			return mapping.findForward(ForwardNames.DCRINFO_ADD_SUCCESS);
+			return mapping.findForward(ForwardNames.LOGIN_SUCCESS);
 			//response.sendRedirect ( loginUserHomeRequestString );
 			//mapping.findForward("dcrinfo_add_success");
 			//response.sendRedirect("dcrinfo_add_success");
@@ -290,10 +304,10 @@ public class LoginAction extends DispatchAction
 		
 		// since this month list and year list is needed to all other components
 		// that's why we need to add those into first long-in
-		/*List<ViewValueDTO> monthList = ReportUtils.getMonths ();
+		List<ViewValueDTO> monthList = ReportUtils.getMonths ();
 		List<ViewValueDTO> yearList = ReportUtils.getYears ();
 		request.getSession ().setAttribute ( SESSION_KEYS.MONTH_LIST, monthList );
-		request.getSession ().setAttribute ( SESSION_KEYS.YEAR_LIST, yearList );*/
+		request.getSession ().setAttribute ( SESSION_KEYS.YEAR_LIST, yearList );
 		
 		if ( actionForward != null )
 		{
@@ -307,6 +321,7 @@ public class LoginAction extends DispatchAction
 			throws Exception
 	{
 		log.info ( "logout()::" );
+		System.out.println("logout()::");
 		HttpSession session = request.getSession ();
 		if ( session != null )
 		{
@@ -320,6 +335,13 @@ public class LoginAction extends DispatchAction
 	public void setGeoService ( IGeoService geoService )
 	{
 		this.geoService = geoService;
+	}
+	
+	public ActionForward extTest ( ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response )
+	throws Exception
+	{
+		theLogger.info ( "extTest()::" );
+		return mapping.findForward ( ForwardNames.EXT_TEST );
 	}
 	
 }

@@ -13,13 +13,15 @@ import java.util.regex.Pattern;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 
+import codegen.generators.dto.FieldDTO;
+
 
  
 public class CustomFileUtils
 {
    
     
-    public static void generateNewComponent(ReplaceDTO replace,String location) throws Exception
+    public static void generateNewComponent(List<FieldDTO> fieldNames, String componentName,ReplaceDTO replace,String location) throws Exception
     {     	
     	String output_web_location = "";
     	String output_src_location = "";
@@ -53,22 +55,22 @@ public class CustomFileUtils
         	
         	// generate the web files
     		System.out.println("\nGenerating the web script(JS) component........");
-    		copyDirectoryToDirectory(javascript_src_component_dir, output_dir_js, replace);
+    		copyDirectoryToDirectory(fieldNames,componentName,javascript_src_component_dir, output_dir_js, replace);
     		System.out.println("[Task Completion]::Java web script(JS) components  generation is completed successfully");
         	
     		// generate the web files
     		System.out.println("\nGenerating the web(JSP) component........");
-    		copyDirectoryToDirectory(web_src_component_dir, output_dir_web, replace);
+    		copyDirectoryToDirectory(fieldNames,componentName,web_src_component_dir, output_dir_web, replace);
     		System.out.println("[Task Completion]::Java web(JSP) components  generation is completed successfully");
 
     		// generate the src files
     		System.out.println("\nGenerating the java source component........");
-    		copyDirectoryToDirectory(java_src_dir, output_dir_src, replace);
+    		copyDirectoryToDirectory(fieldNames,componentName,java_src_dir, output_dir_src, replace);
     		System.out.println("[Task Completion]::Java source components generation is completed successfully");
     		
     		// generate the config files
     		System.out.println("\nGenerating all the configuratins ........");
-    		copyDirectoryToDirectory(miscl_configuration_dir,output_dir_conf, replace);
+    		copyDirectoryToDirectory(fieldNames,componentName,miscl_configuration_dir,output_dir_conf, replace);
     		System.out.println("[Task Completion]:: All configuratins generation is completed successfully");    				
 		} 
     	catch (Exception e)
@@ -86,7 +88,8 @@ public class CustomFileUtils
      * Copies a directory to within another directory preserving the file dates.
      */
     @SuppressWarnings("unchecked")
-	public static void copyDirectoryToDirectory(File srcDir, File destDir, ReplaceDTO replaceDTO) throws IOException 
+	public static void copyDirectoryToDirectory(List<FieldDTO> fieldNames,String componentName,File srcDir, File destDir, ReplaceDTO replaceDTO) 
+    throws IOException 
     {
         if (srcDir == null)
         {
@@ -107,7 +110,7 @@ public class CustomFileUtils
         
         //copyDirectory(srcDir, new File(destDir, srcDir.getName()), null, replaceDTO);
         List exclusionList = null;
-        doCopyDirectory(srcDir, destDir, null, exclusionList, replaceDTO);
+        doCopyDirectory(fieldNames,componentName,srcDir, destDir, null, exclusionList, replaceDTO);
     }
 
    
@@ -126,7 +129,7 @@ public class CustomFileUtils
      * @since Commons IO 1.1
      */
     @SuppressWarnings("unchecked")
-	private static void doCopyDirectory(File srcDir, File destDir, FileFilter filter, List exclusionList , ReplaceDTO replaceDTO) throws IOException
+	private static void doCopyDirectory(List<FieldDTO> fieldNames,String componentName,File srcDir, File destDir, FileFilter filter, List exclusionList , ReplaceDTO replaceDTO) throws IOException
     {
         if (destDir.exists())
         {
@@ -167,6 +170,7 @@ public class CustomFileUtils
         
         for (int i = 0; i < srcFiles.length; i++)
         {
+        	System.out.println("srcFiles[i].getName()::"+srcFiles[i].getName());
          	// added by monoar to replace file name
          	matcherCapitalized = patternCapitalized.matcher(srcFiles[i].getName());
          	matcherLowercase = patternLowercase.matcher(srcFiles[i].getName());
@@ -190,19 +194,18 @@ public class CustomFileUtils
          		updatedFileName = matcherUppercase.replaceAll(replaceDTO.getTargetAllUpperCase());
          		isFound = true ;
          	} 
-         	System.out.println ("updatedFileName::"+updatedFileName);
+            
          	if(!isFound)
          	{
          		updatedFileName = srcFiles[i].getName();
-         	}
-         	System.out.println ("updatedFileName::"+updatedFileName);
+         	}    
      
             File copiedFile = new File(destDir, updatedFileName);
             if (exclusionList == null || !exclusionList.contains(srcFiles[i].getCanonicalPath())) 
             {
                 if (srcFiles[i].isDirectory()) 
                 {
-                    doCopyDirectory(srcFiles[i], copiedFile, filter, exclusionList, replaceDTO);
+                    doCopyDirectory(fieldNames,componentName,srcFiles[i], copiedFile, filter, exclusionList, replaceDTO);
                 }
                 else 
                 {
@@ -210,7 +213,7 @@ public class CustomFileUtils
                 	if(!svn_matcher.find())
                  	{
                     	System.out.println("       creating file >> "+ copiedFile.getPath());                		
-                		doCopyFile(srcFiles[i], copiedFile,replaceDTO);
+                		doCopyFile(fieldNames,componentName,srcFiles[i], copiedFile,replaceDTO);
                 	}                	
                 }
             }
@@ -221,7 +224,7 @@ public class CustomFileUtils
     
     
     
-    public static void doCopyFile(File srcFile, File destFile, ReplaceDTO replace) throws IOException 
+    public static void doCopyFile(List<FieldDTO> fieldNames,String componentName,File srcFile, File destFile, ReplaceDTO replace) throws IOException 
     {
         if (destFile.exists() && destFile.isDirectory()) 
         {
@@ -230,6 +233,63 @@ public class CustomFileUtils
         
         //search and replace the file
         List<String> replacedLines = getReplacedLines(srcFile,replace);
+        String fieldsToAdd = "";
+        List<String> linesToAdd = new ArrayList<String>();
+        String searchField = "";
+        if(srcFile.getName().equals("SamplecomSearchUtils.java"))
+        {
+        	System.out.println("this is searchutil");
+        	for(int i=0;i<replacedLines.size();i++)
+        	{
+        		String lines = replacedLines.get(i);
+        		if(lines.indexOf("String projectSqlQuery = \" SELECT a.componentId\" +")>0)
+        		{
+        			linesToAdd = new ArrayList<String>();
+        			replacedLines.remove(i);
+        			System.out.println("lines::"+lines);
+        			for(FieldDTO field:fieldNames)
+        			{
+        				if(fieldsToAdd!= null && !fieldsToAdd.equals("null") && fieldsToAdd.length()>0)
+        				{
+        					
+        				}
+        				else
+        				{
+        					searchField = "a."+field.getName().toLowerCase();
+        				}
+        				fieldsToAdd += ",a."+field.getName().toLowerCase();
+        			}
+        			lines = lines.replace("\" +", "");
+        			lines = lines+fieldsToAdd+ "\" +" ;
+        			linesToAdd.add(lines);
+        			replacedLines.addAll(i, linesToAdd);
+        			System.out.println("lines::"+lines);
+        		}
+        		if(lines.indexOf("ArrayList<String> columnHeader = new ArrayList<String>();")>0)
+        		{
+        			linesToAdd = new ArrayList<String>();
+        			for(FieldDTO field:fieldNames)
+        			{
+        				linesToAdd.add("\n\t\tcolumnHeader.add(\"label."+componentName+"."+field.getName()+"\");");
+        			}
+        			replacedLines.addAll(i+1, linesToAdd);
+        		}
+        		if(lines.indexOf("projectSqlQuery += \" WHERE a.uniqueCode like '%\" + searchQueryInput + \"%'\";")>0)
+        		{
+        			linesToAdd = new ArrayList<String>();
+        			linesToAdd.add("projectSqlQuery += \" WHERE "+searchField+ " like '%\" + searchQueryInput + \"%'\";");
+        			replacedLines.remove(i);
+        			replacedLines.addAll(i,linesToAdd);
+        		}
+        		if(lines.indexOf("projectSqlQuery += \" ORDER BY a.uniqueCode \" ;")>0)
+        		{
+        			linesToAdd = new ArrayList<String>();
+        			linesToAdd.add("projectSqlQuery += \" ORDER BY "+searchField+ "\" ;");
+        			replacedLines.remove(i);
+        			replacedLines.addAll(i,linesToAdd);
+        		}
+        	}
+        }
         FileOutputStream output = new FileOutputStream(destFile);           
         try 
         {

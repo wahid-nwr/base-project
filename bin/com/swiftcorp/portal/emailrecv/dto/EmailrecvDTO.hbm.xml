@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+  
+ <hibernate-mapping>
+  <class name="com.swiftcorp.portal.emailrecv.dto.EmailrecvDTO" table="emailrecv">
+	  <id name="componentId" column="componentId" type="long">
+	    <generator class="increment" /> 
+	  </id>
+	  <!--
+	  <property name="uniqueCode" type="string" column="uniquecode" length="50"  />
+	  --> 
+	<property name="companyEmailAddress" type="string" column="companyemailaddress" /> 
+	<property name="popHost" type="string" column="pophost" /> 
+	<property name="otherPartyEmailAddress" type="string" column="otherpartyemailaddress" /> 
+	<property name="isSSL" type="string" column="isssl" /> 
+	<property name="popPort" type="int" column="popport" /> 
+	<property name="password" type="string" column="password" /> 
+	<property name="taggedUserId" type="string" column="taggeduserid" /> 
+	<property name="smtpHost" type="string" column="smtphost" /> 
+	<property name="smtpPort" type="int" column="smtpport" /> 
+	<property name="displayName" type="string" column="displayname" /> 
+	 <!--
+	 <property name="description" type="string" column="description"  /> 
+	 <property name="status" type="int" column="status"  /> 
+     <property name="updatedDate" type="calendar" column="updateddate"  />	
+	 <property name="updatedBy" type="long" column="updatedby"  />
+	 -->
+  </class>
+   
+ </hibernate-mapping>

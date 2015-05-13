@@ -3,6 +3,9 @@
 		var div=document.getElementById('docs-samplecomPanel');
 		if(div!=null)
 		{
+			// Basic mask:
+	    	var myMask = new Ext.LoadMask(div, {msg:"Please wait! Loading window..."});
+	    	myMask.show();
 			Ext.ux.ScriptMgr.load({
                 scripts : ['./Common/JavaScript/forms/Samplecom.js'],
                 callback : function() {
@@ -16,10 +19,11 @@
 							main.setActiveTab(tab);
 						}
 						
-						Ext.Msg.hide();
+						//Ext.Msg.hide();
 						tab.remove('header');
 						tab.remove('loading');
 						tab.remove('loading-mask');
+						myMask.hide();
                 	}
                 }
 			});

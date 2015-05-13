@@ -4,24 +4,24 @@
 package com.swiftcorp.portal.dao;
 
 import org.springframework.context.support.FileSystemXmlApplicationContext;
-
+/*
 import com.swiftcorp.portal.beneficiary.dto.BeneficiaryDTO;
 import com.swiftcorp.portal.beneficiary.dto.BeneficiaryExamDTO;
 import com.swiftcorp.portal.beneficiary.dto.BeneficiaryHistoryDTO;
 import com.swiftcorp.portal.beneficiary.service.IBeneficiaryService;
-
+*/
 /**
  * @author asraful.haque
  *
  */
 public class BeneficiaryRegDAOTest
 {
-	
+	/*
 	private static IBeneficiaryService beneficiaryService;
 	
-	/**
+	*//**
 	 * @param args
-	 */
+	 *//*
 	public static void main ( String[] args )
 	{
 		// 
@@ -96,5 +96,5 @@ public class BeneficiaryRegDAOTest
 		System.out.println ("get the beneficiary with name " + beneficiaryDTO.getBeneficiaryName () );
 		
 	}
-	
+	*/
 }

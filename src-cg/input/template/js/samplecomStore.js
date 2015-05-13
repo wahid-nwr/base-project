@@ -1,21 +1,24 @@
 function getSamplecomStore()
 {
-	var store = new Ext.data.Store({
-        // load using HTTP
-        url: 'samplecomAction.csmp?method=promptExtSamplecomSearchSystemLevel',
-        // the return will be XML, so lets set up a reader
-        reader: new Ext.data.XmlReader({
-               // records will have an "Item" tag
-               record: 'Item',
-               id: 'componentId',
-               totalRecords: 'TotalResults'
-           }, [
-               // set up the fields mapping into the xml doc
-               // The first needs mapping, the others are very basic
-               {name: 'code', mapping: 'ItemAttributes > code'},
-               'description',
-			   'updatedby'
-           ])
-    });
-	return store;
+	var url = 'samplecomAction.csmp?method=promptExtSamplecomSearchSystemLevel';
+	Ext.define('SamplecomModel', {
+	    extend: 'Ext.data.Model',
+	    fields: ['componentId']
+	});
+	var samplecomstore = Ext.create('Ext.data.Store', {
+	    model: 'SamplecomModel',
+	    pageSize: 20,
+	    proxy: {
+	        type: 'ajax',
+	        url: url,
+	        reader: {
+	            type: 'xml',
+	            record: 'Item',
+	            root: 'Items',
+	            totalProperty: 'TotalResults'
+	        }
+	    }
+	});
+	samplecomstore.load();
+	return samplecomstore;
 }

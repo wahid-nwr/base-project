@@ -14,8 +14,8 @@ import java.util.ArrayList;
 import com.swiftcorp.portal.common.BusinessOperationResult;
 
 /**
- * @author mosa
- * @since Sep 8, 2008
+ * @author swift
+ * @since mar 3, 2011
  */
 public class SearchOperationResult extends BusinessOperationResult
 {

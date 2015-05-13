@@ -27,8 +27,8 @@ import com.swiftcorp.portal.common.search.SearchOperationResult;
 import com.swiftcorp.portal.common.search.exception.InvalidSQLSyntaxException;
 
 /**
- * @author mosa
- * @since Sep 8, 2008
+ * @author swift
+ * @since mar 3, 2011
  */
 public class FunctionServiceImpl implements IFunctionService
 {

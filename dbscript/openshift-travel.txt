@@ -1,0 +1,37 @@
+Added mysql-5.1 to application travel
+
+MySQL 5.1 database added.  Please make note of these credentials:
+
+       Root User: adminIfnWxyF
+   Root Password: t8ymZzx3Gp_y
+   Database Name: travel
+
+Connection URL: mysql://$OPENSHIFT_MYSQL_DB_HOST:$OPENSHIFT_MYSQL_DB_PORT/
+
+You can manage your new MySQL database by also embedding phpmyadmin-3.4.
+The phpmyadmin username and password will be the same as the MySQL credentials
+above.
+
+OPENSHIFT_APP_DNS=travel-erpdemo.rhcloud.com
+OPENSHIFT_APP_NAME=travel
+OPENSHIFT_APP_UUID=51640e0a5973ca55aa000187
+OPENSHIFT_DATA_DIR=/var/lib/openshift/51640e0a5973ca55aa000187/app-root/data/
+OPENSHIFT_GEAR_DNS=travel-erpdemo.rhcloud.com
+OPENSHIFT_GEAR_NAME=travel
+OPENSHIFT_GEAR_UUID=51640e0a5973ca55aa000187
+OPENSHIFT_HOMEDIR=/var/lib/openshift/51640e0a5973ca55aa000187/
+OPENSHIFT_INTERNAL_IP=127.7.52.129
+OPENSHIFT_INTERNAL_PORT=8080
+OPENSHIFT_JBOSSEWS_IP=127.7.52.129
+OPENSHIFT_JBOSSEWS_LOG_DIR=/var/lib/openshift/51640e0a5973ca55aa000187/jbossews-1.0/logs/
+OPENSHIFT_JBOSSEWS_PORT=8080
+OPENSHIFT_MYSQL_DB_HOST=127.7.52.129
+OPENSHIFT_MYSQL_DB_LOG_DIR=/var/lib/openshift/51640e0a5973ca55aa000187//mysql-5.1/log
+OPENSHIFT_MYSQL_DB_PASSWORD=t8ymZzx3Gp_y
+OPENSHIFT_MYSQL_DB_PORT=3306
+OPENSHIFT_MYSQL_DB_SOCKET=/var/lib/openshift/51640e0a5973ca55aa000187//mysql-5.1/socket/mysql.sock
+OPENSHIFT_MYSQL_DB_URL=mysql://adminIfnWxyF:t8ymZzx3Gp_y@127.7.52.129:3306/
+OPENSHIFT_MYSQL_DB_USERNAME=adminIfnWxyF
+OPENSHIFT_REPO_DIR=/var/lib/openshift/51640e0a5973ca55aa000187/app-root/runtime/repo/
+OPENSHIFT_TMP_DIR=/tmp/
+

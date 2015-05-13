@@ -1,15 +1,11 @@
 function getSamplecomGrid(store)
 {
-	var itemDeleter = new Extensive.grid.ItemDeleter();
-    // create the grid
-    var samplecomGrid = new Ext.grid.GridPanel({
+	// create the grid
+    var samplecomGrid = Ext.create('Ext.grid.GridPanel',{
     	id:'samplecomGrid',
         store: store,
-        columns: getSamplecomColumns(itemDeleter),
-        selModel: itemDeleter,
-        sm: new Ext.grid.RowSelectionModel({singleSelect: true}),
-        
-		viewConfig: {
+        columns: getSamplecomColumns(),
+        viewConfig: {
 			forceFit: true
 		},
 		
@@ -20,13 +16,27 @@ function getSamplecomGrid(store)
     });
     
     var rowData = null;
-    samplecomGrid.getSelectionModel().on('rowselect', function(sm, rowIdx, r) {
+    samplecomGrid.getSelectionModel().on('select', function(rowModel, record, rowIdx, objs) {
 		//get row data
-		rowData  = r;
+    	rowData  = record;
+		var tabpanel = Ext.get('docs-samplecomPanel');
+		// Basic mask:
+    	var myMask = new Ext.LoadMask(tabpanel, {msg:"Please wait! Loading window..."});
+    	myMask.show();
+		var samplecomAddForm = getSamplecomAddForm(tabpanel,store);
+		var form = Ext.getCmp('samplecomAddForm').getForm();
+		//url:    'dcrinfoAction.csmp?method=addDcrinfo',
+		//form.buttons[0].setText("Modify");
+		
+		form.url= 'samplecomAction.csmp?method=modifySamplecom';
+		loadSamplecomFormData(form,rowData);
+		myMask.hide();
+		//alert('i::'+index);
+		//set_combobox_value_from_store(getRoleFunctionStore(),form.findField('role'), 'id', index);
 	});
 	
 	samplecomGrid.on('dblClick',function() {
-		var tabpanel = Ext.getCmp('doc-body').findById('docs-samplecomPanel');
+		var tabpanel = Ext.get('docs-samplecomPanel');
 		var samplecomAddForm = getSamplecomAddForm(tabpanel,store);
 		var form = Ext.getCmp('samplecomAddForm').getForm();
 		//url:    'dcrinfoAction.csmp?method=addDcrinfo',

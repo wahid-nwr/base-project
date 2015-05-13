@@ -10,6 +10,10 @@ import org.apache.commons.logging.LogFactory;
 import com.swiftcorp.portal.common.GlobalConstants;
 import com.swiftcorp.portal.common.web.SESSION_KEYS;
 
+/*
+ * @author swift corporation
+ * @since mar 3, 2011
+ */
 public class SamplecomSearchUtils
 {
 	protected static final Log log = LogFactory.getLog(SamplecomSearchUtils.class);
@@ -68,7 +72,8 @@ public class SamplecomSearchUtils
 		}
 
 		
-		String projectSqlQuery = " SELECT a.componentId, a.uniqueCode, a.description  FROM samplecom a";
+		String projectSqlQuery = " SELECT a.componentId" +
+				"  FROM samplecom a";
 		projectSqlQuery += " WHERE a.uniqueCode like '%" + searchQueryInput + "%'";
 		projectSqlQuery += " ORDER BY a.uniqueCode " ;
 		projectSqlQuery += " " + sortOrder; 
@@ -82,9 +87,11 @@ public class SamplecomSearchUtils
 	public static ArrayList<String> getColumnHeader()
 	{
 		ArrayList<String> columnHeader = new ArrayList<String>();
-		columnHeader.add("label.samplecom.name");    
+		/*
+		columnHeader.add("label.samplecom.name");		
 		columnHeader.add("label.samplecom.description"); 
-		columnHeader.add("label.samplecom.last.updatedby"); 
+		columnHeader.add("label.samplecom.last.updatedby");
+		 */ 
 		return columnHeader;
 	}
 	
